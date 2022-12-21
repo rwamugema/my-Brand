@@ -15,8 +15,8 @@ body {
   /* background-color: red; */
 }
 .nav-bar img{
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
   position: absolute;
   left:50px;
   top: 5px;
@@ -77,29 +77,30 @@ button {
 
 .section #my-name h2 {
   margin: auto;
-  font-size: 36px;
+  font-size: 28px;
   font-family: var(--font);
   font-weight: lighter;
+  padding-top:5px;
 }
 .section #my-name p {
   display: block;
   font-size: 16px;
   font-weight: 100;
   font-family: var(--font);
-  padding-top: 20px;
+  padding-top: 5px;
 }
 .section #work {
   width: 55%;
 }
-.section #work h2 {
-  font-size: 55px;
-  text-transform: uppercase;
+.section #work h3 {
+text-transform: uppercase;
   font-family: var(--font);
   padding-top: 0;
 }
-.section #work h2 a {
+.section #work h3 a {
   text-decoration: underline;
   color: var(--clr);
+  font-size: 60px;
 }
 /* .section #work h2 a:hover{
 	text-decoration: underline;
