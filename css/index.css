@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+}
+:root {
+  --clr: #fff;
+  --font: 'poppins', sans-serif;
+}
+.nav-bar {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  /* background-color: red; */
+}
+.nav-bar img{
+	width: 100px;
+	height: 100px;
+  position: absolute;
+  left:50px;
+  top: 5px;
+}
+.nav-bar ul {
+  top: 0;
+  width: 480px;
+  height: 68px;
+  position: absolute;
+  float: right;
+  right: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+}
+.nav-bar ul li {
+  font-family: var(--font);
+  font-size: 26px;
+  text-transform: capitalize;
+  font-weight: lighter;
+}
+.nav-bar ul li a {
+  text-decoration: none;
+  color: var(--clr);
+}
+.nav-bar ul li a:hover {
+  text-decoration: underline;
+  transition: 800ms ease-in-out;
+  scale: 2;
+}
+button {
+  outline: none;
+  width: 200px;
+  height: 60px;
+  background-color: inherit;
+  border: 2px solid #ef9309;
+  border-radius: 50px;
+  font-size: 24px;
+  text-transform: capitalize;
+}
+.section {
+  position: relative;
+  /* background-color: #EF9309; */
+  margin: auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  top: 50px;
+}
+.section #my-name {
+  /* display: flex;
+	flex-direction: row; */
+  padding-top: 70px;
+  /* background-color: red; */
+
+}
+
+.section #my-name h2 {
+  margin: auto;
+  font-size: 36px;
+  font-family: var(--font);
+  font-weight: lighter;
+}
+.section #my-name p {
+  display: block;
+  font-size: 16px;
+  font-weight: 100;
+  font-family: var(--font);
+  padding-top: 20px;
+}
+.section #work {
+  width: 55%;
+}
+.section #work h2 {
+  font-size: 55px;
+  text-transform: uppercase;
+  font-family: var(--font);
+  padding-top: 0;
+}
+.section #work h2 a {
+  text-decoration: underline;
+  color: var(--clr);
+}
+/* .section #work h2 a:hover{
+	text-decoration: underline;
+} */
+footer {
+  width: 70px;
+  font-family: var(--font);
+  height: 65%;
+  position: absolute;
+  top: 100px;
+}
+#copy{
+	width: 70px;
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+
+}
+footer #copy p {
+  font-size: 16px;
+  transform: rotate(-90deg);
+}
+footer  hr{
+	position: relative;
+	transform: rotate(90deg);
+    top: 100px;
+}
+footer #icons a{
+  text-decoration: none;
+  color: var(--clr);
+
+}
+footer #icons a i{
+	/* background-color: #ef9309; */
+	width: 100px;
+	height: 50px;
+	display: block;
+	justify-content: space-between;
+	transform: rotate(-90deg);
+	top: 50px;
+  font-size: 24px;
+}
