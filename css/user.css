@@ -122,9 +122,9 @@ body {
   color: var(--clr);
  }
  .footer p a:hover{
-  text-decoration: underline;
-}
- .footer p:first-child a{
+    text-decoration: underline;
+ }
+ .footer p:nth-child(2) a{
  text-decoration: underline;
  }
 .over-view{
@@ -140,38 +140,40 @@ body {
   width: 100%;
   height: 70px;
 }
-.over-view #overview #btn{
-  font-family: var(--font);
-  width: 30%;
-}
-.over-view #overview #btn button{
-  border-radius: 2px;
-  border: none;
-  width: 70px;
-  padding: 10px;
-}
-.over-view #overview #btn button:first-child {
- 
-  background-color: #0CE415;
-  text-transform: capitalize;
-  color: var(--clr);
-
-}
-button i{
-  font-size: 28px;
-}
 table{
   margin-top:30px;
- 
   border-collapse:collapse;
   width: 100%;
-  font-family: var(--font)
+  font-family: var(--font);
+ 
 }
 table td{
   border-bottom: 1px solid #6f4405;
   padding: 40px;
+  font-family: var(--font);
+  
 }
-table tr th{
-  text-transform: capitalize;
-  font-size: 24px;
-}
+table td #btn button{
+    border-radius: 2px;
+    border: none;
+    width:fit-content;
+    padding: 10px;
+  }
+  table td #btn button:first-child{
+    background-color: #0CE415;
+   text-transform: capitalize;
+  color: var(--clr);
+  }
+   #btn button:nth-child(2){
+     background-color: #F36D6D;
+     text-transform: capitalize;
+     color: var(--clr);
+  }
+  table tr th{
+    text-transform: capitalize;
+    font-size: 24px;
+  }
+ td  i{
+    font-size: 16px;
+    
+  }
