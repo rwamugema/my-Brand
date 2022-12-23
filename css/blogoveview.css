@@ -66,7 +66,7 @@ body {
     height: 95px;
   }
   .nav-bar .profile img{
-    width: 100px;
+    width: 90px;
     height: 100%;
     border-radius: 50%;
   }
@@ -93,17 +93,21 @@ body {
   #logout a:hover{
     text-decoration: underline;
   }
-  .over-view{
-    background-color:blue;
-    height: 50px;
-  }
+ 
   footer {
-    /* margin-top: 15px; */
-    background-color:#6f4405;
-    width: 100px;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    margin-top: 15px;
     font-family: var(--font);
     height: 500px;
     color:#fff;
+  }
+  .footer{
+    border-top: 1px  solid var(--clr);
+    border-right: 1px solid var(--clr);
+    width: 100px;
+    background-color:#6f4405;
   }
  .footer p {
   display: flex;
@@ -120,3 +124,47 @@ body {
  .footer p:first-child a{
  text-decoration: underline;
  }
+.over-view{
+  margin-right:200px;
+  width: 70% ;
+  height: 400px;
+  flex-direction: row;
+}
+.over-view #overview{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+}
+.over-view #overview #btn{
+  font-family: var(--font);
+  width: 30%;
+}
+.over-view #overview #btn button{
+  border-radius: 2px;
+  border: none;
+  width: 70px;
+  padding: 10px;
+}
+.over-view #overview #btn button:first-child {
+ 
+  background-color: #0CE415;
+  text-transform: capitalize;
+  color: var(--clr);
+
+}
+button i{
+  font-size: 28px;
+}
+table{
+  margin-top:30px;
+ 
+  border-collapse:collapse;
+  width: 100%;
+  font-family: var(--font)
+}
+table td{
+  border-bottom: 1px solid #6f4405;
+  padding-top: 60px;
+}
