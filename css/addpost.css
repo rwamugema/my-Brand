@@ -93,7 +93,6 @@ body {
   #logout a:hover{
     text-decoration: underline;
   }
- 
   footer {
     width: 100%;
     justify-content: space-between;
@@ -126,72 +125,86 @@ body {
     text-decoration: underline;
  }
  .footer p:nth-child(3) a{
-    
-        width:100%;
-        color: #6f4405;
-        background-color:var(--clr);
-        padding: 10px;
-        
- }
-.over-view{
-  margin-right:200px;
-  width: 70% ;
-  height: 400px;
-  flex-direction: row;
-}
-.over-view #overview{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 70px;
-}
-.over-view #overview button{
-  border-radius: 2px;
-  border: none;
-  width:fit-content;
+  width:100%;
+  color: #6f4405;
+  background-color:var(--clr);
   padding: 10px;
-  color: var(--clr);
-  background-color: #0CE415;
-}
-.over-view #overview button a{
-  text-decoration: none;
-  color: var(--clr);
-}
-table{
-  margin-top:30px;
-  border-collapse:collapse;
-  width: 100%;
-  font-family: var(--font);
+ }
+ .box{
  
-}
-table td{
-  border-bottom: 1px solid #6f4405;
-  padding: 40px;
-  font-family: var(--font);
-  
-}
-table td #btn button{
-    border-radius: 2px;
-    border: none;
-    width:90px;
-    padding: 5px;
-  }
-  table td #btn button:first-child{
-    background-color: var(--clr);
-   text-transform: capitalize;
-  color: #000;
-  }
-   #btn button:nth-child(2){
-     background-color: #F36D6D;
-     text-transform: capitalize;
-     color: var(--clr);
-  }
-  table tr th{
+
+ width: 50% ;
+ height: 500px;
+ font-family: var(--font);
+ border: 1px solid #fff;
+ border-radius: 12px;
+ margin-right:200px;
+ }
+ .box-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+ }
+ .box-1 h2{
+    width: 100%;
+    padding-bottom: 10px;
     text-transform: capitalize;
-    font-size: 24px;
+    border-bottom: 1px solid var(--clr);
+ }
+ #input input{
+    background-color: #000;
+    outline: none;
+    border: 1px solid #6f4405;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    padding: 7px;
+ }
+ .box-1 input::placeholder{
+    color: var(--clr);
+    font-family: var(--font);
   }
- td  i{
-    font-size: 16px;
-    
-  }
+  #input{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+    padding:30px;
+    height: 100%;  
+}
+#input textarea{
+    background-color: #000;
+    border: 1px solid #6f4405;
+    border-radius:5px ;
+    height: 100px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+#input textarea::placeholder{
+    color: var(--clr);
+    font-family: var(--font);
+}
+#input input:nth-child(4){
+    padding: 5px;
+    width: 130px;
+    border:1px solid var(--clr);
+}
+#input button{
+    width: 300px;
+    background-color: #000;
+    border:1px solid #6f4405;
+    border-radius: 5px;
+    margin-left: 50px;
+    padding: 10px;
+}
+#input button a{
+    text-decoration: none;
+    font-size: 20px;
+    color: var(--clr);
+}
+#input h3{
+    text-transform: capitalize;
+    font-weight: lighter;
+}
