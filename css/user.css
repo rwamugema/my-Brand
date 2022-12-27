@@ -112,7 +112,8 @@ body {
  .footer p {
   display: flex;
   font-size: 18px;
-  padding: 20px;
+  padding-top: 20px;
+  justify-content: center;
   align-content: center;
   align-items: center;
  }
@@ -125,7 +126,10 @@ body {
     text-decoration: underline;
  }
  .footer p:nth-child(2) a{
- text-decoration: underline;
+  width:100%;
+  color: #6f4405;
+  background-color:var(--clr);
+  padding: 10px;
  }
 .over-view{
   margin-right:200px;
@@ -156,8 +160,8 @@ table td{
 table td #btn button{
     border-radius: 2px;
     border: none;
-    width:fit-content;
-    padding: 10px;
+    width:90px;
+    padding: 5px;
   }
   table td #btn button:first-child{
     background-color: #0CE415;
