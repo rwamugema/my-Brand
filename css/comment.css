@@ -194,3 +194,31 @@ table td #btn button{
     background-color: #0CE415;
  
   }
+  
+.over-view #controls{
+    float: right;
+    margin-top: 30px;
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+  }
+  .over-view #controls p{
+    width: 25px;
+    height: 30px;
+    padding: 6px;
+    background-color: #6f4405;
+  }
+  .over-view #controls p:nth-child(3){
+    background-color: #000;
+    color: #6f4405;
+  }
+  .over-view #controls i{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #6f4405;
+    border-radius: 50%;
+    color: #6f4405;
+    font-size: 16px;
+    padding: 7px;
+    align-items: center;
+  }
