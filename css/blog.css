@@ -335,8 +335,8 @@ body{
         color: #fff;
        }
        footer #icons{
-        margin-right: auto;
-        /* margin-right: 100px; */
+        margin-left: auto;
+        margin-right: 100px;
         display: flex;
         justify-content: space-between;
         width: 100px;
