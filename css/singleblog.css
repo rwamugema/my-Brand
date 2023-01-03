@@ -21,10 +21,15 @@ i{
     font-size: 24px;
     padding-right: 5px;
 }
+
 @media only screen 
   and (min-width:360px) 
   /* and (max-device-width: 720px) */
+
   {
+    #backtoblog h2{
+    visibility: hidden;
+    }
    .nav-bar{
     position: sticky;
     width: 100%;
@@ -173,7 +178,9 @@ i{
   and (min-width:768px) 
   and (max-width: 1440px) 
   {
-
+    #backtoblog h2{
+        visibility: visible;
+        }
 .nav-bar{
     position:sticky;
     top: 0;

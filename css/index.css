@@ -143,3 +143,30 @@ footer #icons a i{
 	top: 50px;
   font-size: 24px;
 }
+@media only screen 
+  and (min-width:360px) 
+  /* and (max-device-width: 720px) */
+
+  {
+    .nav-bar{
+      position: sticky;
+      width: 100%;
+      top: 0;
+      display: flex;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 2px 2px 0.5 #333;
+      justify-content: center;
+      flex-direction: column;
+      font-family:' poppins',sans-serif;
+      align-items: flex-start;
+      background-color: #333;
+      z-index: 1;
+     }
+     .nav-bar img{
+     margin-right: auto;
+      width: 50px;
+      height: fit-content;
+      border-radius: 50%;
+     }
+  }
