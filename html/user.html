@@ -6,74 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="../css/user.css" />
+<link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/blogoveview.css" />
     <link rel="website icon" href="../image/logo.png">
     <title>user</title>
 </head>
 <body>
-    <main>
-        <div class="nav-bar">
+    <main class="nav-bar">
+        <div id="dashboard">
           <img src="../image/logo.png" alt="#"  />
-          <h1>dash-board</h1>
+          <h1>dashboard</h1>
+        </div>
+          <div class="topnav">
+            <div id="menu">
           <div class="inputContainer">
-           <i class="fa fa-search icon"></i>
+          <i class="fa fa-search icon"></i>
           <input type="search" name="search" id="field" placeholder="search...">
         </div>
-        <div class="profile">
-            <img src="../image/profile.jpg" alt="Japhet">
             <div id="name">
-                <p>rwamugema </p><br>
-                <p>japhet</p>
+              <img src="../image/profile.jpg" alt="Japhet">
+                <p>rwamugema Japhet</p>
             </div>
-            <div id="logout"><a href="#">log out</a></div>
-            
+            <div id="logout">
+                <a href="#">log out</a>
+            </div>
         </div>
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                 <i class class="fa fa-bars"></i>
+                </a>
         </div>
     </main>
     <footer>
       <div class="footer">
-        <p><a href="blogoverview.html">overview</a></p>
-        <p><a href="user.html">users</a></p>
-        <p><a href="post.html">post</a></p>
-        <p><a href="comment.html">comment</a></p>
-        </a>
-      </div>
+            <div id="footer">
+            <p><a href="blogoverview.html">overview</a></p>
+            <p><a href="user.html">user</a></p>
+            <p><a href="post.html">post</a></p>
+            <p><a href="comment.html">comment</a></p>
+            </a>
+          </div>
+          </div>
       <div class="over-view">
-        <div id="overview">
-            <h2>user</h2>
-        </div>
         <table>
-            
-                <tr>
-                    <th>name</th>
-                    <th>contact</th>
-                    <th>post</th>
-                    <th>control</th>
-                </tr>
-    
             <tr>
                 <td>Jane Cooper</td>
                 <td>jet@gmail.com</td>
-                <td><i class="fa fa-envelope"></i> 3 articles</i></td>
+                <td><i class="fa fa-envelope"></i> 3 </i></td>
                 <td><div id="btn">
                 <button>add user</button>
                 <button>delete user</button>
             </div></td>
             </tr>
-            
             <tr>
-                
                 <td>Jane Cooper</td>
                 <td>jet@gmail.com</td>
-                <td><i class="fa fa-envelope"></i> 3 articles</td>
+                <td><i class="fa fa-envelope"></i> 3 </td>
                 <td><div id="btn">
                 <button>add user</button>
                 <button>delete user</button>
             </div></td></tr>
-                
+
             <tr><td>Jane Cooper</td>
                 <td>jet@gmail.com</td>
-                <td><i class="fa fa-envelope"></i> 3 articles</i></td>
+                <td><i class="fa fa-envelope"></i> 3 </i></td>
                 <td><div id="btn">
                 <button>add user</button>
                 <button>delete user</button>
@@ -88,5 +83,15 @@
     </div>
     </div>
       </footer>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("menu");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+        }
+        </script>
 </body>
 </html>

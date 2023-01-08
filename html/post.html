@@ -7,40 +7,47 @@
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="../css/post.css" />
+    <link rel="stylesheet" href="../css/blogoveview.css">
     <title>post</title>
     <link rel="website icon" href="../image/logo.png">
 </head>
 <body>
-    <main>
-        <div class="nav-bar">
+    <main class="nav-bar">
+        <div id="dashboard">
           <img src="../image/logo.png" alt="#"  />
-          <h1>dash-board</h1>
+          <h1>dashboard</h1>
+        </div>
+          <div class="topnav">
+            <div id="menu">
           <div class="inputContainer">
-           <i class="fa fa-search icon"></i>
+          <i class="fa fa-search icon"></i>
           <input type="search" name="search" id="field" placeholder="search...">
         </div>
-        <div class="profile">
-            <img src="../image/profile.jpg" alt="Japhet">
             <div id="name">
-                <p>rwamugema </p><br>
-                <p>japhet</p>
+              <img src="../image/profile.jpg" alt="Japhet">
+                <p>rwamugema Japhet</p>
             </div>
-            <div id="logout"><a href="#">log out</a></div>
-            
+            <div id="logout">
+                <a href="#">log out</a>
+            </div>
         </div>
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                 <i class class="fa fa-bars"></i>Menu
+                </a>
         </div>
     </main>
     <footer>
       <div class="footer">
-        <p><a href="blogoverview.html">overview</a></p>
-        <p><a href="user.html">user</a></p>
-        <p><a href="post.html">post</a></p>
-        <p><a href="comment.html">comment</a></p>
-        </a>
-      </div>
+            <div id="footer">
+            <p><a href="blogoverview.html">overview</a></p>
+            <p><a href="user.html">user</a></p>
+            <p><a href="post.html">post</a></p>
+            <p><a href="comment.html">comment</a></p>
+            </a>
+            </div>
+            </div>
       <div class="over-view">
         <div id="overview">
-            <h2>post</h2>
             <button><a href="addpost.html">add new post</a> </button>
         </div>
         <table>
@@ -54,8 +61,6 @@
                     <td><i class="fa fa-eye"></i> 10 </i></td>
                     <td>jane Cooper</td>
                 <td>10/28/12</td>
-          
-          
             </tr>
             <tr>
                     <td>black  panther</td>
@@ -88,5 +93,15 @@
     </div>
     </div>
       </footer>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("menu");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+        }
+        </script>
 </body>
 </html>

@@ -1,202 +1,212 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 body {
-    background-color: #000;
-    color: #fff;
-  }
-  :root {
-    --clr: #fff;
-    --font: 'poppins', sans-serif;
-  }
+  background-color: #000;
+  color: #fff;
+  font-family: var(--font);
+  text-transform: capitalize;
+}
+:root {
+  --clr: #fff;
+  --font: "poppins", sans-serif;
+}
+#name img {
+  border-radius: 50%;
+  width: 30px;
+  height: 100%;
+}
+@media only screen and (min-width: 360px) {
   .nav-bar {
-    display: flex;
+    position: sticky;
     width: 100%;
-    height: 100px;
-    background-color: #6f4405;
+    height: fit-content;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
     justify-content: center;
+    align-items: flex-start;
+    background-color: #6f4405;
+    z-index: 1;
+    overflow: hidden;
+  }
+  #dashboard {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
     align-items: center;
   }
-  .nav-bar img{
-    margin: 5px auto 5px 30px;
-    width: 80px;
-    height: 80px;
+  #dashboard img {
+    width: 50px;
+    height: 100%;
+    border-radius: 50%;
   }
-  .nav-bar h1{
-    margin-right: auto;
+  #dashboard h1 {
     font-family: var(--font);
-    font-size: 30px;
+    font-size: 16px;
     text-transform: uppercase;
-    
+    text-decoration: none;
+    color: #fff;
   }
-  .nav-bar ::-ms-input-placeholder{
-    font-family: var(--font);
-    margin-left: 10px;
-  }
-  #field{
-    border:none;
-    border-radius: 40px;
-    background: #B1B6B8;
+  .topnav {
+    padding-left: 0.6rem;
+    height: fit-content;
     width: 100%;
-    height:30px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+  }
+  .topnav #menu {
+    display: none;
+  }
+  .topnav a {
+    display: block;
+    text-transform: capitalize;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+  }
+  .topnav a.icon {
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .nav-bar .inputContainer {
+    overflow-x: hidden;
+    display: flex;
+    padding: 1rem 0;
+    align-items: center;
+    width: 250px;
+  }
+  #menu .inputContainer i {
+    text-align: center;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  #field {
+    border: none;
+    border-radius: 40px;
+    background: #b1b6b8;
+    width: 100%;
+    height: 30px;
     padding-left: 40px;
+    outline: none;
   }
   .icon {
     width: 45px;
     text-align: left;
-    color:black;
-    opacity: 0.5;
- }
-  .nav-bar .inputContainer {
-    margin-right: auto;
-    display: flex;
-    align-items: center;
-    width: 300px;
+    color: black;
+    opacity: 1;
   }
-  .nav-bar .inputContainer i{
-    text-align:center;
+  input::placeholder {
+    font-family: var(--font);
+    color: #fff;
+  }
+  .footer button {
+    display: block;
     position: absolute;
-    transform: rotate(90deg);
-  }
-  .nav-bar .profile{
-    display: flex;
-    align-items: center;
-    width: 400px;
-    height: 95px;
-  }
-  .nav-bar .profile img{
-    width: 90px;
-    height: 100%;
-    border-radius: 50%;
-  }
- #name{
-     margin-right: auto;
-    display: flex;
-    flex-direction:column;
-  }
-  #name p{
-    font-family: var(--font);
-    text-transform: capitalize;
-    font-weight: lighter;
-  }
-  #logout{
-     margin-right: auto; 
-     padding: 10px; }
-  #logout a{
-    font-family: var(--font);
     font-size: 18px;
-    text-transform: capitalize;
-    text-decoration: none;
-    color:var(--clr); 
+    top: 5rem;
+    left: 0;
   }
-  #logout a:hover{
-    text-decoration: underline;
-  }
- 
-  footer {
-    width: 100%;
-    justify-content: space-between;
+  #footer {
     display: flex;
-    margin-top: 15px;
-    font-family: var(--font);
-    height: 500px;
-    color:#fff;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 0 5px;
+    border-bottom: 1px solid #333;
+    width: 100%;
+    height: 40px;
   }
-  .footer{
-    border-top: 1px  solid var(--clr);
-    border-right: 1px solid var(--clr);
-    width: 100px;
-    background-color:#6f4405;
+  #footer p {
+    align-items: center;
+    font-size: 18px;
+    height: 100%;
   }
- .footer p {
-  display: flex;
-  font-size: 18px;
-  padding-top: 20px;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
- }
- .footer p a{
-  text-decoration: none;
-  text-transform: capitalize;
-  color: var(--clr);
- }
- .footer p a:hover{
-  text-decoration: underline;
+  #footer p a {
+    display: block;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--clr);
+  }
+  table td {
+    border-bottom: 1px solid #6f4405;
+    padding-left: 1rem;
+  }
 }
- .footer p:first-child a{
-  width:100%;
-  color: #6f4405;
-  background-color:var(--clr);
-  padding: 10px;
- }
-.over-view{
-  margin-right:200px;
-  width: 70% ;
+.over-view {
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 100%;
   height: 400px;
   flex-direction: row;
 }
-.over-view #overview{
+.over-view #overview {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 70px;
 }
-.over-view #overview #btn{
+.over-view #overview #btn {
+  display: flex;
   font-family: var(--font);
   width: 30%;
 }
-.over-view #overview #btn button{
+.over-view #overview #btn button {
+  display: flex;
+  justify-content: space-evenly;
   border-radius: 2px;
   border: none;
   width: 70px;
   padding: 10px;
 }
 .over-view #overview #btn button:first-child {
- 
-  background-color: #0CE415;
+  background-color: #0ce415;
   text-transform: capitalize;
   color: var(--clr);
-
 }
-button i{
+button i {
   font-size: 28px;
 }
-table{
-  margin-top:30px;
- 
-  border-collapse:collapse;
-  width: 100%;
-  font-family: var(--font)
+table {
+  border-collapse: collapse;
+  max-width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-family: var(--font);
 }
-table td{
-  border-bottom: 1px solid #6f4405;
-  padding: 40px;
-}
-table tr th{
+
+table tr th {
   text-transform: capitalize;
   font-size: 24px;
+  max-width: max-content;
 }
-.over-view #controls{
+.over-view #controls {
   float: right;
   margin-top: 30px;
   display: flex;
   width: 200px;
   justify-content: space-between;
 }
-.over-view #controls p{
+.over-view #controls p {
   width: 25px;
   height: 30px;
   padding: 6px;
   background-color: #6f4405;
 }
-.over-view #controls p:nth-child(3){
+.over-view #controls p:nth-child(3) {
   background-color: #000;
   color: #6f4405;
 }
-.over-view #controls i{
+.over-view #controls i {
   width: 30px;
   height: 30px;
   border: 1px solid #6f4405;
@@ -205,4 +215,79 @@ table tr th{
   font-size: 16px;
   padding: 7px;
   align-items: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1440px) {
+  .nav-bar {
+    display: flex;
+    align-items: center;
+  }
+  #dashboard {
+    margin-right: auto;
+  }
+  .nav-bar .topnav {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    justify-content: space-between;
+    position: absolute;
+    right: 0;
+  }
+  .nav-bar .topnav #menu {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .topnav a {
+    display: flex;
+    justify-content: space-between;
+  }
+  .topnav .inputContainer {
+    width: 300px;
+  }
+  .topnav a.icon {
+    display: none;
+  }
+  #name {
+    width: 200px;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+  }
+  .topnav #menu #logout {
+    width: fit-content;
+  }
+  footer {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    height: 100%;
+    padding-top: 3rem;
+  }
+  #footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #6f4405;
+    width: 100px;
+    height: 300px;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+  }
+  #footer p {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  #footer p:hover a {
+    padding: 15px;
+    width: 100%;
+    background-color: #333;
+    transition: all 200ms;
+  }
+  table td {
+    border-bottom: 1px solid #6f4405;
+    padding: 40px;
+  }
 }

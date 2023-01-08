@@ -22,8 +22,8 @@ i{
     padding-right: 5px;
 }
 
-@media only screen 
-  and (min-width:360px) 
+@media only screen
+  and (min-width:360px)
   /* and (max-device-width: 720px) */
 
   {
@@ -81,8 +81,8 @@ i{
     color: #fff;
    }
   .topnav a:hover{
-   background-color: #fff; 
-    color: #000; 
+   background-color: #000;
+    color: #fff;
    }
    li{
     list-style-type: none;
@@ -137,8 +137,8 @@ i{
       button a{
         text-decoration: none;
         color: #fff;
-      } 
-  
+      }
+
    footer{
     /* position: fixed; */
     bottom: 0;
@@ -174,9 +174,9 @@ i{
    }
 }
 
-@media only screen 
-  and (min-width:768px) 
-  and (max-width: 1440px) 
+@media only screen
+  and (min-width:768px)
+  and (max-width: 1440px)
   {
     #backtoblog h2{
         visibility: visible;
@@ -205,15 +205,13 @@ i{
     right: 0;
     display: flex;
     width: 400px;
-    /* background-color: #fff; */
     height: 100%;
    }
    .topnav #menu {
-   
     display: flex;
     font-family: var(--font);
     justify-content: space-between;
-    
+
    }
 .topnav #menu a{
     display:flex;

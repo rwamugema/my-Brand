@@ -11,32 +11,41 @@
     <title>add post</title>
 </head>
 <body>
-    <main>
-        <div class="nav-bar">
+    <main class="nav-bar">
+        <div id="dashboard">
           <img src="../image/logo.png" alt="#"  />
-          <h1>dash-board</h1>
+          <h1>dashboard</h1>
+
+        </div>
+          <div class="topnav">
+            <div id="menu">
           <div class="inputContainer">
-           <i class="fa fa-search icon"></i>
+          <i class="fa fa-search icon"></i>
           <input type="search" name="search" id="field" placeholder="search...">
         </div>
-        <div class="profile">
-            <img src="../image/profile.jpg" alt="Japhet">
             <div id="name">
-                <p>rwamugema </p><br>
-                <p>japhet</p>
+              <img src="../image/profile.jpg" alt="Japhet">
+                <p>rwamugema Japhet</p>
             </div>
-            <div id="logout"><a href="#">log out</a></div>
-            
+            <div id="logout">
+                <a href="#">log out</a>
+            </div>
         </div>
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                 <i class class="fa fa-bars"></i>Menu
+                </a>
         </div>
     </main>
     <footer>
         <div class="footer">
+          <div id="footer">
           <p><a href="blogoverview.html">overview</a></p>
           <p><a href="user.html">user</a></p>
           <p><a href="post.html">post</a></p>
           <p><a href="comment.html">comment</a></p>
           </a>
+        </div>
+            <!-- <div id="menu-btn">dashboard</div> -->
         </div>
         <div class="box">
             <div class="box-1">
@@ -48,9 +57,21 @@
             <input type="file" name="password" id="input">
             <button><a href="index.html">Publish Article </a></button>
            </div>
-           
+
         </div>
         </div>
+
     </footer>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("menu");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+        }
+        </script>
+        <script src="dashboard.js"></script>
 </body>
 </html>
