@@ -197,7 +197,11 @@ body {
     align-items: center;
   }
   .section #content {
-    align-items: flex-start;
+    align-items: center;
+    margin-top: 8rem;
+  }
+  .section #links a {
+    font-size: 4rem;
   }
   footer {
     padding: 0 3rem;
