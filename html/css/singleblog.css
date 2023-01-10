@@ -53,11 +53,6 @@ i{
 input::placeholder{
   color: #fff;
 }
- button:hover{
-  background: #fff;
-  color: #000;
-}
-
 @media only screen
   and (min-width:360px)
   /* and (max-device-width: 720px) */
