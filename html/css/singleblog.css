@@ -33,12 +33,12 @@ i{
 .comment{
   max-width: 100%;
   height: fit-content;
-  padding: .8rem;
+  padding: .5rem .8rem .2rem .8rem;
   border: 1px solid #333;
   border-radius: 10px;
 }
 .comment #display-comment{
-  margin-top: 1rem;
+  margin-top: .2rem;
   color: #fff;
 }
 .comment #display-comment span{
@@ -46,7 +46,7 @@ i{
   font-size: 16px;
 }
 .comment #display-comment p{
-  margin-top: .8rem;
+  margin: .5rem 0;
   font-size: 14px;
   opacity: .8;
 }
