@@ -50,6 +50,13 @@ i{
   font-size: 14px;
   opacity: .8;
 }
+input::placeholder{
+  color: #fff;
+}
+ button:hover{
+  background: #fff;
+  color: #000;
+}
 
 @media only screen
   and (min-width:360px)
@@ -141,7 +148,6 @@ i{
     margin-bottom: 15px;
    }
    input[type=text]{
-    color: var(--clr);
     font-family: var(--font);
   }
   input{
@@ -167,7 +173,6 @@ i{
         text-decoration: none;
         color: #fff;
       }
-
    footer{
     /* position: fixed; */
     bottom: 0;

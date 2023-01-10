@@ -33,3 +33,6 @@ table td #btn button:first-child {
   text-decoration: none;
   color: white;
 }
+td i{
+  color: red;
+}

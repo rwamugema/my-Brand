@@ -8,7 +8,7 @@ body{
         --clr: #fff;
         --font: 'poppins', sans-serif;
       }
-      
+
       section .card{
         margin: 3rem auto;
         border: 1px solid #fff;
@@ -57,9 +57,10 @@ body{
           border-radius: 7px;
           outline: none;
         }
-        input[type=text]{
+        input[type=text]:focus{
           color: var(--clr);
           font-family: var(--font);
+          background-color: #000;
         }
          #login button a{
            text-decoration: none;
