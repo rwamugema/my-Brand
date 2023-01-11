@@ -17,7 +17,7 @@
           <h1>dashboard</h1>
           <div class="inputContainer">
             <i class="fa fa-search icon"></i>
-            <input type="search" name="search" id="field" placeholder="search...">
+            <input type="text" name="search" id="field" onkeyup="filterList()" placeholder="search...">
         </div>
         </div>
           <div class="topnav">
@@ -62,20 +62,21 @@
                 <td>4/4/18</td>
             </tr>
             <tr>
-                <td>Jane Cooper</td>
+                <td>john liver</td>
                 <td>Amet minim   est sit .</td>
                 <td>at sunt nostrud amet.</td>
                 <td>4/4/18</td></tr>
-            <tr><td>Jane Cooper</td>
+            <tr>
+                <td>aquaman</td>
                 <td>Amet minim   est sit .</td>
                 <td>at sunt nostrud amet.</td>
                 <td>4/4/18</td></tr>
         </table>
         <div id="controls">
             <i class="fa fa-arrow-left"></i>
-            <p>1</p>
+            <div id="incrementation">1</div>
             <p>of</p>
-            <p>2</p>
+            <div id="length"></div>
             <i class="fa fa-arrow-right"></i>
     </div>
     </div>
@@ -89,6 +90,9 @@
             x.style.display = "block";
           }
         }
+        let parentNode = document.getElementsByTagName('table')
+        let parentLength = parentNode.length;
+        document.getElementById('length').innerHTML = parentLength;
         </script>
 </body>
 </html>

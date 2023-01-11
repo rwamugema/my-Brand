@@ -222,7 +222,13 @@ table tr th {
   width: 200px;
   justify-content: space-between;
 }
-.over-view #controls p {
+.over-view #controls #incrementation{
+  width: 25px;
+  height: 30px;
+  padding: 6px;
+  background-color: #6f4405;
+}
+.over-view #controls #length {
   width: 25px;
   height: 30px;
   padding: 6px;

@@ -1,47 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/signup.css" />
-    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/about.css" />
     <title>signup</title>
-    <link rel="website icon" href="image/logo.png">
-</head>
-<body>
+    <link rel="website icon" href="image/logo.png" />
+  </head>
+  <body>
     <main>
-        <div class="nav-bar">
-          <a href="index.html"><img src="image/logo.png" alt="japhet"/></a>
-        </div>
+      <div class="nav-bar">
+        <a href="index.html"><img src="image/logo.png" alt="japhet" /></a>
+      </div>
     </main>
     <section>
-        <div class="card">
-          <div id="login">
-            <span>Already have an account?</span>
-            <a href="login.html">log-in</a>
-          </div>
-          <div id="signup">
-            <p>name: <input type="text" name="name" id="input"></p>
-            <p>e-mail: <input type="text" name="name" id="input"></p>
-            <p>password: <input type="password" name="password" id="input"></p>
-            <p>confirm password: <input type="text" name="name" id="input"></p>
-            <button><a href="index.html">sign up</a></button>
-          </div>
+      <div class="card">
+        <div id="login">
+          <span>Already have an account?</span>
+          <a href="login.html">log-in</a>
         </div>
+        <div id="signup">
+          <div id="message">
+            <p></p>
+          </div>
+          <p>name: <input type="text" name="name" id="input" /></p>
+          <p>e-mail: <input type="text" name="email" id="input" /></p>
+          <p>password: <input type="password" name="password" id="input" /></p>
+          <p>
+            confirm password:
+            <input type="password" name="confirmPassword" id="input" />
+          </p>
+          <button onclick="validateForm()"> sign up</button>
+        </div>
+      </div>
     </section>
     <footer>
-        <div id="icons">
-            <a href="index.html"><h3>home</h3></a>
-         <a href="https://github.com/rwamugema"><i class="fa fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/rwamugema-japhet-84818b251/"><i class="fa fa-linkedin"></i></a>
-          <a href="https://www.facebook.com/jetjet.japheth"
-          ><i class="fa fa-facebook"></i></a>
-        </div>
-        <hr />
-        <div id="copy">
-          <p>&copy /2022</p>
-        </div>
-      </footer>
-</body>
+      <div id="icons">
+        <a href="index.html"><h3>home</h3></a>
+        <a href="https://github.com/rwamugema"><i class="fa fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rwamugema-japhet-84818b251/"
+          ><i class="fa fa-linkedin"></i
+        ></a>
+        <a href="https://www.facebook.com/jetjet.japheth"
+          ><i class="fa fa-facebook"></i
+        ></a>
+      </div>
+      <hr />
+      <div id="copy">
+        <p>&copy /2022</p>
+      </div>
+    </footer>
+    <script>
+      function validateForm() {
+        let name = document.getElementsByName("name")[0].value;
+        let email = document.getElementsByName("email")[0].value;
+        let password = document.getElementsByName("password")[0].value;
+        let confirmPassword =
+          document.getElementsByName("confirmPassword")[0].value;
+        if (
+          name === "" ||
+          email === "" ||
+          password === "" ||
+          confirmPassword === ""
+        ) {
+          // alert("please fill all boxes");
+          message.style.display = 'block';
+          document.getElementById('message').innerHTML = 'please fill in all the boxes !!'
+        } else if (password.length < 5) {
+          message.style.display = 'block';
+          document.getElementById('message').innerHTML = 'your password is weak '
+        } else if (confirmPassword !== password) {
+          message.style.display = 'block';
+          document.getElementById('message').innerHTML = 'Passwords does not match'
+        }
+           else {
+            message.style.display = 'block';
+          document.getElementById('message').innerHTML = 'congratulations !!!'
+        }
+        }
+
+    </script>
+  </body>
 </html>
