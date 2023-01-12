@@ -9,7 +9,7 @@ body {
   --clr: #fff;
   --font: "poppins", sans-serif;
 }
-button:hover{
+#btn button:hover{
   background-color: #ef9309;
   transition: .5s ease-in-out;
 }
@@ -61,6 +61,7 @@ button:hover{
   border-radius: 50px;
   font-size: 24px;
   text-transform: capitalize;
+  cursor: pointer;
 }
 #btn button a {
   color: #fff;
