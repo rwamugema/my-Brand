@@ -9,6 +9,10 @@ body {
   --clr: #fff;
   --font: "poppins", sans-serif;
 }
+button:hover{
+  background-color: #ef9309;
+  transition: .5s ease-in-out;
+}
 .nav-bar {
   position: sticky;
   top: 0;
@@ -20,6 +24,7 @@ body {
   align-items: center;
   z-index: 1;
 }
+
 .nav-bar img {
   margin-right: auto;
   width: 50px;
