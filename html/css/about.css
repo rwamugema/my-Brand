@@ -15,8 +15,13 @@ button {
   background-color: inherit;
   border: 2px solid #ef9309;
   border-radius: 50px;
-  font-size: 24px;
+  font-size: 16px;
+  align-items: center;
   text-transform: capitalize;
+}
+button:hover{
+  background-color: #d49029;
+  transition: .5s ease-in-out;
 }
 .nav-bar {
   position: sticky;
