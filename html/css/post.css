@@ -2,22 +2,25 @@ table td #btn button {
   border-radius: 2px;
   border: none;
   width: fit-content;
-  padding: 3px;
+  text-transform: capitalize;
+  background-color: #bb2525;
+  color: #fff;
+  padding: .5rem;
+  cursor: pointer;
+}
+table td #btn button:hover{
+  background-color: #f36d6d;
+  transition: .3s ease-in-out;
+}
+table td #btn button:first-child{
+  margin-right: .5rem;
+  background-color: #fff;
+  color: black;
 }
 #btn {
   display: flex;
   justify-content: space-between;
   width: 90px;
-}
-table td #btn button:first-child {
-  background-color: var(--clr);
-  text-transform: capitalize;
-  color: #000;
-}
-#btn button:nth-child(2) {
-  background-color: #f36d6d;
-  text-transform: capitalize;
-  color: var(--clr);
 }
 #overview button {
   margin-left: auto;

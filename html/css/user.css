@@ -2,17 +2,14 @@ table td #btn button {
   border-radius: 2px;
   border: none;
   width: fit-content;
-  padding: 0.2rem;
+  padding: 0.5rem;
+  background-color: #069e0b;
+  color: #fff;
 }
-table td #btn button:first-child {
-  background-color: #0ce415;
-  text-transform: capitalize;
-  color: var(--clr);
-}
-#btn button:nth-child(2) {
-  background-color: #f36d6d;
-  text-transform: capitalize;
-  color: var(--clr);
+table td #btn button:hover{
+  background-color: #37f13d;
+  cursor: pointer;
+  transition: .5s ease-in-out;
 }
 table tr th {
   text-transform: capitalize;
