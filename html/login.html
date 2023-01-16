@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="css/login.css" />
     <link rel="stylesheet" href="css/about.css" />
@@ -23,15 +25,17 @@
           <p>Don't have an account?</p>
           <a href="signup.html">sign up</a>
         </div>
-        <div id="message"><i class="fa fa-exclamation-circle"></i>
+        <div id="message">
+          <i class="fa fa-exclamation-circle"></i>
           please fill all boxes !!
         </div>
         <div id="login">
           <p>name: <input type="text" name="name" id="input" /></p>
           <p>password: <input type="password" name="password" id="input" /></p>
-          <div id="incorrectmessage"><i class="fa fa-exclamation-circle"></i>incorrect name/password</div>
+          <div id="incorrectmessage">
+            <i class="fa fa-exclamation-circle"></i>incorrect name/password
+          </div>
           <button onclick="validateForm()">log-in</button>
-
         </div>
       </div>
     </section>
@@ -55,15 +59,16 @@
         let name = document.getElementsByName("name")[0].value;
         let password = document.getElementsByName("password")[0].value;
         if (name === "" || password === "") {
-          message.style.display = 'block'
+          message.style.display = "block";
         } else if (name !== "jet" && password !== "japhet") {
-          incorrectmessage.style.display = 'block'
-        } else {
-          message.style.display = 'block'
-          document.getElementById('message').innerHTML = 'thank you'
+          incorrectmessage.style.display = "block";
         }
-        {
+         else {
+          window.setTimeout(function () {
+          window.location.href = "blogoverview.html";
+        }, 5000);
         }
+
       }
     </script>
   </body>

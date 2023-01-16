@@ -10,6 +10,14 @@ body{
     background-color: var(--clr);
     color: rgb(30, 18, 18);
 }
+#error{
+  background-color: #333;
+  border-left: 5px solid red;
+  border-radius: 5px;
+  width: 90%;
+  padding: .5rem;
+  display: none;
+}
 #backtoblog a{
     margin-left:70px;
     color: #fff;
@@ -32,12 +40,16 @@ i{
 }
 .comment{
   max-width: 100%;
-  height: fit-content;
+  min-height: 300px;
+  display: grid;
+  grid-template-columns: repeat(1);
   padding: .5rem .8rem .2rem .8rem;
   border: 1px solid #333;
   border-radius: 10px;
 }
 .comment #display-comment{
+  display: flex;
+  flex-direction: column;
   margin-top: .2rem;
   color: #fff;
 }
@@ -46,16 +58,29 @@ i{
   font-size: 16px;
 }
 .comment #display-comment p{
-  margin: .5rem 0;
+  margin: 1rem 0;
   font-size: 14px;
   opacity: .8;
+}
+#add-comment
+{
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
 }
 input::placeholder{
   color: #fff;
 }
+input:focus{
+  color: #fff;
+}
+.ftb
+{
+  margin: 0 auto;
+  max-width: 500px;
+}
 @media only screen
   and (min-width:360px)
-  /* and (max-device-width: 720px) */
 
   {
     #backtoblog h2{
@@ -121,11 +146,10 @@ input::placeholder{
    .ftb{
     justify-content: center;
     align-items: center;
-    width:100%;
     font-family: 'poppins',sans-serif;
 }
-.ftb img{
-   width: 100%;
+ img{
+    width: 100%;
     height: 350px;
     margin-bottom: 15px;
 }
@@ -144,9 +168,11 @@ input::placeholder{
    }
    input[type=text]{
     font-family: var(--font);
+    color: #fff;
   }
   input{
-    line-height: 15px;
+    width: 150px;
+    height: fit-content;
     padding: 7px;
     background-color: #000;
     border: 2px solid #333;
@@ -163,14 +189,10 @@ input::placeholder{
         border-radius: 15px;
         font-size: 16px;
         text-transform: capitalize;
-      }
-      button a{
-        text-decoration: none;
         color: #fff;
+        cursor: pointer;
       }
    footer{
-    /* position: fixed; */
-    bottom: 0;
     width: 100%;
     height: 60px;
     display: flex;
@@ -271,7 +293,6 @@ input::placeholder{
         align-items: center;
        }
        footer #copy{
-        /* position: absolute; */
         margin-left: 40px;
         width: 500px;
         display: flex;

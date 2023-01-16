@@ -44,21 +44,25 @@
                 <div id="contents">
                   <i class="fa fa-heart"></i>
                    <p>He struts. He swaggers. He poses. He thinks he's
-                     the best ever, and he's not afraid to tell you about it. </p>
+                     the best ever, and he's not afraid to tell you about it. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In aliquam perspiciatis molestiae, quo quod aut veniam illo sunt sit id dignissimos
+                      ipsam repellat nobis, voluptas et rem quis placeat amet.</p>
                        </div>
                     </div>
                     <div class="comment">
                     <div id="display-comment">
-                      <span>jane cooper .4hrs ago:</span>
+                      <span>jane cooper</span>
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                      <div id="error">Your name or comment can not be empty</div>
                     </div>
-                    <div><input type="text" name="name" id="input" placeholder="add comment">
-                      <button><a href="index.html">send</a></button>
+                    <div id="add-comment">
+                      <input type="text" name="name" id="input" placeholder="your name">
+                      <input type="text" name="name" id="comments" placeholder="add comment">
+                      <button onclick="addComment()">send</button>
                   </div>
                   </div>
                    </div>
                </section>
-    <!-- section part end -->
+         <!-- section part end -->
         <footer>
             <div id="copy">
                 <p>&copy /2022</p>
@@ -71,6 +75,7 @@
             </div>
           </footer>
         <script>
+          //function to manage the humberg button
             function myFunction() {
               var x = document.getElementById("menu");
               if (x.style.display === "block") {
@@ -79,6 +84,24 @@
                 x.style.display = "block";
               }
             }
+            //function to append the name and comment of a user
+            function  addComment(e){
+            const parentContainer = document.querySelector('#display-comment');
+            //getting the values inserted by the user
+            const inputValue = document.getElementById('input').value;
+            const comment = document.getElementById('comments').value;
+            //create the elements
+            const name = document.createElement('span');
+            const commentContent = document.createElement('p');
+            name.textContent = inputValue;
+            commentContent.textContent = comment;
+            //append the values to the screen
+            parentContainer.append( name,commentContent)
+            if (inputValue == '' || comment === '') {
+             error.style.display='block';
+            }
+
+          }
             </script>
 </body>
 </html>
