@@ -3,13 +3,13 @@ table td #btn button {
   border: none;
   width: fit-content;
   padding: 0.5rem;
-  background-color: #069e0b;
+  background-color: red;
   color: #fff;
 }
-table td #btn button:hover{
-  background-color: #37f13d;
+table td #btn button:hover {
+  background-color: rgb(214, 56, 56);
   cursor: pointer;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 table tr th {
   text-transform: capitalize;
