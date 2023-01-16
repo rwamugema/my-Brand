@@ -81,9 +81,9 @@
         </table>
         <div id="controls">
             <i class="fa fa-arrow-left"></i>
-            <p>1</p>
+            <p style="background-color: #6f4405; width: 25px;text-align: center;padding: 5px;">1</p>
             <p>of</p>
-            <p>2</p>
+            <div id="length"></div>
             <i class="fa fa-arrow-right"></i>
     </div>
     </div>
@@ -97,6 +97,9 @@
             x.style.display = "block";
           }
         }
+        let parentNode = document.getElementsByTagName('table')
+        let parentLength = parentNode.length;
+        document.getElementById('length').innerHTML = parentLength;
         </script>
 </body>
 </html>

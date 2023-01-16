@@ -25,15 +25,17 @@
         </div>
         <div id="signup">
           <div id="message">
-            <p></p>
           </div>
-          <p>name: <input type="text" name="name" id="input" /></p>
+          <p>username: <input type="text" autofocus="" name="name" id="input" /></p>
+          <div id="usernamelength">your username should at least include 5 letters</div>
           <p>e-mail: <input type="text" name="email" id="input" /></p>
           <p>password: <input type="password" name="password" id="input" /></p>
+          <div id="weakpassword">your password is weak </div>
           <p>
             confirm password:
             <input type="password" name="confirmPassword" id="input" />
           </p>
+          <div id="passwordMatch">Passwords does not match </div>
           <button onclick="validateForm()"> sign up</button>
         </div>
       </div>
@@ -66,19 +68,20 @@
           password === "" ||
           confirmPassword === ""
         ) {
-          // alert("please fill all boxes");
           message.style.display = 'block';
           document.getElementById('message').innerHTML = 'please fill in all the boxes !!'
-        } else if (password.length < 5) {
-          message.style.display = 'block';
-          document.getElementById('message').innerHTML = 'your password is weak '
+        }else if (name.length < 5) {
+          usernamelength.style.display = 'block';
+        }
+        else if (password.length < 5) {
+          weakpassword.style.display = 'block';
         } else if (confirmPassword !== password) {
-          message.style.display = 'block';
-          document.getElementById('message').innerHTML = 'Passwords does not match'
+          passwordMatch.style.display = 'block';
         }
            else {
-            message.style.display = 'block';
-          document.getElementById('message').innerHTML = 'congratulations !!!'
+            window.setTimeout(function () {
+          window.location.href = "index.html";
+        }, 100);
         }
         }
 
