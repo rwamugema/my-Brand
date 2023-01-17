@@ -28,9 +28,9 @@ body {
     overflow: hidden;
   }
   #dashboard{
-    display: flex;
-    justify-content: space-between;
-    width: 200px;
+     display: flex;
+     justify-content: space-between;
+     width: 200px;
      align-items: center;
 
   }
@@ -107,7 +107,7 @@ body {
   }
   #name img{
     border-radius: 50%;
-    width: 50px;
+    width: 25px;
     height: 100%;
   }
  #name p{
