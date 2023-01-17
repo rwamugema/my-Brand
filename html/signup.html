@@ -12,11 +12,13 @@
     <link rel="website icon" href="image/logo.png" />
   </head>
   <body>
+    <!-- navigation bar -->
     <main>
       <div class="nav-bar">
         <a href="index.html"><img src="image/logo.png" alt="japhet" /></a>
       </div>
     </main>
+    <!-- sign up card  -->
     <section>
       <div class="card">
         <div id="login">
@@ -27,19 +29,15 @@
           <div id="message">
           </div>
           <p>username: <input type="text" autofocus="" name="name" id="input" /></p>
-          <div id="usernamelength">your username should at least include 5 letters</div>
           <p>e-mail: <input type="text" name="email" id="input" /></p>
           <p>password: <input type="password" name="password" id="input" /></p>
-          <div id="weakpassword">your password is weak </div>
-          <p>
-            confirm password:
-            <input type="password" name="confirmPassword" id="input" />
+          <p> confirm password: <input type="password" name="confirmPassword" id="input" />
           </p>
-          <div id="passwordMatch">Passwords does not match </div>
           <button onclick="validateForm()"> sign up</button>
         </div>
       </div>
     </section>
+    <!-- footer -->
     <footer>
       <div id="icons">
         <a href="https://github.com/rwamugema"><i class="fa fa-github"></i></a>
@@ -55,6 +53,7 @@
         <p>&copy /2022</p>
       </div>
     </footer>
+    <!-- js codes -->
     <script>
       function validateForm() {
         let name = document.getElementsByName("name")[0].value;
@@ -68,15 +67,26 @@
           password === "" ||
           confirmPassword === ""
         ) {
-          message.style.display = 'block';
-          document.getElementById('message').innerHTML = 'please fill in all the boxes !!'
+          message.style.display = "none";
+          message.innerHTML = "";
+          message.innerHTML = "Please fill all fields";
+          message.style.display = "block";
         }else if (name.length < 5) {
-          usernamelength.style.display = 'block';
+          message.style.display = "none";
+          message.innerHTML = "";
+          message.innerHTML = "your username is too short at least 5 characters";
+          message.style.display = "block";
         }
         else if (password.length < 5) {
-          weakpassword.style.display = 'block';
+          message.style.display = "none";
+          message.innerHTML = "";
+          message.innerHTML = "your password is too weak";
+          message.style.display = "block";
         } else if (confirmPassword !== password) {
-          passwordMatch.style.display = 'block';
+          message.style.display = "none";
+          message.innerHTML = "";
+          message.innerHTML = "passwords does not much";
+          message.style.display = "block";
         }
            else {
             window.setTimeout(function () {

@@ -12,99 +12,6 @@ body {
     --clr: #fff;
     --font: 'poppins', sans-serif;
   }
-  @media only screen and (min-width: 360px){
-  .nav-bar {
-    position: sticky;
-    width: 100%;
-    height:fit-content;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: #333;
-    z-index: 1;
-    overflow: hidden;
-  }
-  #dashboard{
-     display: flex;
-     justify-content: space-between;
-     width: 200px;
-     align-items: center;
-
-  }
-  #dashboard img{
-   width: 50px;
-   height: 100%;
-   border-radius: 50%;
-  }
-  #dashboard h1{
-    font-family: var(--font);
-    font-size: 16px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #fff;
-  }
-.topnav{
-  padding-left: 0.6rem;
-  height: fit-content;
-  width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-items:center ;
-}
-.topnav #menu{
-  display: none;
-}
- .topnav a {
-  display: block;
-  text-transform: capitalize;
-  padding: 10px;
-  text-decoration: none;
-  font-size: 14px;
-  color: #fff;
-}
-.topnav  a.icon{
-  display: block;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.nav-bar .inputContainer{
-  overflow-x: hidden;
-  display: flex;
-  padding: 1rem 0;
-  align-items: center;
-  width: 250px;
-}
-#menu .inputContainer i{
-  text-align:center;
-  position: absolute;
-  transform: rotate(90deg);
-}
-#field{
-  border:none;
-  border-radius: 40px;
-  background: #B1B6B8;
-  width: 100%;
-  height:30px;
-  padding-left: 40px;
-  outline: none;
-}
-.icon {
-  width: 45px;
-  text-align: left;
-  color:black;
-  opacity: 1;
-}
-   input::placeholder{
-    font-family: var(--font);
-    color: #fff;
-  }
-  }
   #name img{
     border-radius: 50%;
     width: 25px;
@@ -160,10 +67,11 @@ body {
  .box{
  margin: 0 1rem;
  max-width: 100%;
- height: fit-content;
+ height:400px;
  font-family: var(--font);
  border-radius: 5px;
  background-color: #fff;
+ box-shadow: -5px 5px 5px rgba(255, 255, 255, .3);
  color: #000;
  }
  .box-1{
@@ -197,15 +105,14 @@ body {
     flex-direction: column;
     justify-content: space-between;
     margin-top: 10px;
-    width: 97%;
-    padding: 10px;
+    width: 80%;
+    padding: 10px 0;
     height: 100%;
 }
 #input #jet{
   width: 200px;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: white;
   border:1px solid black;
   border-radius: 5px;
@@ -226,6 +133,103 @@ body {
      font-weight: lighter;
 }
 
+  /* mobile styles starts here */
+  @media only screen and (min-width: 360px){
+    .nav-bar {
+      position: sticky;
+      width: 100%;
+      height:fit-content;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      justify-content: center;
+      align-items: flex-start;
+      background-color: #333;
+      z-index: 1;
+      overflow: hidden;
+    }
+    #dashboard{
+       display: flex;
+       justify-content: space-between;
+       width: 200px;
+       align-items: center;
+
+    }
+    #dashboard img{
+     width: 50px;
+     height: 100%;
+     border-radius: 50%;
+    }
+    #dashboard h1{
+      font-family: var(--font);
+      font-size: 16px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #fff;
+    }
+  .topnav{
+    padding-left: 0.6rem;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items:center ;
+  }
+  .topnav #menu{
+    display: none;
+  }
+   .topnav a {
+    display: block;
+    text-transform: capitalize;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+  }
+  .topnav  a.icon{
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .nav-bar .inputContainer{
+    overflow-x: hidden;
+    display: flex;
+    padding: 1rem 0;
+    align-items: center;
+    width: 250px;
+  }
+  #menu .inputContainer i{
+    text-align:center;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+  #field{
+    border:none;
+    border-radius: 40px;
+    background: #B1B6B8;
+    width: 100%;
+    height:30px;
+    padding-left: 40px;
+    outline: none;
+  }
+  .icon {
+    width: 45px;
+    text-align: left;
+    color:black;
+    opacity: 1;
+  }
+     input::placeholder{
+      font-family: var(--font);
+      color: #fff;
+    }
+    }
+    /* mobile styles ends here */
+    
+/* laptop and desktop styles starts here */
 @media only screen and (min-width:768px)
 and (max-width:1440px) {
   .nav-bar{
@@ -299,6 +303,11 @@ and (max-width:1440px) {
     }
     .box{
      margin: 0 auto;
-     width: 500px;
+     height: 500px;
+     width: 800px;
     }
+    #footer p a:hover{
+      border:none;
+     }
 }
+/* laptop and desktop styles ends here */
