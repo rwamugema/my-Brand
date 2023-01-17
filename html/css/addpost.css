@@ -154,36 +154,36 @@ body {
  .box{
  margin: 0 1rem;
  max-width: 100%;
- height: 500px;
+ height: fit-content;
  font-family: var(--font);
- border: 1px solid #fff;
  border-radius: 5px;
+ background-color: #fff;
+ color: #000;
  }
  .box-1{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
  }
  .box-1 h2{
     width: 100%;
-    padding-bottom: 10px;
+    padding: 10px 0;
     text-align: center;
     text-transform: capitalize;
-    border-bottom: 1px solid var(--clr);
+    border-bottom: 1px solid #333;
  }
  #input input{
-    background-color: #000;
+    background-color: whitesmoke;
     outline: none;
-    border: 1px solid #6f4405;
+    border: 1px solid black;
     border-radius: 5px;
     margin-bottom: 30px;
     padding: 7px;
-    color: var(--clr);
+    color: black;
  }
  .box-1 input::placeholder{
-    color: var(--clr);
+    color: black;
     font-family: var(--font);
   }
   #input{
@@ -191,47 +191,33 @@ body {
     flex-direction: column;
     justify-content: space-between;
     margin-top: 10px;
-    width: 100%;
-    padding:30px;
+    width: 97%;
+    padding: 10px;
     height: 100%;
 }
-#input textarea{
-    background-color: #000;
-    border: 1px solid #6f4405;
-    border-radius:5px ;
-    height: 100px;
-    margin-bottom: 20px;
-    color: #fff;
-    padding-top: 20px;
+#input #jet{
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border:1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: black;
 }
-#input textarea::placeholder{
-    color: var(--clr);
-    font-family: var(--font);
-}
-#input input:nth-child(4){
-    padding: 5px;
-    width: 130px;
-    border:1px solid var(--clr);
-}
-#input button{
-    width: 200px;
-    background-color: #000;
-    border:1px solid #6f4405;
-    border-radius: 5px;
-    padding: 10px;
-}
-#input button:hover{
+#input #jet:hover{
   background-color: #6f4405;
+  color: #fff;
   transition: 500ms ease-in-out;
 }
-#input button a{
-    text-decoration: none;
-    font-size: 20px;
-    color: var(--clr);
-}
 #input h3{
-    text-transform: capitalize;
-    font-weight: lighter;
+     margin-top: 1rem;
+     padding-top: .3rem;
+     text-transform: capitalize;
+     font-weight: lighter;
 }
 
 @media only screen and (min-width:768px)
