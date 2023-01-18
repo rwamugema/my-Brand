@@ -65,14 +65,15 @@
             <div class="box-1">
            <h2>add new post</h2>
            <div id="input">
+            <div id="error"></div>
             <h3>post title</h3>
-            <input type="text" name="name" id="input" placeholder="">
+            <input type="text" name="name" class="input" placeholder="">
           <!-- text editor -->
             <h3>post content</h3>
-            <div id="summernote"></div>
+            <textarea name="textarea" id="summernote" cols="30" rows="10"></textarea>
             <h3>post photo</h3>
             <input type="file" name="password" id="input">
-            <button id='jet'>publish</button>
+            <button id='jet' onclick="validatePost()">publish</button>
            </div>
 
         </div>
@@ -92,9 +93,11 @@
         }
 
               $("#summernote").summernote({
-                placeholder: "Hello stand alone ui",
 
-                 height: 120,
+                placeholder: "blog content here...",
+                 FontNames:['poppins','sans serif','Arial'],
+                 height: 50,
+                 shorrtcuts:false,
                 toolbar: [
                   ["style", ["style"]],
                   ["font", ["bold", "underline", "clear"]],
@@ -104,9 +107,27 @@
                   ["insert", ["link", "picture", "video"]],
                   ["view", ["fullscreen", "codeview", "help"]],
                 ],
-              });
+                            });
+     function validatePost(){
+      const postTitle = document.getElementsByName('name')[0].value;
+      const postContent = document.getElementsByName('password')[0].value;
+      if(postTitle ==''){
+        error.style.display = 'block'
+        error.innerHTML = 'post title must at least have 5 letters'
+      }
+
+      else if ($("summernote").summernote("isEmpty"))
+         {
+       error.style.display ='block'
+       error.innerHTML = 'post content ca not be empty'
+      }
+      }
+      // else{
+      //   window.setTimeout(function (){
+      //     window.location.href ='post.html'
+      //   },100)
+
 
         </script>
-        <script src="dashboard.js"></script>
 </body>
 </html>

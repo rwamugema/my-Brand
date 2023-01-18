@@ -66,16 +66,25 @@
           message.innerHTML = "";
           message.innerHTML = "Please fill all fields";
           message.style.display = "block";
-        } else if (name !== "jet" && password !== "japhet") {
-          message.style.display = "none";
-          message.innerHTML = "";
-          message.innerHTML = "Invalid credentials";
-          message.style.display = "block";
-        } else {
-          window.setTimeout(function () {
-            window.location.href = "blogoverview.html";
-          }, 100);
-        }
+}
+          if (name && password) {
+            console.log(name,password);
+            localStorage.setItem("name",JSON.stringify(name))
+           console.log( localStorage)
+           location.reload();
+
+          }
+        //  else if (name !== "jet" || password !== "japhet") {
+        //   message.style.display = "none";
+        //   message.innerHTML = "";
+        //   message.innerHTML = "Invalid credentials";
+        //   message.style.display = "block";
+        // }
+        // else {
+        //   window.setTimeout(function () {
+        //     window.location.href = "blogoverview.html";
+        //   }, 100);
+        // }
       }
     </script>
   </body>
