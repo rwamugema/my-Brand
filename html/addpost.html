@@ -69,7 +69,6 @@
             <h3>post title</h3>
             <input type="text" name="name" class="input" placeholder="">
             <select name="dropdown" id="category">
-              <option >choose a category</option>
               <option value="science">science</option>
               <option value="football">football</option>
               <option value="nature">nature</option>
@@ -82,7 +81,6 @@
             <input type="file" name="image" id="input">
             <button id='jet' onclick="validatePost()">publish</button>
            </div>
-
         </div>
         </div>
 
@@ -147,11 +145,6 @@
       else if (!article.category) {
         error.style.display ='block'
         error.innerHTML ='category is required'
-      }
-     else if (article.category === 'choose a category') {
-        error.style.display ='block'
-        error.innerHTML ='choose a category is not a category'
-
       }
       // save article to the local storage
        else{

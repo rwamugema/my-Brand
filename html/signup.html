@@ -81,7 +81,7 @@
           message.style.display = "block";
     }
     else if (user.confirmPassword !== user.password) {
-      message.innerHTML = "passwords does not much";
+          message.innerHTML = "passwords does not much";
           message.style.display = "block";
     }
 // saving to the local storage
@@ -96,7 +96,6 @@
       users.push(user)
       let stored =JSON.parse(localStorage.getItem("users"))
       stored.push(user)
-      localStorage.setItem("users",JSON.stringify(users))
       localStorage.setItem("users",JSON.stringify(stored))
     }
 

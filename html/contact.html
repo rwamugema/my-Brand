@@ -41,6 +41,16 @@
                    <p>On internet: <span> linkedin/github/facebook.</span> </p>
                    <p>WhatsApp & telephone:  <span>+250 787827372</span> </p>
                   </div>
+                  <div id="contactme">
+                    <h2>contact me</h2>
+                    <div id="error"></div>
+                    <div id="success"></div>
+                    <label for="name">name</label>
+                    <input type="text" id="input" name="username">
+                   <label for="message">message</label>
+                    <textarea name="message" id="textarea" ></textarea>
+                    <button onclick="validateMessage()">send</button>
+                  </div>
           </div>
       </section>
       <footer>
@@ -63,6 +73,47 @@
           } else {
             x.style.display = "block";
           }
+        }
+        function validateMessage(){
+         const message ={
+          name: document.getElementById('input'),
+          message: document.getElementById('textarea')
+         }
+         let userMessage=message.message.value
+         let userName=message.name.value
+         if (!userName) {
+        error.style.display='block'
+        error.innerHTML ='Your name is required'
+         }
+         else if (userName.length < 5) {
+          error.style.display='block'
+        error.innerHTML ='provide valid name'
+         }
+         else if (!userMessage) {
+          error.style.display='block'
+          error.innerHTML ='Your message can not be empty'
+         }
+         else if (userMessage.length < 1) {
+          error.style.display='block'
+          error.innerHTML ='Your message is short'
+         }else{
+        success.style.display ='block'
+        success.innerHTML ='message sent successifull'
+        // if (localStorage.getItem("meassages") ===null) {
+        //   let messages=[]
+        // messages.push(userName,userMessage)
+        // localStorage.setItem("messages",JSON.stringify(messages))
+        // }else{
+        //  let stored =JSON.parse(localStorage.getItem("messages"))
+        // stored.push(messages)
+        // localStorage.setItem("messages",JSON.stringify(stored))
+        // setTimeout(function(){
+        //   location.reload();
+        // },1000)
+         
+        }
+
+
         }
         </script>
 </body>
