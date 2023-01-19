@@ -68,11 +68,18 @@
             <div id="error"></div>
             <h3>post title</h3>
             <input type="text" name="name" class="input" placeholder="">
+            <select name="dropdown" id="category">
+              <option >choose a category</option>
+              <option value="science">science</option>
+              <option value="football">football</option>
+              <option value="nature">nature</option>
+              <option value="movies">movies</option>
+            </select>
           <!-- text editor -->
             <h3>post content</h3>
             <textarea name="textarea" id="summernote" cols="30" rows="10"></textarea>
             <h3>post photo</h3>
-            <input type="file" name="password" id="input">
+            <input type="file" name="image" id="input">
             <button id='jet' onclick="validatePost()">publish</button>
            </div>
 
@@ -108,26 +115,62 @@
                   ["view", ["fullscreen", "codeview", "help"]],
                 ],
                             });
-     function validatePost(){
-      const postTitle = document.getElementsByName('name')[0].value;
-      const postContent = document.getElementsByName('password')[0].value;
-      if(postTitle ==''){
+                            // a method to validate the
+      function validatePost(){
+        // object to store article date
+   const article ={
+           postTitle: document.getElementsByName('name')[0].value,
+           textarea: document.getElementsByName('textarea')[0].value,
+           image: document.getElementsByName('image')[0].value,
+           category:document.getElementById('category')[0].value
+    }
+    // validate the inputs of the article
+      if(article.postTitle ==''){
         error.style.display = 'block'
-        error.innerHTML = 'post title must at least have 5 letters'
+        error.innerHTML = 'post title can not be empty'
       }
-
-      else if ($("summernote").summernote("isEmpty"))
-         {
-       error.style.display ='block'
-       error.innerHTML = 'post content ca not be empty'
+      else if (article.postTitle.length < 15) {
+        error.style.display = 'block'
+        error.innerHTML = 'post title is short try above 15 words'
       }
+      else if(article.textarea ===''){
+        error.style.display ='block'
+        error.innerHTML ='post content can not be empty'
       }
-      // else{
-      //   window.setTimeout(function (){
-      //     window.location.href ='post.html'
-      //   },100)
+      else if (article.textarea.length < 30) {
+          error.style.display ='block'
+          error.innerHTML ='post content is short try above 30 words'
+      }else if (!article.image) {
+        error.style.display ='block'
+        error.innerHTML ='image is required'
+      }
+      else if (!article.category) {
+        error.style.display ='block'
+        error.innerHTML ='category is required'
+      }
+     else if (article.category === 'choose a category') {
+        error.style.display ='block'
+        error.innerHTML ='choose a category is not a category'
 
-
-        </script>
+      }
+      // save article to the local storage
+       else{
+          let articles =[]
+          if (localStorage.getItem("article") ===null) {
+            articles.push(article);
+            localStorage.setItem("article",JSON.stringify(articles))
+          }
+          else{
+           let stored =JSON.parse(localStorage.getItem("article"))
+           stored.push(article);
+           localStorage.setItem("article",JSON.stringify(stored))
+          //  setTimeout(function(){
+          //   location.href ='post.html'
+          //  },100)
+           location.reload();
+      }
+   }
+  }
+ </script>
 </body>
 </html>

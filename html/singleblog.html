@@ -112,7 +112,11 @@
         //append the values to the screen
         if (inputValue === "" || comment === "") {
           error.style.display = "block";
-        } else {
+        }else if (comment.length <39) {
+          error.style.display = "block";
+          error.innerHTML='comment length is too short'
+        }
+         else {
           parentContainer.append(name, commentContent);
         }
       }

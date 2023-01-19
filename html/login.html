@@ -61,6 +61,7 @@
       function validateForm() {
         let name = document.getElementsByName("name")[0].value;
         let password = document.getElementsByName("password")[0].value;
+        let pattern ="[A-Z]"
         if (name === "" || password === "") {
           message.style.display = "none";
           message.innerHTML = "";
@@ -70,21 +71,12 @@
           if (name && password) {
             console.log(name,password);
             localStorage.setItem("name",JSON.stringify(name))
-           console.log( localStorage)
-           location.reload();
-
+            console.log( localStorage)
+            window.setTimeout(function () {
+            window.location.href = "blogoverview.html";
+          }, 100);
+          // location.reload();
           }
-        //  else if (name !== "jet" || password !== "japhet") {
-        //   message.style.display = "none";
-        //   message.innerHTML = "";
-        //   message.innerHTML = "Invalid credentials";
-        //   message.style.display = "block";
-        // }
-        // else {
-        //   window.setTimeout(function () {
-        //     window.location.href = "blogoverview.html";
-        //   }, 100);
-        // }
       }
     </script>
   </body>

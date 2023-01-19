@@ -74,6 +74,7 @@ section p input {
   border-radius: 7px;
   outline: none;
   color: #fff;
+  text-transform: capitalize;
 }
 input[type="text"]:focus {
   color: var(--clr);
