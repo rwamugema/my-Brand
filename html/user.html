@@ -48,31 +48,31 @@
         <div id="overview">
           <h1>users</h1>
         </div>
-        <table>
+        <table id="table">
             <tr>
                 <td>Jane Cooper</td>
                 <td>jet@gmail.com</td>
                 <td><i class="fa fa-envelope"></i> 3 </i></td>
                 <td><div id="btn">
-                <button>Delete</button>
+                <button id="delete" >Delete</button>
             </div></td>
             </tr>
             <tr>
-                <td>Jane Cooper</td>
+                <td> Cooper</td>
                 <td>jet@gmail.com</td>
                 <td><i class="fa fa-envelope"></i> 3 </td>
                 <td><div id="btn">
-                <button>Delete</button>
+                <button id="delete" >Delete</button>
             </div></td></tr>
 
-            <tr><td>Jane Cooper</td>
+            <tr><td>Jane </td>
                 <td>jet@gmail.com</td>
                 <td><i class="fa fa-envelope"></i> 3 </i></td>
                 <td><div id="btn">
-                <button>Delete</button>
+                <button id="delete" >Delete</button>
             </div></td></tr>
         </table>
-        <div id="controls">
+           <div id="controls">
             <i class="fa fa-arrow-left"></i>
             <p style="background-color: #6f4405; width: 25px;text-align: center;padding: 5px;">1</p>
             <p>of</p>
@@ -93,6 +93,19 @@
         let parentNode = document.getElementsByTagName('table')
         let parentLength = parentNode.length;
         document.getElementById('length').innerHTML = parentLength;
+// function deleteUser() {
+//   document.getElementById('table').deleteRow(0)
+
+// }
+var index , table =document.getElementById('table')
+for (let i = 0; i < table.rows.length; i++) {
+  table.rows[i].cells[3].onclick = function(){
+    index =this.rowIndex;
+    table.deleteRow(index)
+    console.log(index);
+  }
+
+}
         </script>
 </body>
 </html>
