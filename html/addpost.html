@@ -68,12 +68,7 @@
             <div id="error"></div>
             <h3>post title</h3>
             <input type="text" name="name" class="input" placeholder="">
-            <select name="dropdown" id="category">
-              <option value="science">science</option>
-              <option value="football">football</option>
-              <option value="nature">nature</option>
-              <option value="movies">movies</option>
-            </select>
+            <input type="text" name="category" id="category">
           <!-- text editor -->
             <h3>post content</h3>
             <textarea name="textarea" id="summernote" cols="30" rows="10"></textarea>
@@ -117,10 +112,11 @@
       function validatePost(){
         // object to store article date
    const article ={
+           id:Date.now(),
            postTitle: document.getElementsByName('name')[0].value,
            textarea: document.getElementsByName('textarea')[0].value,
            image: document.getElementsByName('image')[0].value,
-           category:document.getElementById('category')[0].value
+           category:document.getElementsByName('category')[0].value
     }
     // validate the inputs of the article
       if(article.postTitle ==''){
@@ -157,9 +153,6 @@
            let stored =JSON.parse(localStorage.getItem("article"))
            stored.push(article);
            localStorage.setItem("article",JSON.stringify(stored))
-          //  setTimeout(function(){
-          //   location.href ='post.html'
-          //  },100)
            location.reload();
       }
    }

@@ -1,120 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="css/contact.css" />
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="website icon" href="image/logo.png">
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="website icon" href="image/logo.png" />
     <title>contact</title>
-</head>
-<body>
-  <main class="nav-bar">
-    <div id="nav-img">
-      <a href="index.html"><img src="image/logo.png" alt="#"/></a>
-    </div>
+  </head>
+  <body>
+    <main class="nav-bar">
+      <div id="nav-img">
+        <a href="index.html"><img src="image/logo.png" alt="#" /></a>
+      </div>
       <div class="topnav">
         <div id="menu">
-        <li><a href="blog.html">blog</a></li>
-        <li><a href="signup.html">sign up</a></li>
-        <li>
-          <button><a href="login.html">log-in</a></button>
-        </li>
-      </div>
+          <li><a href="blog.html">blog</a></li>
+          <li><a href="signup.html">sign up</a></li>
+          <li>
+            <button><a href="login.html">log-in</a></button>
+          </li>
+        </div>
 
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i></a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i
+        ></a>
       </div>
-  </main>
-      <section>
-          <div class="container-section">
-              <h1>hello,</h1>
-              <div id="desc">
-              <p>I can help in design and build your desirable
-                   website.Let me know what you need by using following information.</p>
-                  </div>
-                   <div id="contact">
-                   <p>E-mail: <span>kylesjet1@gmail.com</span> </p>
-                   <p>On internet: <span> linkedin/github/facebook.</span> </p>
-                   <p>WhatsApp & telephone:  <span>+250 787827372</span> </p>
-                  </div>
-                  <div id="contactme">
-                    <h2>contact me</h2>
-                    <div id="error"></div>
-                    <div id="success"></div>
-                    <label for="name">name</label>
-                    <input type="text" id="input" name="username">
-                   <label for="message">message</label>
-                    <textarea name="message" id="textarea" ></textarea>
-                    <button onclick="validateMessage()">send</button>
-                  </div>
-          </div>
-      </section>
-      <footer>
-        <div id="icons">
-         <a href=""> <i class="fa fa-github"></i></a>
-          <a href=""><i class="fa fa-linkedin"></i></a>
-          <a href=""><i class="fa fa-facebook"></i></a>
+    </main>
+    <section>
+      <div class="container-section">
+        <h1>hello,</h1>
+        <div id="desc">
+          <p>
+            I can help in design and build your desirable website.Let me know
+            what you need by using following information.
+          </p>
         </div>
-        <hr />
-        <div id="copy">
-          <p>&copy /2022</p>
-          <p></p>
+        <div id="contact">
+          <p>E-mail: <span>kylesjet1@gmail.com</span></p>
+          <p>On internet: <span> linkedin/github/facebook.</span></p>
+          <p>WhatsApp & telephone: <span>+250 787827372</span></p>
         </div>
-      </footer>
-      <script>
-        function myFunction() {
-          var x = document.getElementById("menu");
-          if (x.style.display === "block") {
-            x.style.display = "none";
+        <div id="contactme">
+          <h2>contact me</h2>
+          <div id="error"></div>
+          <div id="success"></div>
+          <label for="name">name</label>
+          <input type="text" id="input" name="username" />
+          <label for="message">message</label>
+          <textarea name="message" id="textarea"></textarea>
+          <button onclick="validateMessage()">send</button>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div id="icons">
+        <a href=""> <i class="fa fa-github"></i></a>
+        <a href=""><i class="fa fa-linkedin"></i></a>
+        <a href=""><i class="fa fa-facebook"></i></a>
+      </div>
+      <hr />
+      <div id="copy">
+        <p>&copy /2022</p>
+        <p></p>
+      </div>
+    </footer>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("menu");
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+      // a method to validate the messages
+      function validateMessage() {
+        // array and the object to store user inputs
+        var messages = [];
+        const message = {
+          id: Date.now(),
+          userName: document.getElementsByName("username")[0].value,
+          userMessage: document.getElementsByName("message")[0].value,
+        };
+        // check user inputs
+        if (!message.userName) {
+          error.style.display = "block";
+          error.innerHTML = "Your name is required";
+        } else if (message.userName.length < 3) {
+          error.style.display = "block";
+          error.innerHTML = "Your name may be short";
+        } else if (!message.userMessage) {
+          error.style.display = "block";
+          error.innerHTML = "Your message can not be empty";
+        } else if (message.userMessage.length < 5) {
+          error.style.display = "block";
+          error.innerHTML = "Your message is a bit short";
+        } else {
+          // saving the infos to the local storage
+          if (localStorage.getItem("message") === null) {
+            messages.push(message);
+            localStorage.setItem("message", JSON.stringify(messages));
+            location.reload();
           } else {
-            x.style.display = "block";
+            let stored = JSON.parse(localStorage.getItem("message"));
+            stored.push(message);
+            localStorage.setItem("message", JSON.stringify(stored));
+            location.reload();
           }
         }
-        function validateMessage(){
-         const message ={
-          name: document.getElementById('input'),
-          message: document.getElementById('textarea')
-         }
-         let userMessage=message.message.value
-         let userName=message.name.value
-         if (!userName) {
-        error.style.display='block'
-        error.innerHTML ='Your name is required'
-         }
-         else if (userName.length < 5) {
-          error.style.display='block'
-        error.innerHTML ='provide valid name'
-         }
-         else if (!userMessage) {
-          error.style.display='block'
-          error.innerHTML ='Your message can not be empty'
-         }
-         else if (userMessage.length < 1) {
-          error.style.display='block'
-          error.innerHTML ='Your message is short'
-         }else{
-        success.style.display ='block'
-        success.innerHTML ='message sent successifull'
-        // if (localStorage.getItem("meassages") ===null) {
-        //   let messages=[]
-        // messages.push(userName,userMessage)
-        // localStorage.setItem("messages",JSON.stringify(messages))
-        // }else{
-        //  let stored =JSON.parse(localStorage.getItem("messages"))
-        // stored.push(messages)
-        // localStorage.setItem("messages",JSON.stringify(stored))
-        // setTimeout(function(){
-        //   location.reload();
-        // },1000)
-         
-        }
-
-
-        }
-        </script>
-</body>
+      }
+    </script>
+  </body>
 </html>

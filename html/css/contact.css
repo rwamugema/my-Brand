@@ -97,7 +97,7 @@ body {
 }
 #success{
   border:1px solid green ;
-  padding:7px ;
+  padding:4px ;
   border-radius: 4px;
   color: green;
 display: none;

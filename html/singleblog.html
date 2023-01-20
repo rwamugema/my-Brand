@@ -63,7 +63,7 @@
             <input type="text" name="name" id="input" placeholder="your name" />
             <input
               type="text"
-              name="name"
+              name="comment"
               id="comments"
               placeholder="add comment"
             />
@@ -100,24 +100,42 @@
       }
       //function to append the name and comment of a user
       function validateComment() {
-        const parentContainer = document.querySelector("#display-comment");
-        //getting the values inserted by the user
-        const inputValue = document.getElementById("input").value;
-        const comment = document.getElementById("comments").value;
-        //create the elements
-        const name = document.createElement("span");
-        const commentContent = document.createElement("p");
-        name.textContent = inputValue;
-        commentContent.textContent = comment;
-        //append the values to the screen
-        if (inputValue === "" || comment === "") {
+        var comments = [];
+        const comment = {
+          id: Date.now(),
+          userName: document.getElementsByName("name")[0].value,
+          userComment: document.getElementsByName("comment")[0].value,
+        };
+        // check user inputs
+        if (!comment.userName) {
           error.style.display = "block";
-        }else if (comment.length <39) {
+          error.innerHTML = "your name can not be empty";
+        } else if (comment.userName.length < 5) {
           error.style.display = "block";
-          error.innerHTML='comment length is too short'
-        }
-         else {
+          error.innerHTML = "check your name it might be wrong";
+        } else if (!comment.userComment) {
+          error.style.display = "block";
+          error.innerHTML = "comment is required";
+        } else if (comment.userComment.length < 5) {
+          error.style.display = "block";
+          error.style.display = "comment is short try 5 words ";
+        } else {
+          const name = document.createElement("span");
+          const commentContent = document.createElement("p");
+          name.textContent = comment.userName;
+          commentContent.textContent = comment.userComment;
+          const parentContainer = document.getElementById("display-comment");
           parentContainer.append(name, commentContent);
+          if (localStorage.getItem("comment") === null) {
+            comments.push(comment);
+            localStorage.setItem("comment", JSON.stringify(comments));
+            location.reload();
+          } else {
+            let stored = JSON.parse(localStorage.getItem("comment"));
+            stored.push(comment);
+            localStorage.setItem("comment", JSON.stringify(stored));
+            location.reload();
+          }
         }
       }
     </script>
