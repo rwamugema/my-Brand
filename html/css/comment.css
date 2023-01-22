@@ -5,12 +5,11 @@ table td #btn button{
     padding: 5px;
   }
   table td #btn button:first-child{
-    background-color: #0CE415;
+    background-color: #F36D6D;
    text-transform: capitalize;
   color: var(--clr);
   }
    #btn button:nth-child(2){
-     background-color: #F36D6D;
      text-transform: capitalize;
      color: var(--clr);
   }

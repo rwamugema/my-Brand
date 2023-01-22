@@ -46,10 +46,10 @@
           </div>
       <div class="over-view">
         <div id="overview">
-          <h1>users</h1>
-        </div>
+            <h1>users</h1>
+            </div>
         <table id="table">
-            <tr>
+           <tr>
                 <td>Jane Cooper</td>
                 <td>jet@gmail.com</td>
                 <td><i class="fa fa-envelope"></i> 3 </i></td>
@@ -58,13 +58,12 @@
             </div></td>
             </tr>
             <tr>
-                <td> Cooper</td>
-                <td>jet@gmail.com</td>
+                <td id="local">jane</td>
+                <td id="content">jet@gmail.com</td>
                 <td><i class="fa fa-envelope"></i> 3 </td>
                 <td><div id="btn">
                 <button id="delete" >Delete</button>
             </div></td></tr>
-
             <tr><td>Jane </td>
                 <td>jet@gmail.com</td>
                 <td><i class="fa fa-envelope"></i> 3 </i></td>
@@ -80,6 +79,7 @@
             <i class="fa fa-arrow-right"></i>
     </div>
     </div>
+    </div>
       </footer>
       <script>
         function myFunction() {
@@ -90,22 +90,16 @@
             x.style.display = "block";
           }
         }
-        let parentNode = document.getElementsByTagName('table')
-        let parentLength = parentNode.length;
-        document.getElementById('length').innerHTML = parentLength;
-// function deleteUser() {
-//   document.getElementById('table').deleteRow(0)
-
-// }
-var index , table =document.getElementById('table')
-for (let i = 0; i < table.rows.length; i++) {
-  table.rows[i].cells[3].onclick = function(){
-    index =this.rowIndex;
-    table.deleteRow(index)
-    console.log(index);
-  }
-
-}
+         let parentNode = document.getElementsByTagName('table')
+          let parentLength = parentNode.length;
+          document.getElementById('length').innerHTML = parentLength;
+        const name =document.getElementById('local')
+        const content =document.getElementById('content')
+       const art =JSON.parse(localStorage.getItem("article"))
+         let obj =Object.assign({}, ...art)
+         console.log(obj);
+         name.innerHTML=obj.postTitle
+         content.innerHTML=obj.textarea
         </script>
 </body>
 </html>

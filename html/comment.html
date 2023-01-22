@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta userName="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="css/blogoveview.css" />
@@ -18,7 +18,7 @@
       <h1>dashboard</h1>
       <div class="inputContainer">
         <i class="fa fa-search icon"></i>
-        <input type="search" name="search" id="field" placeholder="search...">
+        <input type="search" userName="search" id="field" placeholder="search...">
     </div>
     </div>
       <div class="topnav">
@@ -51,11 +51,9 @@
         </div>
         <table>
             <tr>
-                <td>jane Cooper</td>
-                <td>black  panther</td>
-                 <td>the best moveie so far</td>
+                <td id="local"></td>
+                <td id="postTitle"></td>
                 <td><div id="btn">
-                <button>prove </button>
                 <button>delete </button>
             </div></td>
             </tr>
@@ -63,9 +61,9 @@
                 <div >
                     <td>jane Cooper</td>
                     <td>black  panther</td>
-                     <td>the best moveie so far</td>
+
                     <td><div id="btn">
-                    <button>prove </button>
+
                     <button>delete </button>
                     </div>
                     </td></div>
@@ -73,9 +71,7 @@
                  <tr>
                 <td>jane Cooper</td>
                 <td>black  panther</td>
-                 <td>the best moveie so far</td>
                 <td><div id="btn">
-                <button>prove </button>
                 <button> delete </button>
             </div></td></tr>
         </table>
@@ -100,6 +96,16 @@
         let parentNode = document.getElementsByTagName('table')
         let parentLength = parentNode.length;
         document.getElementById('length').innerHTML = parentLength;
+        const user =document.getElementById('local')
+        const userComment =document.getElementById('postTitle')
+        const art =JSON.parse(localStorage.getItem("comment"))
+        var obj={}
+        for (let i = 0; i < art.length; i++) {
+          Object.assign(obj, ...art)
+        }
+         user.innerHTML=obj.userName
+         userComment.innerHTML=obj.userComment
+
         </script>
 </body>
 </html>

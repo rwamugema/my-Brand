@@ -59,24 +59,48 @@
     <!-- js validating the form  -->
     <script>
       function validateForm() {
-        let name = document.getElementsByName("name")[0].value;
-        let password = document.getElementsByName("password")[0].value;
-        let pattern ="[A-Z]"
-        if (name === "" || password === "") {
+        var users = [];
+        const user = {
+          id: Date.now(),
+          name: document.getElementsByName("name")[0].value,
+          password: document.getElementsByName("password")[0].value,
+        };
+        let pattern = "/^[^ ]+@[^ ] +\.[a-z]{2,3}$/";
+        if (user.name === "") {
           message.style.display = "none";
           message.innerHTML = "";
-          message.innerHTML = "Please fill all fields";
+          message.innerHTML = "username can not be empty";
           message.style.display = "block";
-}
-          if (name && password) {
-            console.log(name,password);
-            localStorage.setItem("name",JSON.stringify(name))
-            console.log( localStorage)
-            window.setTimeout(function () {
-            window.location.href = "blogoverview.html";
-          }, 100);
-          // location.reload();
+        } else if (user.name.length < 4) {
+          message.style.display = "block";
+          message.innerHTML = "your username is short";
+        } else if (!user.password) {
+          message.style.display = "none";
+          message.innerHTML = "";
+          message.innerHTML = "password can not be empty";
+          message.style.display = "block";
+        } else if (user.password.length < 8) {
+          message.style.display = "none";
+          message.innerHTML = "";
+          message.innerHTML = "password is weak try above 8 characters";
+          message.style.display = "block";
+        }
+
+        // else if(!password.match(pattern)){
+        //   message.style.display ='block'
+        //   message.innerHTML="passwoerd is weak"
+        // }
+        else {
+          if (localStorage.getItem("user") === null) {
+            users.push(user);
+            localStorage.setItem("user", JSON.stringify(users));
+          } else {
+            let stored = JSON.parse(localStorage.getItem("user"));
+            stored.push(user);
+            localStorage.setItem("user", JSON.stringify(stored));
+            location.reload();
           }
+        }
       }
     </script>
   </body>

@@ -15,3 +15,8 @@ table td #btn button:hover {
 td i {
   font-size: 16px;
 }
+#content{
+  max-width: 90px;
+  height: fit-content;
+  overflow-x: hidden;
+}
