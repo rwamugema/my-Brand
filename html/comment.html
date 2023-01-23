@@ -39,7 +39,7 @@
         <div class="footer">
             <div id="footer">
             <p><a href="blogoverview.html">overview</a></p>
-            <p><a href="user.html">user</a></p>
+            <p><a href="user.html">queries</a></p>
             <p><a href="post.html">post</a></p>
             <p><a href="comment.html">comment</a></p>
             </a>
@@ -49,31 +49,14 @@
         <div id="overview">
           <h1>comments</h1>
         </div>
-        <table>
-            <tr>
-                <td id="local"></td>
-                <td id="postTitle"></td>
-                <td><div id="btn">
-                <button>delete </button>
-            </div></td>
-            </tr>
-            <tr>
-                <div >
-                    <td>jane Cooper</td>
-                    <td>black  panther</td>
-
-                    <td><div id="btn">
-
-                    <button>delete </button>
-                    </div>
-                    </td></div>
-               </tr>
+        <table id="table">
                  <tr>
                 <td>jane Cooper</td>
                 <td>black  panther</td>
                 <td><div id="btn">
                 <button> delete </button>
             </div></td></tr>
+            <!-- <button onclick="display()">button</button> -->
         </table>
         <div id="controls">
             <i class="fa fa-arrow-left"></i>
@@ -96,16 +79,17 @@
         let parentNode = document.getElementsByTagName('table')
         let parentLength = parentNode.length;
         document.getElementById('length').innerHTML = parentLength;
-        const user =document.getElementById('local')
-        const userComment =document.getElementById('postTitle')
-        const art =JSON.parse(localStorage.getItem("comment"))
-        var obj={}
-        for (let i = 0; i < art.length; i++) {
-          Object.assign(obj, ...art)
-        }
-         user.innerHTML=obj.userName
-         userComment.innerHTML=obj.userComment
-
+// display comments on the dashboard
+      var comments =JSON.parse( localStorage.getItem("comment"))
+      comments.forEach(comment => {
+      let commentTable =`
+          <td>${comment.userName}</td>
+          <td>${comment.userComment}</td>
+          <td> <button id="button">delete</button></td>`
+          let tr =document.createElement("tr")
+         tr.innerHTML=commentTable
+         document.querySelector("table").appendChild(tr)
+});
         </script>
 </body>
 </html>

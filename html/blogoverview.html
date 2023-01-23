@@ -38,7 +38,7 @@
         <div class="footer">
             <div id="footer">
             <p><a href="blogoverview.html">overview</a></p>
-            <p><a href="user.html">user</a></p>
+            <p><a href="user.html">queries</a></p>
             <p><a href="post.html">post</a></p>
             <p><a href="comment.html">comment</a></p>
             </a>
@@ -50,27 +50,10 @@
         </div>
         <table>
           <tr>
-            <th>name</th>
             <th>post</th>
-            <th>comment</th>
+            <th>content</th>
             <th>date</th>
           </tr>
-            <tr>
-                <td>Jane Cooper</td>
-                <td>Amet minim   est sit .</td>
-                <td>at sunt nostrud amet.</td>
-                <td>4/4/18</td>
-            </tr>
-            <tr>
-                <td>john liver</td>
-                <td>Amet minim   est sit .</td>
-                <td>at sunt nostrud amet.</td>
-                <td>4/4/18</td></tr>
-            <tr>
-                <td>aquaman</td>
-                <td>Amet minim   est sit .</td>
-                <td>at sunt nostrud amet.</td>
-                <td>4/4/18</td></tr>
         </table>
         <div id="controls">
             <i class="fa fa-arrow-left"></i>
@@ -93,6 +76,20 @@
         let parentNode = document.getElementsByTagName('table')
         let parentLength = parentNode.length;
         document.getElementById('length').innerHTML = parentLength;
+        var articles =JSON.parse( localStorage.getItem("article"))
+        const date =new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+      articles.forEach(element => {
+      let commentTable =`
+          <td>${element.postTitle}</td>
+          <td>${element.textarea}</td>
+          <td>${day}/${month}/${year}</td>`
+          let tr =document.createElement("tr")
+         tr.innerHTML=commentTable
+         document.querySelector("table").appendChild(tr)
+});
         </script>
 </body>
 </html>

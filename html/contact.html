@@ -52,6 +52,8 @@
           <div id="success"></div>
           <label for="name">name</label>
           <input type="text" id="input" name="username" />
+          <label for="email">E-mail</label>
+          <input type="email" name="email" id="email">
           <label for="message">message</label>
           <textarea name="message" id="textarea"></textarea>
           <button onclick="validateMessage()">send</button>
@@ -86,16 +88,26 @@
         const message = {
           id: Date.now(),
           userName: document.getElementsByName("username")[0].value,
+          userEmail:document.getElementsByName("email")[0].value,
           userMessage: document.getElementsByName("message")[0].value,
         };
         // check user inputs
+        let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
         if (!message.userName) {
           error.style.display = "block";
           error.innerHTML = "Your name is required";
         } else if (message.userName.length < 3) {
           error.style.display = "block";
           error.innerHTML = "Your name may be short";
-        } else if (!message.userMessage) {
+        }else if (!message.userEmail ) {
+          error.style.display ='block'
+          error.innerHTML ='email is required'
+        }else if (!((message.userEmail).match(pattern))) {
+          error.style.display='block'
+          error.innerHTML='email is invalid'
+        }
+        else if (!message.userMessage) {
           error.style.display = "block";
           error.innerHTML = "Your message can not be empty";
         } else if (message.userMessage.length < 5) {
@@ -115,6 +127,7 @@
           }
         }
       }
+
     </script>
   </body>
 </html>

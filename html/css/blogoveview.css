@@ -296,6 +296,9 @@ table tr th {
   .topnav a.icon {
     display: none;
   }
+  #footer p a:hover{
+    border: none;
+  }
   #name {
     width: 200px;
     justify-content: space-around;

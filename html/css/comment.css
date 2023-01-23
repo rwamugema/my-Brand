@@ -16,3 +16,12 @@ table td #btn button{
   td{
     font-size: 12px;
   }
+ table #button{
+  text-transform: capitalize;
+  border-radius: 2px;
+  border: none;
+  width:fit-content;
+  padding: 5px;
+  background-color: #F36D6D;
+  color: white;
+ }

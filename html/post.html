@@ -38,7 +38,7 @@
       <div class="footer">
             <div id="footer">
             <p><a href="blogoverview.html">overview</a></p>
-            <p><a href="user.html">user</a></p>
+            <p><a href="user.html">queries</a></p>
             <p><a href="post.html">post</a></p>
             <p><a href="comment.html">comment</a></p>
             </a>
@@ -50,38 +50,6 @@
             <button><a href="addpost.html">add new post</a> </button>
         </div>
         <table>
-            <tr>
-                <td>black  panther</td>
-                    <td>jane Cooper</td>
-                    <td><i class="fa fa-heart"></i> 10 </i></td>
-                    <td>10/28/12</td>
-                   <td><div id="btn">
-                    <button>Edit</button>
-                    <button>delete </button>
-                    </div>
-                    </td>
-            </tr>
-            <tr>
-                <td>black  panther</td>
-                        <td>jane Cooper</td>
-                        <td><i class="fa fa-heart"></i> 10 </i></td>
-                    <td>10/28/12</td>
-                    <td><div id="btn">
-                      <button>Edit</button>
-                      <button>delete </button>
-                      </div>
-                      </td>
-               </tr>
-               <td>black  panther</td>
-                   <td>jane Cooper</td>
-                   <td><i class="fa fa-heart"></i> 10 </i></td>
-               <td>10/28/12</td>
-               <td><div id="btn">
-                <button>Edit</button>
-                <button>delete </button>
-                </div>
-                </td>
-         </tr>
         </table>
         <div id="controls">
             <i class="fa fa-arrow-left"></i>
@@ -104,6 +72,24 @@
         let parentNode = document.getElementsByTagName('table')
         let parentLength = parentNode.length;
         document.getElementById('length').innerHTML = parentLength;
+        var articles =JSON.parse( localStorage.getItem("article"))
+        const date =new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+      articles.forEach(element => {
+
+      let commentTable =`
+          <td>${element.postTitle}</td>
+          <td>${element.textarea}</td>
+          <td><i class="fa fa-heart"></i> 10 </i></td>
+          <td>${day}/${month}/${year}</td>
+          <td><button id="button">delete</button></td>`
+          let tr =document.createElement("tr")
+         tr.innerHTML=commentTable
+         document.querySelector("table").appendChild(tr)
+});
+
         </script>
 </body>
 </html>

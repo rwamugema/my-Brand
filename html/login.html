@@ -84,13 +84,7 @@
           message.innerHTML = "";
           message.innerHTML = "password is weak try above 8 characters";
           message.style.display = "block";
-        }
-
-        // else if(!password.match(pattern)){
-        //   message.style.display ='block'
-        //   message.innerHTML="passwoerd is weak"
-        // }
-        else {
+        } else {
           if (localStorage.getItem("user") === null) {
             users.push(user);
             localStorage.setItem("user", JSON.stringify(users));
@@ -98,7 +92,6 @@
             let stored = JSON.parse(localStorage.getItem("user"));
             stored.push(user);
             localStorage.setItem("user", JSON.stringify(stored));
-            location.reload();
           }
         }
       }

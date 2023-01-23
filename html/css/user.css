@@ -20,3 +20,10 @@ td i {
   height: fit-content;
   overflow-x: hidden;
 }
+#button{
+  background-color: red;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 5px;
+  border: none;
+}
