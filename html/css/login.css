@@ -27,11 +27,13 @@ body {
 }
 /* a card that contains inputs  */
 section .card {
-  margin: 3rem auto;
-  border: 1px solid #fff;
-  border-radius: 12px;
+  background-color: #333;
+  margin: 1rem auto;
+  border: 1px solid #333;
+  border-radius: 10px;
+  box-shadow: -5px -5px inset rgba(51, 58, 53, 1);
   width: 400px;
-  height: 400px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

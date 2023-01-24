@@ -68,6 +68,7 @@
             <div id="error"></div>
             <h3>post title</h3>
             <input type="text" name="name" class="input" placeholder="">
+            <h3>category</h3>
             <input type="text" name="category" id="category">
           <!-- text editor -->
             <h3>post content</h3>
@@ -152,18 +153,23 @@
          error.innerHTML ='category name is short'
        }
 //stored the post on the local storage
-         else if (localStorage.getItem("article") ===null) {
-          let articles =[]
-            articles.push(article);
-            localStorage.setItem("article",JSON.stringify(articles))
-          }else{
-            let articles =[]
-           let stored =JSON.parse(localStorage.getItem("article"))
-           stored.push(article);
-           localStorage.setItem("article",JSON.stringify(stored))
-           location.reload();
-            }
+         else   {
+          let articles;
+          if ((localStorage.getItem("article") ===null)) {
+            articles=[]
           }
+            // articles.push(article);
+            // localStorage.setItem("article",JSON.stringify(articles))
+          else{
+           articles =JSON.parse(localStorage.getItem("article"))
+
+            }
+            articles.push(article);
+           localStorage.setItem("article",JSON.stringify(articles))
+           location.reload();
+          }
+        }
+
          }
         }
  </script>
