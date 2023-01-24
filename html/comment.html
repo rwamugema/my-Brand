@@ -90,6 +90,21 @@
          tr.innerHTML=commentTable
          document.querySelector("table").appendChild(tr)
 });
+var comments =JSON.parse ( localStorage.getItem("movieComments"))
+        const date =new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+       comments.forEach(element => {
+      let commentTable =`
+          <td>${element.userName}</td>
+          <td>${element.userComment}</td>
+          <td> <button id="button">delete</button></td>
+          `
+          let tr =document.createElement("tr")
+         tr.innerHTML=commentTable
+         document.querySelector("table").appendChild(tr)
+});
         </script>
 </body>
 </html>

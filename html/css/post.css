@@ -36,9 +36,9 @@ table td #btn button:first-child{
   border: none;
   outline: none;
 }
-#overview {
+/* #overview {
   height: 40px;
-}
+} */
 #overview button a {
   text-decoration: none;
   color: white;

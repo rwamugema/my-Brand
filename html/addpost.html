@@ -73,7 +73,7 @@
             <h3>post content</h3>
             <textarea name="textarea" id="summernote" cols="30" rows="10"></textarea>
             <h3>post photo</h3>
-            <input type="file" name="image" id="input">
+            <input type="file" name="image" id="image">
             <button id='jet' onclick="validatePost()">publish</button>
            </div>
         </div>
@@ -108,55 +108,64 @@
                   ["view", ["fullscreen", "codeview", "help"]],
                 ],
                             });
-                            // a method to validate the
+               // a method to validate the add post page
       function validatePost(){
-        // object to store article date
-   const article ={
+       const PostTitle= document.getElementsByName('name')[0].value
+       const TextArea = document.getElementsByName('textarea')[0].value
+       const Category =document.getElementsByName('category')[0].value
+       //read image from the inputs
+       const imgv=document.getElementById('image')
+       const image=imgv.files[0]
+       if (!image) {
+         error.style.display='block'
+         error.innerHTML ='image is required'
+        }else{
+          //convert image into a url
+        const fr=new FileReader();
+        fr.readAsDataURL(image);
+      fr.onload =()=>{
+      const article ={
            id:Date.now(),
-           postTitle: document.getElementsByName('name')[0].value,
-           textarea: document.getElementsByName('textarea')[0].value,
-           image: document.getElementsByName('image')[0].value,
-           category:document.getElementsByName('category')[0].value
-    }
-    // validate the inputs of the article
-      if(article.postTitle ==''){
-        error.style.display = 'block'
-        error.innerHTML = 'post title can not be empty'
-      }
-      else if (article.postTitle.length < 15) {
-        error.style.display = 'block'
-        error.innerHTML = 'post title is short try above 15 words'
-      }
-      else if(article.textarea ===''){
+           postTitle:PostTitle,
+           textarea:TextArea,
+           category:Category,
+           image:fr.result
+    };
+    //check if inputd are not empty or meet required length
+    if(article.postTitle ==''){
+         error.style.display = 'block'
+       error.innerHTML = 'post title can not be empty'
+      }else if (article.postTitle.length <10) {
+         error.style.display ='block'
+         error.innerHTML ='post title is short try 10 words'
+      }else if(article.textarea ===''){
         error.style.display ='block'
-        error.innerHTML ='post content can not be empty'
-      }
-      else if (article.textarea.length < 30) {
-          error.style.display ='block'
-          error.innerHTML ='post content is short try above 30 words'
-      }else if (!article.image) {
+         error.innerHTML ='post content can not be empty'
+       }else if (article.textarea.length <30) {
+         error.style.display ='block'
+         error.innerHTML ='post content size is too short try 30 words'
+       }else if (!article.category) {
         error.style.display ='block'
-        error.innerHTML ='image is required'
-      }
-      else if (!article.category) {
-        error.style.display ='block'
-        error.innerHTML ='category is required'
-      }
-      // save article to the local storage
-       else{
+         error.innerHTML ='category is required'
+       }else if (article.category.length < 5) {
+       error.style.display ='block'
+         error.innerHTML ='category name is short'
+       }
+//stored the post on the local storage
+         else if (localStorage.getItem("article") ===null) {
           let articles =[]
-          if (localStorage.getItem("article") ===null) {
             articles.push(article);
             localStorage.setItem("article",JSON.stringify(articles))
-          }
-          else{
+          }else{
+            let articles =[]
            let stored =JSON.parse(localStorage.getItem("article"))
            stored.push(article);
            localStorage.setItem("article",JSON.stringify(stored))
            location.reload();
-      }
-   }
-  }
+            }
+          }
+         }
+        }
  </script>
 </body>
 </html>

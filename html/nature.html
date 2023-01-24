@@ -137,18 +137,35 @@
           commentContent.textContent = comment.userComment;
           const parentContainer = document.getElementById("display-comment");
           parentContainer.append(name, commentContent);
-          if (localStorage.getItem("comment") === null) {
+          if (localStorage.getItem("natureComments") === null) {
             comments.push(comment);
-            localStorage.setItem("comment", JSON.stringify(comments));
+            localStorage.setItem("natureComments", JSON.stringify(comments));
             location.reload();
           } else {
-            let stored = JSON.parse(localStorage.getItem("comment"));
+            let stored = JSON.parse(localStorage.getItem("natureComments"));
             stored.push(comment);
-            localStorage.setItem("comment", JSON.stringify(stored));
+            localStorage.setItem("natureComments", JSON.stringify(stored));
             location.reload();
           }
         }
       }
+      var comments =JSON.parse ( localStorage.getItem("natureComments"))
+        const date =new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+       comments.forEach(element => {
+      let commentTable =`
+          <td>${element.userName}      ${day}/${month}</td>
+          `
+          let name =`<td>${element.userComment}</td>`
+          let tr =document.createElement("p")
+          let username =document.createElement('span');
+         tr.innerHTML=commentTable
+         username.innerHTML=name
+         document.querySelector("#display-comment").append(tr,username)
+});
+
     </script>
   </body>
 </html>

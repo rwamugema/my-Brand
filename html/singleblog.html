@@ -10,7 +10,6 @@
     />
     <link rel="stylesheet" href="css/singleblog.css" />
     <!-- <link rel="stylesheet" href="../css/blog.css"> -->
-
     <link rel="website icon" href="image/logo.png" />
     <title>blog</title>
   </head>
@@ -55,8 +54,6 @@
         </div>
         <div class="comment">
           <div id="display-comment">
-            <span>jane cooper</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             <div id="error">Your name or comment can not be empty</div>
           </div>
           <div id="add-comment">
@@ -98,6 +95,8 @@
           x.style.display = "block";
         }
       }
+      const  userName= document.querySelector("#input")
+       const  userComment= document.querySelector("comments")
       //function to append the name and comment of a user
       function validateComment() {
         var comments = [];
@@ -129,15 +128,33 @@
           if (localStorage.getItem("comment") === null) {
             comments.push(comment);
             localStorage.setItem("comment", JSON.stringify(comments));
-            location.reload();
+location.reload()
           } else {
             let stored = JSON.parse(localStorage.getItem("comment"));
             stored.push(comment);
             localStorage.setItem("comment", JSON.stringify(stored));
-            location.reload();
+            location.reload()
           }
         }
+
       }
+      var comments =JSON.parse ( localStorage.getItem("comment"))
+        const date =new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+       comments.forEach(element => {
+      let commentTable =`
+          <td>${element.userName}      ${day}/${month}</td>
+          `
+          let name =`<td>${element.userComment}</td>`
+          let tr =document.createElement("p")
+          let username =document.createElement('span');
+         tr.innerHTML=commentTable
+         username.innerHTML=name
+         document.querySelector("#display-comment").append(tr,username)
+});
+
     </script>
   </body>
 </html>

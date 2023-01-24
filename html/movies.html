@@ -45,7 +45,7 @@
           <div id="contents">
             <i class="fa fa-heart"></i>
             <p>
-              He struts. He swaggers. He poses. He thinks he's the best ever,
+              He susercommentuts. He swaggers. He poses. He thinks he's the best ever,
               and he's not afraid to tell you about iton average they are more
               environmentally friendly after about 20,000 miles on the road, as
               they emit much less per mile driven . Lorem ipsum dolor sit amet,
@@ -120,7 +120,7 @@
           error.innerHTML = "comment is required";
         } else if (comment.userComment.length < 5) {
           error.style.display = "block";
-          error.style.display = "comment is short try 5 words ";
+          error.style.display = "comment is short usercommenty 5 words ";
         } else {
           const name = document.createElement("span");
           const commentContent = document.createElement("p");
@@ -128,18 +128,34 @@
           commentContent.textContent = comment.userComment;
           const parentContainer = document.getElementById("display-comment");
           parentContainer.append(name, commentContent);
-          if (localStorage.getItem("comment") === null) {
+          if (localStorage.getItem("movieComments") === null) {
             comments.push(comment);
-            localStorage.setItem("comment", JSON.stringify(comments));
+            localStorage.setItem("movieComments", JSON.susercommentingify(comments));
             location.reload();
           } else {
-            let stored = JSON.parse(localStorage.getItem("comment"));
+            let stored = JSON.parse(localStorage.getItem("movieComments"));
             stored.push(comment);
-            localStorage.setItem("comment", JSON.stringify(stored));
+            localStorage.setItem("movieComments", JSON.susercommentingify(stored));
             location.reload();
           }
         }
       }
+      var comments =JSON.parse ( localStorage.getItem("movieComments"))
+        const date =new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+       comments.forEach(element => {
+      let commentTable =`
+          <td>${element.userName}      ${day}/${month}</td>
+          `
+          let name =`<td>${element.userComment}</td>`
+          let usercomment =document.createElement("p")
+          let username =document.createElement('span');
+         usercomment.innerHTML=commentTable
+         username.innerHTML=name
+         document.querySelector("#display-comment").append(usercomment,username)
+});
     </script>
   </body>
 </html>
