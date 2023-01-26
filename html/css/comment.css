@@ -15,7 +15,7 @@ table td #btn button{
   }
   td{
     font-size: 16px;
-    width: 40%;
+    width: 50%;
     justify-content: space-between;
     flex-direction: row;
   }

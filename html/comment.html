@@ -105,6 +105,14 @@ var comments =JSON.parse ( localStorage.getItem("movieComments"))
          tr.innerHTML=commentTable
          document.querySelector("table").appendChild(tr)
 });
+        const logout=document.getElementById("logout")
+      logout.addEventListener("click", ()=>{
+        const log =confirm("are you sure you want to log out")
+        if(log){
+          location.href="login.html"
+        }
+
+      })
         </script>
 </body>
 </html>

@@ -74,7 +74,7 @@ body {
   }
   section {
     display: grid;
-    grid-template-columns: minmax(200px,250px);
+    grid-template-columns: minmax(100px,250px);
     grid-gap: 20px;
     align-items: center;
     justify-content: center;
@@ -211,8 +211,6 @@ section .blogcontainer {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 300px);
-    justify-content: center;
-    align-items: center;
     padding-top: 1rem;
   }
   section .science {
@@ -317,4 +315,13 @@ section .blogcontainer {
     font-size: 18px;
     color: #fff;
   }
+}
+#button{
+  background-color: black;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: none;
+  text-transform: capitalize;
+  color: whitesmoke;
 }

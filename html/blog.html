@@ -31,69 +31,76 @@
       </div>
     </main>
     <section>
-      <a href="science.html">
+      <!-- <div class="blogcontainer">
+        <div class="container">
+          <div id="head">
+          </div>
+          <div id="content"></div>
+          </div>
+      </div> -->
+      <!-- <a href="science.html">
         <div class="blogcontainer">
           <img src="image/1652213.jpg" alt="" />
-          <span>tech</span>
-          <div class="container">
+           <span>tech</span> -->
+          <!-- <div class="container">
             <div id="head"></div>
-            <div id="content">
-              <p>
+            <div id="content"> -->
+              <!-- <p>
                 on average they are more environmentally friendly after about
                 20,000 miles on the road, as they emit much less per mile
                 driven.
-              </p>
-            </div>
+              </p> -->
+            <!-- </div>
           </div>
         </div>
       </a>
       <a href="singleblog.html">
         <div class="blogcontainer">
-          <img src="image/ronaldo.jpg" alt="" />
-          <span>football</span>
-          <div class="container">
-            <div id="head" class="footballl">
-              <h1>Why Ronaldo is considered arrogant?</h1>
-            </div>
-            <div id="content">
-              <p>
+          <img src="image/ronaldo.jpg" alt="" /> -->
+          <!-- <span>football</span> -->
+          <!-- <div class="container">
+            <div id="head" class="footballl"> -->
+              <!-- <h1>Why Ronaldo is considered arrogant?</h1> -->
+            <!-- </div>
+            <div id="content"> -->
+              <!-- <p>
                 He struts. He swaggers. He poses. He thinks he's the best ever,
                 and he's not afraid to tell you about it.
-              </p>
-            </div>
+              </p> -->
+            <!-- </div>
           </div>
         </div>
       </a>
       <a href="nature.html">
         <div class="blogcontainer">
-          <span>nature</span>
-          <img src="image/nature.jpg" alt="" />
+          <!-- <span>nature</span> -->
+          <!-- <img src="image/nature.jpg" alt="" />
           <div class="container">
-            <div id="head">
-              <h1>How can we keep it green?</h1>
-            </div>
-            <div id="content">
-              <p>
+            <div id="head"> -->
+              <!-- <h1>How can we keep it green?</h1> -->
+            <!-- </div> -->
+            <!-- <div id="content"> --> -->
+              <!-- <p>
                 on average they are more environmentally friendly after about
                 20,000 miles on the road, as they emit much less per mile
                 driven.
-              </p>
+              </p> -->
             </div>
           </div>
         </div></a
       >
 
-      <a href="movies.html">
+      <!-- <a href="movies.html">
         <div class="blogcontainer">
-          <span>movies</span>
-          <img src="image/henry.jpg" alt="" />
+          <!-- <span>movies</span> -->
+          <!-- <img src="image/henry.jpg" alt="" />
           <div class="container">
             <div id="head" class="movies"></div>
             <div id="content" class="henry">
             </div>
           </div>
-        </div></a
-      >
+        </div></a -->
+      <!-- > --> --> -->
     </section>
     <footer>
       <div id="copy">
@@ -121,33 +128,41 @@
       }
 
       var articles = JSON.parse(localStorage.getItem("article"));
-      articles.forEach((element) => {
-        if (element.id ==1674458822431) {
-          let movies =`<h1>${element.postTitle}</h1>`
-          let category =`<span>${element.category}</span>`
-          let content=`<p>${element.textarea}</p>`
-            document.querySelector(".henry").innerHTML=content
-          document.querySelector("span").innerHTML=category
-          document.querySelector(".movies").innerHTML=movies
-        }else if (element.id ===1674464480473) {
-          let football =`<h1>${element.postTitle}</h1>`
-          let category =`<span>${element.category}</span>`
-          let content =`<p>${element.textarea}`
-            document.querySelector("p").innerHTML=content
-          document.querySelector("span").innerHTML=category
-          document.querySelector(".footballl").innerHTML=football
-        }else if (element.id ===1674481800579) {
-          let commentTable = `
-          <h1>${element.postTitle}</h1>`;
-        let content = `<p>${element.textarea}`;
-        let category = `<span>${element.category}</td>`;
-        document.querySelector("span").innerHTML = category;
-        document.querySelector("#content").innerHTML = content;
-        document.querySelector("#head").innerHTML = commentTable;
-        }else if (element.id ===rtwetwt) {
+      articles.forEach((posts) => {
+        let post =`
+        <div class="blogcontainer">
+          <span>${posts.category}</span>
+          <img src="${posts.image}">
+        <div class="container">
+          <div id="head">
+            <h1>${posts.postTitle}</h1>
+          </div>
+          <div id="content">
+          <p>${posts.textarea}</p>
+            </div>
+            <button id="button">read more</button>
+          </div>
+      </div>
+        `
 
-        }
+        document.querySelector('section').innerHTML +=post
+
       });
+function read() {
+  let articles = JSON.parse(localStorage.getItem("article"));
+//Get ID of single blog after click on read More button
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
+
+// Filter all article to match with one has id passed
+let articleToDisplay = articles.filter(function (art) {
+  return art.id == parseInt(id);
+});
+
+    }
+
+
+
     </script>
   </body>
 </html>

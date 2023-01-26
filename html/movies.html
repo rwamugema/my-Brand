@@ -130,12 +130,12 @@
           parentContainer.append(name, commentContent);
           if (localStorage.getItem("movieComments") === null) {
             comments.push(comment);
-            localStorage.setItem("movieComments", JSON.susercommentingify(comments));
+            localStorage.setItem("movieComments", JSON.stringify(comments));
             location.reload();
           } else {
             let stored = JSON.parse(localStorage.getItem("movieComments"));
             stored.push(comment);
-            localStorage.setItem("movieComments", JSON.susercommentingify(stored));
+            localStorage.setItem("movieComments", JSON.stringify(stored));
             location.reload();
           }
         }

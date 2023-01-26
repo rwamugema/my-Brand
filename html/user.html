@@ -86,12 +86,38 @@
           <td>${element.userName}</td>
           <td>${element.userMessage}</td>
           <td>${day}/${month}/${year}</td>
-          <td><button id="button">delete</button></td>`
+          <td><button id="button" onclick="deleteMessage(event)">delete</button></td>`
           let tr =document.createElement("tr")
          tr.innerHTML=commentTable
          document.querySelector("table").appendChild(tr)
 });
+const logout=document.getElementById("logout")
+      logout.addEventListener("click", ()=>{
+        const log =confirm("are you sure you want to log out")
+        if(log){
+          location.href="login.html"
+        }
 
+      })
+      function deleteMessage(event) {
+  if (confirm("Do You want to delete this message")) {
+    const button = event.target;
+    const tr = button.closest("tr");
+    const dataId = tr.getAttribute("data-id");
+    // console.log(dataId);
+    let article;
+    if (localStorage.getItem("article") === null) {
+      article = [];
+    } else {
+      article = JSON.parse(localStorage.getItem("article"));
+    }
+    article = article.filter((message) => message.id !== parseInt(dataId));
+    tr.remove();
+    localStorage.setItem("article", JSON.stringify(article));
+  } else {
+    return false;
+  }
+}
         </script>
 </body>
 </html>
