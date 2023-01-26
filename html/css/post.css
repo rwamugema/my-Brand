@@ -29,6 +29,16 @@ table td #btn button:first-child{
   padding: 5px;
   text-transform: capitalize;
 }
+#editbtn{
+  background-color: #fff;
+  font-family: 'poppins', sans-serif;
+  font-size: 16px;
+  color: black;
+  text-transform: capitalize;
+  padding: 5px;
+  border: none;
+  outline: none;
+}
 #overview button {
   margin-left: auto;
   background-color: rgb(59, 112, 5);
