@@ -35,8 +35,8 @@
       <div id="error">Your name or comment can not be empty</div>
       <!-- <div id="backtoblog">
         <a href="blog.html"> <i class="fa fa-arrow-left"></i> </a>
-      </div>
-      <div class="ftb">
+      </div>-->
+      <!-- <div class="ftb">
         <div id="head">
           <h2>Why Ronaldo is considered arrogant?</h2>
         </div>
@@ -63,11 +63,11 @@
               type="text"
               name="comment"
               id="comments"
-              placeholder="add comment"
+              placeholder="add comment" 
             />
             <button onclick="validateComment()">send</button>
           </div>
-        </div>
+        </div> -->
       </div> -->
     </div>
     <!-- section part end -->
@@ -167,15 +167,8 @@ let articles = JSON.parse(localStorage.getItem("article"));
 let comments=JSON.parse(localStorage.getItem('comment'))
 let comment =comments.find((e)=>e.articleid==nameId)
 let post=articles.find((e)=> e.id ==nameId)
-
+// let comment = comments.split("").filter((e)=>e.articleid == nameId)
 displayFullBlog();
-// let comments =document.createElement('div')
-
-// Filter all article to match with one has id passed
-// let articleToDisplay = articles.filter(function (art) {
-//   return art.id == parseInt(id);
-// });
-
 
 // Display full blog after getting it in local storage
 function displayFullBlog() {
@@ -196,18 +189,26 @@ function displayFullBlog() {
   let div = document.createElement('div')
   div.innerHTML = `
   <div class="ftb">
-  <h2>${post.postTitle}</h2>
+    <div id="head">
+    <h2>${post.postTitle}</h2>
+    </div>
+    <div class="cont-ner">
   <img src="${post.image}" alt="" class="article-image" />
-  <div id="contents">${post.textarea}</div>
+  <div id="contents">
+    <p>${post.textarea}</p>
+    </div>
+    </div>
   </div>
   `
-  comments.innerHTML =`
+  let postComment =document.createElement('div')
+  postComment.innerHTML =`
   <div class="comment">
     <div id="display-comment">
            <span>${comment.userName}</span>
            <p>${comment.userComment}</p>
           </div>
-    <div id="add-comment">
+         
+            <div id="add-comment">
             <input type="text" name="name" id="input" placeholder="your name" />
             <input
               type="text"
@@ -218,7 +219,7 @@ function displayFullBlog() {
             <button onclick="validateComment()">send</button>
           </div>
             </div>`
-   section.append(div,comments);
+   section.append(div,postComment);
 
   // <div class="article-button">
   //           <div class="like-button">

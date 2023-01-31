@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script
+  <!-- <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
       crossorigin="anonymous"
-    ></script>
-    <link
+    ></script> -->
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
       rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js">
+    /> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js">
 
-    </script>
+    </script> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <!-- <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    /> -->
     <link rel="stylesheet" href="css/addpost.css" />
     <link rel="website icon" href="image/logo.png">
     <title>add post</title>
@@ -72,7 +72,7 @@
             <input type="text" name="category" id="category">
           <!-- text editor -->
             <h3>post content</h3>
-            <textarea name="textarea" id="summernote" cols="30" rows="10"></textarea>
+            <textarea name="textarea"  cols="30" rows="10"></textarea>
             <h3>post photo</h3>
             <input type="file" name="image" id="image">
             <button id='jet' onclick="validatePost()">publish</button>
@@ -93,22 +93,22 @@
           }
         }
 
-              $("#summernote").summernote({
+              // $("#summernote").summernote({
 
-                placeholder: "blog content here...",
-                 FontNames:['poppins','sans serif','Arial'],
-                 height: 50,
-                 shorrtcuts:false,
-                toolbar: [
-                  ["style", ["style"]],
-                  ["font", ["bold", "underline", "clear"]],
-                  ["color", ["color"]],
-                  ["para", ["ul", "ol", "paragraph"]],
-                  ["table", ["table"]],
-                  ["insert", ["link", "picture", "video"]],
-                  ["view", ["fullscreen", "codeview", "help"]],
-                ],
-                            });
+              //   placeholder: "blog content here...",
+              //    FontNames:['poppins','sans serif','Arial'],
+              //    height: 50,
+              //    shorrtcuts:false,
+              //   toolbar: [
+              //     ["style", ["style"]],
+              //     ["font", ["bold", "underline", "clear"]],
+              //     ["color", ["color"]],
+              //     ["para", ["ul", "ol", "paragraph"]],
+              //     ["table", ["table"]],
+              //     ["insert", ["link", "picture", "video"]],
+              //     ["view", ["fullscreen", "codeview", "help"]],
+              //   ],
+              //               });
                // a method to validate the add post page
      const toBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();

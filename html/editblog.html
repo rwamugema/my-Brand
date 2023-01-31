@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/editblog.css">
+    <link rel="website icon" href="image/logo.png" />
+    <title>editblog</title>
+</head>
+<body>
+    <main>
+        <div class="nav-bar">
+            <img src="image/logo.png" alt="">
+            <a href="">
+              logout
+            </a>
+        </div>
+    </main>
+    <div class="container">
+        <h1>edit post</h1>
+        <label for="title">
+            post title:
+        </label>
+        <input type="text">
+        <label for="postcontent">post content:</label>
+        <textarea name="postContent" id="" cols="30" rows="10"></textarea>
+        <label for="image">post image:</label>
+        <input type="file">
+        <button id="btn">update</button>
+</div>
+<script>
+    let postTitle =document.getElementById("title")
+    let postContent = document.getElementById("content")
+    let image = document.getElementById("image")
+    let update = document.getElementById("btn")
+    //search url for id corresponding the post to edit
+
+    let urlParams = new URL(window.location).searchParams;
+    let nameId =urlParams.get("id")
+    let articles = JSON.parse(localStorage.getItem("articles"))
+    // let post = articles.find((e)=>e.id==nameId)
+
+    
+    let edit =()=>{
+        // postTitle.value = post.postTitle
+        // postContent.value = post.textarea
+        // image.value = post.image
+    }
+    edit();
+     update.addEventListener("click", ()=>{
+        post.postTitle = postTitle.value;
+        post.postContent = postContent.value;
+        post.image = image.value;
+     })
+</script>
+</body>
+</html>
