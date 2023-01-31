@@ -324,4 +324,9 @@ section .blogcontainer {
   border: none;
   text-transform: capitalize;
   color: whitesmoke;
+  cursor: pointer;
+}
+#button a{
+  text-decoration: none;
+  color: #fff;
 }

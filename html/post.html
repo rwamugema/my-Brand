@@ -82,7 +82,7 @@
           <td>${element.postTitle}</td>
           <td>${element.textarea}</td>
           <td>${day}/${month}/${year}</td>
-          <td><button id="editbtn" onclick="editMessage(event)">edit</button></td>
+          <td><button id="editbtn" onclick="editArticle(event)">edit</button></td>
           <td><button id="button" onclick="deleteMessage(event)">delete</button></td>`
           let tr =document.createElement("tr")
          tr.innerHTML=commentTable
@@ -114,14 +114,22 @@ const logout=document.getElementById("logout")
     return false;
   }
 }
-function editMessage(event) {
-  // if (confirm("Do You want to delete this message")) {
-    const button = event.target;
-    const tr = button.closest("tr");
-    const dataId = tr.getAttribute("data-id");
-   tr.contentEditable=true
-   let done=`<td><button>done</button>`
-tr.innerText=done
+// function editMessage(event) {
+//   // if (confirm("Do You want to delete this message")) {
+//     const button = event.target;
+//     const tr = button.closest("tr");
+//     const dataId = tr.getAttribute("data-id");
+//    tr.contentEditable=true
+//    const input =document.createElement('input')
+//    const content =document.createElement('input')
+//    const td=tr.firstElementChild
+//    input.value =td.textContent
+//    tr.appendChild(input)
+//    tr.removeChild(td)
+//    button.textContent='save'
+//    if (button.textContent ==='save') {
+//     const td=
+//    }
 
 //     // let article;
 //   //   if (localStorage.getItem("article") === null) {
@@ -134,7 +142,6 @@ tr.innerText=done
 //   //   return false;
 
 // console.log("jet");
- }
  </script>
 </body>
 </html>
