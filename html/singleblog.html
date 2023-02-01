@@ -31,12 +31,23 @@
       </div>
     </main>
     <!-- section part start -->
-    <div id="section" >
+    <div>
+      <div class="ftb">
+
+      </div>
+      <div class="comment">
+        <div id="display-comment">
+
+        </div>
+        <div id="add-comment">
+
+        </div>
+      </div>
       <div id="error">Your name or comment can not be empty</div>
       <!-- <div id="backtoblog">
         <a href="blog.html"> <i class="fa fa-arrow-left"></i> </a>
       </div>-->
-      <!-- <div class="ftb">
+      <!-- 
         <div id="head">
           <h2>Why Ronaldo is considered arrogant?</h2>
         </div>
@@ -131,12 +142,12 @@
           if (localStorage.getItem("comment") === null) {
             comments.push(comment);
             localStorage.setItem("comment", JSON.stringify(comments));
-            // location.reload()
+            location.reload()
           } else {
             let stored = JSON.parse(localStorage.getItem("comment"));
             stored.push(comment);
             localStorage.setItem("comment", JSON.stringify(stored));
-            // location.reload()
+            location.reload()
           }
         }
 
@@ -160,16 +171,17 @@
 
 // get single blog from the localstorage
 //Get ID of single blog after click on read More button
-
+const date =new Date();
+     let day = date.getDate();
+         let month = date.getMonth() + 1;
+         let year = date.getFullYear();
 const urlParams = new URL(window.location).searchParams;
 const nameId = urlParams.get("id");
 let articles = JSON.parse(localStorage.getItem("article"));
-let comments=JSON.parse(localStorage.getItem('comment'))
-let comment =comments.find((e)=>e.articleid==nameId)
-let post=articles.find((e)=> e.id ==nameId)
-// let comment = comments.split("").filter((e)=>e.articleid == nameId)
+let comments=JSON.parse(localStorage.getItem('comment'));
+let comment= comments.filter((e)=>e.articleid == nameId)
+let post = articles.find((e)=> e.id == nameId)
 displayFullBlog();
-
 // Display full blog after getting it in local storage
 function displayFullBlog() {
   // Get all comments belongs to single article and display it's length
@@ -184,8 +196,8 @@ function displayFullBlog() {
     // }
   // }
   // const numComments = articleComments.length;
-  let comments=document.createElement('div')
-  let section = document.getElementById("section");
+  
+  let section = document.querySelector(".ftb");
   let div = document.createElement('div')
   div.innerHTML = `
   <div class="ftb">
@@ -200,15 +212,20 @@ function displayFullBlog() {
     </div>
   </div>
   `
-  let postComment =document.createElement('div')
-  postComment.innerHTML =`
-  <div class="comment">
-    <div id="display-comment">
-           <span>${comment.userName}</span>
-           <p>${comment.userComment}</p>
+  section.append(div);
+comment.forEach(c => {
+  let commentss = document.querySelector("#display-comment")
+  let displayComment = document.createElement('div')
+  displayComment.innerHTML=` 
+           <span>${c.userName}    .${day}/${month}</span>
+           <p>${c.userComment}</p>
           </div>
-         
-            <div id="add-comment">
+           `
+        commentss.append(displayComment)
+});
+let commentPost = document.querySelector("#add-comment")
+ let addComment = document.createElement('div')
+ addComment.innerHTML =`
             <input type="text" name="name" id="input" placeholder="your name" />
             <input
               type="text"
@@ -218,8 +235,15 @@ function displayFullBlog() {
             />
             <button onclick="validateComment()">send</button>
           </div>
-            </div>`
-   section.append(div,postComment);
+            `
+            commentPost.append(addComment)
+  // comments.forEach(element => {
+  //   // console.log(element);
+  //   let f= comments.filter((r)=>r.articleid == nameId)
+  //   console.log(f);
+  // });
+ 
+   
 
   // <div class="article-button">
   //           <div class="like-button">
