@@ -69,22 +69,21 @@ body {
   li {
     list-style-type: none;
   }
-  section a {
+  /* section a {
     text-decoration: none;
-  }
-  section {
-    display: grid;
-    grid-template-columns: minmax(100px,250px);
-    grid-gap: 20px;
-    align-items: center;
-    justify-content: center;
+  } */
+  #section {
+    margin-left: 10rem;
+    min-width:600px;
     height: fit-content;
+    display: flex;
+    justify-content: space-between;
   }
   img {
     width: 100%;
     height: 100%;
   }
-section .blogcontainer {
+.blogcontainer {
     position: relative;
     width: 250px;
     height: 250px;

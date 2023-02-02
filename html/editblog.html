@@ -19,18 +19,18 @@
     </main>
     <div class="container">
         <h1>edit post</h1>
-        <label for="title">
+        <!-- <label for="title">
             post title:
         </label>
         <input type="text">
         <label for="postcontent">post content:</label>
         <textarea name="postContent" id="" cols="30" rows="10"></textarea>
         <label for="image">post image:</label>
-        <input type="file">
+        <input type="file"> -->
         <button id="btn">update</button>
 </div>
 <script>
-    let postTitle =document.getElementById("title")
+    let title =document.getElementById("title")
     let postContent = document.getElementById("content")
     let image = document.getElementById("image")
     let update = document.getElementById("btn")
@@ -38,20 +38,36 @@
 
     let urlParams = new URL(window.location).searchParams;
     let nameId =urlParams.get("id")
-    let articles = JSON.parse(localStorage.getItem("articles"))
+    var articles = JSON.parse(localStorage.getItem("article"))
+var  post = articles.find((e)=>e.id==nameId)
     // let post = articles.find((e)=>e.id==nameId)
 
-    
+        let d= document.querySelector('.container')
+        var Titlepost = document.createElement('input')
+        var ContentPost = document.createElement('input')
+        var imagePost = document.createElement('input')
+        var labelTitle = document.createElement('label')
+        var labelContent = document.createElement('label')
+        imagePost.type ='file'
+        imagePost.innerHTML = post.iamge
+        labelContent.innerHTML = 'post content'
+        labelTitle.innerHTML = 'post title'
+        ContentPost.value = post.textarea
+        Titlepost.value = post.postTitle
     let edit =()=>{
-        // postTitle.value = post.postTitle
-        // postContent.value = post.textarea
-        // image.value = post.image
+        d.append(labelTitle,Titlepost,labelContent,ContentPost,imagePost)
     }
     edit();
      update.addEventListener("click", ()=>{
-        post.postTitle = postTitle.value;
-        post.postContent = postContent.value;
-        post.image = image.value;
+        let valTitle,valContent
+        valTitle=Titlepost.value
+        valContent=ContentPost.value
+        articles.push({
+           id:articles.length +1,
+           postTitle:valTitle,
+           textarea:valContent,   
+    })
+    localStorage.setItem("article",JSON.stringify(articles))
      })
 </script>
 </body>

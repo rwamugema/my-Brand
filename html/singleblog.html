@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" -->
-    <!-- /> -->
+    
     <link rel="stylesheet" href="css/singleblog.css" />
-    <!-- <link rel="stylesheet" href="../css/blog.css"> -->
-    <!-- <link rel="website icon" href="image/logo.png" /> -->
+     <link rel="website icon" href="image/logo.png" />
     <title>blog</title>
   </head>
   <body>
@@ -31,56 +30,21 @@
       </div>
     </main>
     <!-- section part start -->
+    <section>
     <div>
       <div class="ftb">
-
       </div>
       <div class="comment">
         <div id="display-comment">
-
+          <h3>comments</h3>
         </div>
+        <h5>add comment</h5>
         <div id="add-comment">
-
         </div>
       </div>
       <div id="error">Your name or comment can not be empty</div>
-      <!-- <div id="backtoblog">
-        <a href="blog.html"> <i class="fa fa-arrow-left"></i> </a>
-      </div>-->
-      <!-- 
-        <div id="head">
-          <h2>Why Ronaldo is considered arrogant?</h2>
-        </div>
-        <img src="image/ronaldo.jpg" alt="" />
-        <div class="cont-ner">
-          <div id="contents">
-            <i class="fa fa-heart"></i>
-            <p>
-              He struts. He swaggers. He poses. He thinks he's the best ever,
-              and he's not afraid to tell you about it. Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit. In aliquam perspiciatis
-              molestiae, quo quod aut veniam illo sunt sit id dignissimos ipsam
-              repellat nobis, voluptas et rem quis placeat amet.
-            </p>
-          </div>
-        </div>
-        <div class="comment">
-          <div id="display-comment">
-           
-          </div>
-          <div id="add-comment">
-            <input type="text" name="name" id="input" placeholder="your name" />
-            <input
-              type="text"
-              name="comment"
-              id="comments"
-              placeholder="add comment" 
-            />
-            <button onclick="validateComment()">send</button>
-          </div>
-        </div> -->
-      </div> -->
     </div>
+  </section>
     <!-- section part end -->
     <footer>
       <div id="copy">
@@ -133,12 +97,6 @@
           error.style.display = "block";
           error.style.display = "comment is short try 5 words ";
         } else {
-          // const name = document.createElement("span");
-          // const commentContent = document.createElement("p");
-          // name.textContent = comment.userName;
-          // commentContent.textContent = comment.userComment;
-          // const parentContainer = document.getElementById("display-comment");
-          // parentContainer.append(name, commentContent);
           if (localStorage.getItem("comment") === null) {
             comments.push(comment);
             localStorage.setItem("comment", JSON.stringify(comments));
@@ -152,54 +110,25 @@
         }
 
       }
-//       var comments =JSON.parse ( localStorage.getItem("comment"))
-//         const date =new Date();
-//         let day = date.getDate();
-//         let month = date.getMonth() + 1;
-//         let year = date.getFullYear();
-//        comments.forEach(element => {
-//       let commentTable =`
-//           <td>${element.userName}      ${day}/${month}</td>
-//           `
-//           let name =`<td>${element.userComment}</td>`
-//           let tr =document.createElement("p")
-//           let username =document.createElement('span');
-//          tr.innerHTML=commentTable
-//          username.innerHTML=name
-//          document.querySelector("#display-comment").append(tr,username)
-// });
-
 // get single blog from the localstorage
 //Get ID of single blog after click on read More button
-const date =new Date();
-     let day = date.getDate();
+         const date =new Date();
+         let day = date.getDate();
          let month = date.getMonth() + 1;
          let year = date.getFullYear();
-const urlParams = new URL(window.location).searchParams;
-const nameId = urlParams.get("id");
-let articles = JSON.parse(localStorage.getItem("article"));
-let comments=JSON.parse(localStorage.getItem('comment'));
-let comment= comments.filter((e)=>e.articleid == nameId)
-let post = articles.find((e)=> e.id == nameId)
-displayFullBlog();
+         const urlParams = new URL(window.location).searchParams;
+         const nameId = urlParams.get("id");
+         let articles = JSON.parse(localStorage.getItem("article"));
+         let comments=JSON.parse(localStorage.getItem('comment'));
+         let comment= comments.filter((e)=>e.articleid == nameId)
+         let post = articles.find((e)=> e.id == nameId)
+//function call
+         displayFullBlog();
 // Display full blog after getting it in local storage
-function displayFullBlog() {
-  // Get all comments belongs to single article and display it's length
-  // let comments = localStorage.getItem("comments");
-  // let articleComments = [];
-  // if (comments !== null) {
-  //   comments = JSON.parse(comments);
-    // if (comments.length > 0) {
-    //   articleComments = comments.filter(
-    //     (comment) => comment.articleId === post.id
-    //   );
-    // }
-  // }
-  // const numComments = articleComments.length;
-  
+         function displayFullBlog() {
   let section = document.querySelector(".ftb");
-  let div = document.createElement('div')
-  div.innerHTML = `
+  let displayPost= document.createElement('div')
+  displayPost.innerHTML = `
   <div class="ftb">
     <div id="head">
     <h2>${post.postTitle}</h2>
@@ -212,17 +141,20 @@ function displayFullBlog() {
     </div>
   </div>
   `
-  section.append(div);
-comment.forEach(c => {
-  let commentss = document.querySelector("#display-comment")
-  let displayComment = document.createElement('div')
-  displayComment.innerHTML=` 
+  section.append(displayPost);
+          comment.forEach(c => {
+          let commentss = document.querySelector("#display-comment")
+          let displayComment = document.createElement('div')
+          displayComment.innerHTML=` 
            <span>${c.userName}    .${day}/${month}</span>
            <p>${c.userComment}</p>
           </div>
            `
         commentss.append(displayComment)
 });
+
+//add comment form
+
 let commentPost = document.querySelector("#add-comment")
  let addComment = document.createElement('div')
  addComment.innerHTML =`
@@ -233,165 +165,11 @@ let commentPost = document.querySelector("#add-comment")
               id="comments"
               placeholder="add comment"
             />
-            <button onclick="validateComment()">send</button>
+            <button onclick="validateComment()">comment</button>
           </div>
             `
             commentPost.append(addComment)
-  // comments.forEach(element => {
-  //   // console.log(element);
-  //   let f= comments.filter((r)=>r.articleid == nameId)
-  //   console.log(f);
-  // });
- 
-   
-
-  // <div class="article-button">
-  //           <div class="like-button">
-  //             <i class="bx bxs-like"></i>1<span> Like</span>
-  //           </div>
-  // <div class="comment-button">
-  //             <i class="bx bxs-comment"></i>${numComments}<span> Comment</span>
-  //           </div>
-  //     </div>
-  //     <section class="comments-display">
-  //     <h3>Comments</h3>
-  //     <ul>
-  //       ${
-  //         articleComments.length > 0
-  //           ? articleComments
-  //               .map(
-  //                 (comment) => `
-  //             <li class="comment">
-  //               <div class="user-info">
-  //                 <span class="user-name">${comment.author}</span>
-  //                 <span class="date">${comment.date}</span>
-  //               </div>
-  //               <p class="comment-text">
-  //                 ${comment.comment}
-  //               </p>
-  //             </li>
-            
             }
-
-//                 )
-//                 .join("")
-//             : '<li class="comment">No Comments Yet</li>'
-//         }
-//       </ul>
-//     </section>
-    
-  
-//   <div class="comment-section">
-//     <form id="form" action="#">
-//       <div class="input-name">
-//         <label for="user-name">Your Name</label>
-//         <input type="text" id="user-name" placeholder="Your name.." />
-//         <div class="error"></div>
-//       </div>
-//       <div class="input-message">
-//         <label for="subject">Comment</label>
-//         <textarea
-//           id="comment-field"
-//           placeholder="Write Your Comment.."
-//           style="height: 200px"
-//         ></textarea>
-//         <div class="error"></div>
-//       </div>
-//       <input type="submit" id="myBtn" value="Submit" />
-//     </form>
-//   </div>
-//   <div class="btn-container">
-//     <button id="toggle">Read Less</button>
-//   </div>
-// </article>
-//   `;
-
-//   const section = document.querySelector(".main");
-//   section.innerHTML += html;
-// }
-
-// const username = document.querySelector("#user-name");
-// const commentTexts = document.querySelector("#comment-field");
-// const subBtn = document.querySelector("#myBtn");
-
-// subBtn.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   const isCommentValid = validateComment();
-//   if (isCommentValid) {
-//     let newId = Math.floor(Math.random() * (1000000 - 100000) + 100000);
-//     const data = {
-//       commentId: newId,
-//       articleId: parseInt(id),
-//       author: userName.value,
-//       comment: commentTexts.value,
-//       date: getCurrentDate(),
-//     };
-//     storeCommentInLocalStorage(data);
-//     clearFields();
-//   }
-// });
-
-// const setError = (element, message) => {
-//   const commentSection = element.parentElement;
-//   const errorDisplay = commentSection.querySelector(".error");
-
-//   errorDisplay.innerText = message;
-//   commentSection.classList.add("error");
-//   commentSection.classList.remove("success");
-// };
-// const setSuccess = (element) => {
-//   const commentSection = element.parentElement;
-//   const errorDisplay = commentSection.querySelector(".error");
-
-//   errorDisplay.innerText = "";
-//   commentSection.classList.add("success");
-//   commentSection.classList.remove("error");
-// };
-
-// const validateComment = () => {
-//   let status = true;
-//   const useName = userName.value.trim();
-//   const cmntText = commentTexts.value.trim();
-
-//   if (useName === "") {
-//     setError(userName, "Your name is required");
-//     status = false;
-//   } else if (useName.length < 5 || useName.length > 25) {
-//     setError(userName, "Your name must be between 5 and 25 letters");
-//     status = false;
-//   } else {
-//     setSuccess(userName);
-//   }
-
-//   if (cmntText === "") {
-//     setError(commentTexts, "Message is required");
-//     status = false;
-//   } else if (cmntText.length < 10 || cmntText.length > 100) {
-//     setError(commentTexts, "Your message must be between 10 and 50 letters");
-//     status = false;
-//   } else {
-//     setSuccess(commentTexts);
-//   }
-//   return status;
-// };
-// // Store comment in Local Storage
-// function storeCommentInLocalStorage(comment) {
-//   let comments;
-//   if (localStorage.getItem("comments") === null) {
-//     comments = [];
-//   } else {
-//     comments = JSON.parse(localStorage.getItem("comments"));
-//   }
-
-//   comments.push(comment);
-
-//   localStorage.setItem("comments", JSON.stringify(comments));
-// }
-
-// function clearFields() {
-//   userName.value = "";
-//   commentTexts.value = "";
-// }
     </script>
   </body>
 </html>

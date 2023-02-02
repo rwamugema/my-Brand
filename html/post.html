@@ -82,7 +82,7 @@
           <td>${element.postTitle}</td>
           <td>${element.textarea}</td>
           <td>${day}/${month}/${year}</td>
-          <td><button id="editbtn" onclick="editArticle(event)">edit</button></td>
+          <td><button id="editbtn"><a href="editblog.html?id=${element.id}">edit</a></button></td>
           <td><button id="button" onclick="deleteMessage(event)">delete</button></td>`
           let tr =document.createElement("tr")
          tr.innerHTML=commentTable
@@ -96,6 +96,7 @@ const logout=document.getElementById("logout")
         }
       })
       function deleteMessage(event) {
+
   if (confirm("Do You want to delete this message")) {
     const button = event.target;
     const tr = button.closest("tr");
@@ -114,6 +115,8 @@ const logout=document.getElementById("logout")
     return false;
   }
 }
+
+
 // function editMessage(event) {
 //   // if (confirm("Do You want to delete this message")) {
 //     const button = event.target;
