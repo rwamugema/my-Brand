@@ -3,7 +3,8 @@ import mongoose from "mongoose"
 const userSchema = new mongoose.Schema({
     userName:String,
     email:String,
-    password:String
+    password:String,
+    accessToken:String
 })
 // userSchema.plugin(passportLocalMongoose)
 const schemaUser = mongoose.model('user',userSchema)

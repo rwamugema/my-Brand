@@ -2,28 +2,41 @@
 import express from 'express'
 import schemaModel from '../models/post.js'
 import mongoose from 'mongoose'
-import signupSchema from '../validators/validateSignUp.js'
-import validator from '../validators/validate.js'
+import {signupSchema,loginSchema, schemaComment} from '../validators/validateSignUp.js'
 import { createBlog,getBlog, getSingleBlog, updateBlog,deleteBlog } from '../controllers/blogController.js'
-import { generate } from '../controllers/authController.js'
+import validator from '../validators/validate.js'
+import { sign} from '../controllers/authController.js'
+import { login } from '../controllers/authController.js'
+import { validateToken } from '../middleware/auth.js'
+import { Comment } from '../models/comment.js'
+import { createComment, getComment } from '../controllers/blogCommentController.js'
+import cloudinary from '../services/cloudinary.js'
+import upload from '../services/multer.js'
+import { addLike } from '../controllers/blogLikeController.js'
 const router = express.Router()
 // const signup =express.Router()
 //get all posts
-router.get('/blog',getBlog )
+router.get('/blogs',validateToken, getBlog )
 
 //update post
- router.patch('/blog/:id',updateBlog)
+ router.patch('/blogs/:id',validateToken, updateBlog)
 
 //get single/individual post
-router.get('/blog/:id', getSingleBlog)
-router.post('/token', generate)
+router.get('/blogs/:id',validateToken, getSingleBlog)
 //create post
-router.post('/blog', createBlog)
+router.post('/blogs',upload.single('image'), createBlog)
 
 //delete post
-router.delete('/blog/:id', deleteBlog)
-// sign up router
-router.post('/signup',validator(signupSchema), (req,res) =>{
-    res.send("sign up succefully")
+router.delete('/blogs/:id',validateToken, deleteBlog)
+router.get("/logout",validateToken, (req,res) =>{
+    res.send("logout")
 })
+router.post('/login', validator(loginSchema),login,(req,res)=>{
+    res.json(user)
+})
+// sign up router
+router.post('/signup', validator(signupSchema), sign)
+router.post('/blogs/:id/comment/create',validateToken, validator(schemaComment), createComment)
+router.post('/blogs/:id/likes',validateToken, addLike)
+router.get('/blogs/comment', getComment )
 export default router

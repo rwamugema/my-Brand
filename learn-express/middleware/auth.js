@@ -1,35 +1,31 @@
-import express from "express";
-import  passport from "passport";
+import  Jwt  from "jsonwebtoken";
 import schemaUser from "../models/user.js";
-import passportJWT from 'passport-jwt'
-import {jwtSecret,jwtSession} from '../config.js'
- const Strategy = passportJWT.Strategy
- const extractJWT = passportJWT.ExtractJwt
 
- const params = {
-    secretOrKey:jwtSecret,
-    jwtFromRequest: extractJWT.fromAuthHeaderAsBearerToken("jwt")
- }
- const auth = () =>{
-   const strategy = new Strategy(params, (payload, done) =>{
-    const user = schemaUser.findById(payload.id, (err,msg) =>{
-        if(err){
-            return done(new Error("userNotFound"), null)
-        }else if(payload.expire <= Date.now()){
-            return done(new Error("tokenexpired"), null)
-        }else{
-            return done(null, user)
-        }
-    })
-   })
-   passport.use(strategy)
-   return {initialize: function(){
-        passport.initialize()
-   },
-   authenticate: () =>{
-    passport.authenticate('jwt', jwtSession)
-   }
+const validateToken = async (req,res,next) =>{
+    const authHeader = req.headers.authorization
+    const token =authHeader && authHeader.split(" ")[1]
+    let result
+  if (!authHeader) {
+    res.status(403).send("access denied")
+  }
+  const expire = {
+    expireIn: "24h"
+  }
+  try {
+    // const user = await schemaUser.findOne({
+    //     email:req.body.email
+    // })
+    // if (!user) {
+    //  return res.status(403).send("no user")
+    // }
+    result = Jwt.verify(token, "japhet")
+    //  if (!user.userName === result.userName) {
+    //     return res.status(403).send("invalid token")
+    //  }
+     req.user = result.user
+     next();
+  } catch (error) {
+    return res.status(403).send("authorization failed")
+  }
 }
- }
-
- export {auth}
+export {validateToken}

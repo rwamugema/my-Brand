@@ -6,24 +6,20 @@ import cloudinary from "../services/cloudinary.js";
 // import userSchema from "../models/user.js";
 
 //create blog method
-const createBlog = async(req,res)=>{
-    const post = new blogModel({
-        title:req.body.title,
-        content:req.body.content,
-        id:req.body.id
-    })
-        if (!post.title) {
-            res.send("post content is too short")
-        }else if (!post.content) {
-            res.send("post content is too short")
-        }else if (post.title.length < 5) {
-            res.send("post content is too short")
-        }else if (post.content.length < 10) {
-            res.send("post content is too short")
-        }
-    else{
-        await post.save()
-        res.send(post)
+const createBlog = async(req,res) =>{
+    try {
+        const result = await cloudinary.uploader.upload(req.file.path)
+        // res.json(result)
+        const blog = new blogModel({
+            title:req.body.title,
+            content:req.body.content,
+            image:result.url,
+            cloudinary_id:result.public_id
+        }) 
+        await blog.save()
+        res.json(blog)
+    } catch (err) {
+        console.log(err);
     }
 }
 

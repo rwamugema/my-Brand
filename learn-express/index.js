@@ -7,16 +7,9 @@ import localStrategy from 'passport-local'
 import joi from 'joi'
 import router from './routes/router.js'
 import dotenv from 'dotenv'
-import  users from './routes/user.js'
-import signup from './validators/validateSignUp.js'
-import login from './validators/validateLogIn.js'
 // import {auth} from './middleware/auth.js'
 import schemaUser from './models/user.js'
 // import { authRouter } from './routes/authRoute.js'
- import crypto from 'crypto'
- let c= crypto.randomBytes(64).toString('hex')
- console.log(c
-    );
 // import validateSignup from './validators/signup.js'
 
 dotenv.config()
@@ -54,6 +47,5 @@ mongoose.set("strictQuery",true)
 // passport.deserializeUser(schemaUser.deserializeUser())
 
 // app.use(authRouter)
-app.use('/api/v1/user',users )
-app.use('/api/v1', signup)
-app.use('/api/v1',login)
+// app.use('/api/v1/user',users )
+

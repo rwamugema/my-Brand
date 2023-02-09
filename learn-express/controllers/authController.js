@@ -1,21 +1,65 @@
 import jwt from 'jsonwebtoken'
 import schemaUser from '../models/user.js'
+import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
-
+import { createToken } from '../middleware/createToken.js'
 dotenv.config()
 
-export const generate = async(req,res) => {
-    const user= await schemaUser.find()
+ const login = async(req,res) => {
+    // const {userName, password} = req.body
+    const user= await schemaUser.findOne({email:req.body.email})
     console.log(user);
     if (!user) {
-        return res.json({errr:"failed"})
+        return res.json({errr:"user doesn't exist"}).status(400)
     }else{
-        const accessToken =  jwt.sign({userName:"japhet"}, "japhet")
-        
-        res.json({accessToken: accessToken})
+        const Password = user.password
+        bcrypt.compare(req.body.password , Password).then(async (match) =>{
+            if (!match) {
+                res.json()
+            }else{
+               const token = createToken(user)
+               return res.send(token)
+            }
+        })
+       
     }
-   
 }
+// const authenticateToken = (req,res,next) =>{
+//     const authHeader = req.headers["authorization"]
+//     const token = authHeader && authHeader.split(" ")[1]
+//     if (!token) return res.status(401)
+//     jwt.verify(token, "japhet", (err, user) =>{
+//         if(err) {
+//             return res.status(403).send("no user")
+//         }
+//         req.user = schemaUser
+//         next()
+//     })
+// }
+ const sign = async (req,res) =>{
+    try {    
+
+        const userExist = await schemaUser.findOne({email: req.body.email})
+        
+        if (userExist) return res.status(400).send("email Already Taken")
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(req.body.password, salt)
+       const  user= new schemaUser({
+            userName:req.body.userName,
+            email:req.body.email,
+            password:hashedPassword,
+        })
+       
+        await user.save()
+        res.status(201).send({Message:"User registered Successfully"})
+    } catch (error) {
+        // c
+        console.log(error);
+        res.send(error)
+    }
+
+}
+export {login,sign}
 // import express from "express";
 // import schemaUser from "../models/user.js";
 // import { jwtSecret,jwtSession } from "../config.js";
@@ -46,4 +90,4 @@ export const generate = async(req,res) => {
 //         }
 //     })
 // }
-// export {login, register}
+//  {login, register}
