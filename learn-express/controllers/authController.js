@@ -8,34 +8,21 @@ dotenv.config()
  const login = async(req,res) => {
     // const {userName, password} = req.body
     const user= await schemaUser.findOne({email:req.body.email})
-    console.log(user);
     if (!user) {
         return res.json({errr:"user doesn't exist"}).status(400)
     }else{
         const Password = user.password
         bcrypt.compare(req.body.password , Password).then(async (match) =>{
             if (!match) {
-                res.json()
+                return res.json("password is invalid")
             }else{
                const token = createToken(user)
-               return res.send(token)
+               return res.send(token).status(200)
             }
         })
        
     }
 }
-// const authenticateToken = (req,res,next) =>{
-//     const authHeader = req.headers["authorization"]
-//     const token = authHeader && authHeader.split(" ")[1]
-//     if (!token) return res.status(401)
-//     jwt.verify(token, "japhet", (err, user) =>{
-//         if(err) {
-//             return res.status(403).send("no user")
-//         }
-//         req.user = schemaUser
-//         next()
-//     })
-// }
  const sign = async (req,res) =>{
     try {    
 

@@ -16,13 +16,13 @@ import { addLike } from '../controllers/blogLikeController.js'
 const router = express.Router()
 // const signup =express.Router()
 //get all posts
-router.get('/blogs',validateToken, getBlog )
+router.get('/blogs', getBlog )
 
 //update post
  router.patch('/blogs/:id',validateToken, updateBlog)
 
 //get single/individual post
-router.get('/blogs/:id',validateToken, getSingleBlog)
+router.get('/blogs/:id', getSingleBlog)
 //create post
 router.post('/blogs',upload.single('image'), createBlog)
 
@@ -36,7 +36,7 @@ router.post('/login', validator(loginSchema),login,(req,res)=>{
 })
 // sign up router
 router.post('/signup', validator(signupSchema), sign)
-router.post('/blogs/:id/comment/create',validateToken, validator(schemaComment), createComment)
+router.post('/blogs/:id/comment/create', validator(schemaComment), createComment)
 router.post('/blogs/:id/likes',validateToken, addLike)
 router.get('/blogs/comment', getComment )
 export default router

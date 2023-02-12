@@ -6,7 +6,7 @@ const validateToken = async (req,res,next) =>{
     const token =authHeader && authHeader.split(" ")[1]
     let result
   if (!authHeader) {
-    res.status(403).send("access denied")
+   return res.status(403).send("access denied")
   }
   const expire = {
     expireIn: "24h"

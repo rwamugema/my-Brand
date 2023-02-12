@@ -25,8 +25,8 @@ const createBlog = async(req,res) =>{
 
 // get all blogs method
 const getBlog = async(req,res)=>{
-    const posts = await blogModel.find()
-    res.send(posts)
+    const posts = await blogModel.find({})
+    return res.status(200).json(posts)
 }
 
 //update blog
@@ -40,7 +40,7 @@ const updateBlog = async(req,res) =>{
             post.content = req.body.content
         } 
         await post.save()
-        res.send(post)
+       return res.send(post).status(200)
     } catch{
         res.status(404)
         res.send({error:'post does not exits'})
@@ -49,14 +49,18 @@ const updateBlog = async(req,res) =>{
 
  //get sinle blog 
  const getSingleBlog = async(req,res) =>{
-    try{
-    const post = await blogModel.findOne({_d:req.params.id})
-    res.send(post)
-    }catch{
-        res.status(404)
-        res.send({error:'post does not exist'})
-    }
-}
+    try {
+        const blog = await blogModel.findOne({ _id: req.params.id });
+        if (!blog) {
+        res.status(404).json({message:"Post not found"});
+        } else {
+        res.send(blog).status(200);
+        }
+        } catch (error) {
+        res.status(500).json({message:"something went wrong!"});
+        }
+        };
+
 
 //delete blog
 const deleteBlog = async(req,res) =>{
