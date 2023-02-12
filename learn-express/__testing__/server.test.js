@@ -62,7 +62,6 @@ const {body}= await request(app)
          expect(res.status).toBe(403)
         })
     })
-
         describe("sign up user", () =>{
             test("it should return 400", async () =>{
                 await request(app).post("/api/v1/signup").send(sign).expect(400)
@@ -73,9 +72,11 @@ const {body}= await request(app)
               const body =  await request(app).post("/api/v1/signup").send(signWithEmail).expect(400)
             })
         })
-        describe("login user", () =>{
+            describe("login user", () =>{
             test("it should return 400", async () =>{
                const res =  await request(app).post("/api/v1/login").send(logn)
+               token = res.body.accessToken
+               console.log(token);
                expect(res.status).toBe(200)
             })
             describe("create comment", () =>{
@@ -83,7 +84,6 @@ const {body}= await request(app)
                     let id= "12344556567567678"
                     const c = await request(app).post(`/blogs/${id}/comment/create`).send(comment)
                     expect(c.status).toBe(404)
-
                 })
             })
             describe("likes", () =>{
@@ -95,7 +95,13 @@ const {body}= await request(app)
             })
 
         })
-
+        describe("update blog",() =>{
+            test('Should update single  blog', async () => {
+                const response = await request(app).patch('/api/v1/blogs/id');
+                expect(response.statusCode).toBe(403);
+        
+              });
+        })
     // describe("create blog", () =>{
     //     test("it should create a blog", async () =>{
     //         const id = "12345566666"

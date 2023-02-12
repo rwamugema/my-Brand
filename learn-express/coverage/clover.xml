@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676195258725" clover="3.2.0">
-  <project timestamp="1676195258725" name="All files">
+<coverage generated="1676199305679" clover="3.2.0">
+  <project timestamp="1676199305680" name="All files">
     <metrics statements="141" coveredstatements="74" conditionals="29" coveredconditionals="7" methods="23" coveredmethods="10" elements="193" coveredelements="91" complexity="0" loc="141" ncloc="141" packages="7" files="17" classes="17"/>
     <package name="learn-express">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -118,10 +118,10 @@
       <file name="auth.js" path="/Users/andelarwanda/my-Brand/learn-express/middleware/auth.js">
         <metrics statements="11" coveredstatements="5" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="8" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="2" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
