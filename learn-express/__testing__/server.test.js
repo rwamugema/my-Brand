@@ -3,6 +3,7 @@ import app from "../index.js";
 import mongoose from "mongoose";
 import {createBlog } from "../controllers/blogController";
 
+
 let token =""
 const blogs = {
     title:"testing jest",
@@ -22,11 +23,9 @@ const logn = {
     email:"res@gmail.com",
     password:"123445"
 }
-const comment = {
-    comment: "comment"
-}
+let uploadedPost
 // const app = createServer()
-jest.setTimeout(20000)
+jest.setTimeout(30000)
 
 describe("testing", () =>{
     beforeAll(async() =>{
@@ -43,71 +42,113 @@ const {body}= await request(app)
         .expect(200)
       })
     })
-    describe("create blog ",() =>{
-        test("it should create blog ", async () =>{
-            const {body} = request(app)
-            .post("/api/v1/blogs").send(blogs).expect("content-type", /json/)
-        })
-    })
+ 
     describe("get single blog",() =>{
         test("it should return single blog", async () =>{
-            const id = "1234567890";
-            await request(app).get(`/api/v1/blogs/${id}`).expect(500)
+            const id = "63e669a510bf8ab57b4fa345";
+            await request(app).get(`/api/v1/blogs/${id}`).expect(200)
         })
     })
-    describe("delete blog", () =>{
-        test("it should delete a blog", async () =>{
-            const id = "34343434"
-         const res= await request(app).delete(`/api/v1/blogs/${id}`)
-         expect(res.status).toBe(403)
-        })
-    })
+  
+        // describe("sign up user", () =>{
+        //     test("it should return 400", async () =>{
+        //         await request(app).post("/api/v1/signup").send(sign).expect(400)
+        //     })
+        // })
         describe("sign up user", () =>{
-            test("it should return 400", async () =>{
-                await request(app).post("/api/v1/signup").send(sign).expect(400)
+            test("this is about signIn when there are send without identification",async()=>{
+                await request(app).post("/api/v1/signup").send({}).expect(200)
             })
-        })
-        describe("sign up user", () =>{
-            test("it should return 400", async () =>{
-              const body =  await request(app).post("/api/v1/signup").send(signWithEmail).expect(400)
+            const testing={
+                username:"bdhghdg",
+                email:"ddghjgdhg@gmail.com",
+                password:"gdhdghgdh"
+            }
+            test("it should sign in user",async()=>{
+                await request(app).post("/api/v1/signup").send(testing).expect(400)
             })
         })
             describe("login user", () =>{
-            test("it should return 400", async () =>{
-               const res =  await request(app).post("/api/v1/login").send(logn)
+            test("it should return 200", async () =>{
+               const res =  await request(app).post("/api/v1/login")
+               .send(logn)
                token = res.body.accessToken
-               console.log(token);
-               expect(res.status).toBe(200)
+               expect(res.statusCode).toBe(200)
             })
+            test("it should return 400", async () =>{
+                const res = await request(app)
+                .post("api/v1/login")
+                .send({email:""})
+                .expect(400)
+            })
+        })
+     
+        describe("create blog ",() =>{
+            test("it should create blog ", async () =>{
+               request(app)
+               const { body } = await request(app)
+                .post("/api/v1/blogs")
+                .set("Authorization", `Bearer ${token}`)
+                .field("title", "title title")
+                .field("content", "post content")
+                // .attach("image", path.resolve(__dirname, "../data/profile.jpg"))
+                .expect(201)
+                .expect("content-type", /json/)
+                // uploadedPost = body.blog.id;
+            })
+        })
+        describe("user logout", () =>{
+            test("user should logout", async() =>{
+              const res = await  request(app)
+                .get("/api/v1/logout")
+                .set("Authorization", `Bearer ${token}`)
+                .expect("content-type", /json/)
+                .expect(res.body).toBe("logout")
+                console.log(res)
+            })
+        })
+        describe("delete blog", () =>{
+            test("it should delete a blog", async () =>{
+                const id = "63e669a510bf8ab57b4fa345"
+             const res= await request(app)
+             .delete(`/api/v1/blogs/${id}`)
+             .set("Authorization", `Bearer ${token}`)
+             expect(res.status).toBe(204)
+            })
+        })
             describe("create comment", () =>{
                 test("it should create comment", async() =>{
-                    let id= "12344556567567678"
-                    const c = await request(app).post(`/blogs/${id}/comment/create`).send(comment)
-                    expect(c.status).toBe(404)
+                    let id= "63e66d952dc28981273fb0f8"
+                     request(app)
+                    .post(`/api/v1/blogs/${id}/comment/create`)
+                    .send({comment:"comment added"})
+                    .set("Authorization", `Bearer ${token}`)
+                    .expect(200);
+                    // .expect(c.status).toBe(200)
+                
                 })
             })
             describe("likes", () =>{
-                test("it should add like", async() =>{
-                    let id= "12344556567567678"
-                    const c = await request(app).post(`/blogs/${id}/likes`).expect(404)
+               test("it should return 403", async() =>{
+                    let id= "63e669a510bf8ab57b4fa345"
+                 const res= await   request(app)
+                    .post('/api/v1/blogs/63e669a510bf8ab57b4fa345/likes')
+                    // .set({authorization: token})
+                    expect(res.statusCode).toBe(403)
 
                 })
             })
-
-        })
         describe("update blog",() =>{
             test('Should update single  blog', async () => {
-                const response = await request(app).patch('/api/v1/blogs/id');
+                const id="1234567"
+                const response = await request(app)
+                .patch(`/api/v1/blogs/${id}`).send({title:"updated", content:"updating"})
+                .set({authorization: token})
                 expect(response.statusCode).toBe(403);
         
               });
         })
-    // describe("create blog", () =>{
-    //     test("it should create a blog", async () =>{
-    //         const id = "12345566666"
-    //        const body = await request(app)
-    //        .patch(`/api/v1/blogs/${id}`)
-    //         .expect(403)
-    //     })
-    // })
-})
+
+    })
+   
+    

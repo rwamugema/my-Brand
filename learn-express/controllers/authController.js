@@ -38,7 +38,7 @@ dotenv.config()
         })
        
         await user.save()
-        res.status(201).send({Message:"User registered Successfully"})
+      return  res.status(201).send({Message:"User registered Successfully"})
     } catch (error) {
         // c
         console.log(error);

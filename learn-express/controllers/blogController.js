@@ -9,15 +9,14 @@ import cloudinary from "../services/cloudinary.js";
 const createBlog = async(req,res) =>{
     try {
         const result = await cloudinary.uploader.upload(req.file.path)
-        // res.json(result)
+        res.json(result)
         const blog = new blogModel({
             title:req.body.title,
             content:req.body.content,
             image:result.url,
-            cloudinary_id:result.public_id
         }) 
         await blog.save()
-        res.json(blog)
+       return res.status(201).json(blog)
     } catch (err) {
         console.log(err);
     }

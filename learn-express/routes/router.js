@@ -24,15 +24,15 @@ router.get('/blogs', getBlog )
 //get single/individual post
 router.get('/blogs/:id', getSingleBlog)
 //create post
-router.post('/blogs',upload.single('image'), createBlog)
+router.post('/blogs',validateToken, upload.single('image'), createBlog)
 
 //delete post
 router.delete('/blogs/:id',validateToken, deleteBlog)
 router.get("/logout",validateToken, (req,res) =>{
-    res.send("logout")
+   return res.json({message:"logout"})
 })
 router.post('/login', validator(loginSchema),login,(req,res)=>{
-    res.json(user)
+   return res.json(user)
 })
 // sign up router
 router.post('/signup', validator(signupSchema), sign)
