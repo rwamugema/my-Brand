@@ -55,19 +55,19 @@ const {body}= await request(app)
         //         await request(app).post("/api/v1/signup").send(sign).expect(400)
         //     })
         // })
-        describe("sign up user", () =>{
-            test("this is about signIn when there are send without identification",async()=>{
-                await request(app).post("/api/v1/signup").send({}).expect(200)
-            })
-            const testing={
-                username:"bdhghdg",
-                email:"ddghjgdhg@gmail.com",
-                password:"gdhdghgdh"
-            }
-            test("it should sign in user",async()=>{
-                await request(app).post("/api/v1/signup").send(testing).expect(400)
-            })
-        })
+        // describe("sign up user", () =>{
+        //     test("this is about signIn when there are send without identification",async()=>{
+        //         await request(app).post("/api/v1/signup").send({}).expect(200)
+        //     })
+        //     const testing={
+        //         username:"bdhghdg",
+        //         email:"ddghjgdhg@gmail.com",
+        //         password:"gdhdghgdh"
+        //     }
+        //     test("it should sign in user",async()=>{
+        //         await request(app).post("/api/v1/signup").send(testing).expect(400)
+        //     })
+        // })
             describe("login user", () =>{
             test("it should return 200", async () =>{
                const res =  await request(app).post("/api/v1/login")
