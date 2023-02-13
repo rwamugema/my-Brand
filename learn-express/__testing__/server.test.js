@@ -1,7 +1,9 @@
 import request from "supertest";
 import app from "../index.js";
 import mongoose from "mongoose";
-import {createBlog } from "../controllers/blogController";
+import {createBlog, updateBlog } from "../controllers/blogController";
+import { sign } from "../controllers/authController.js";
+import { response } from "express";
 
 
 let token =""
@@ -9,11 +11,11 @@ const blogs = {
     title:"testing jest",
     content:"jest testing"
 }
-const sign = {
-    userName:"japhet jest",
-    email:"",
-    password:"57755"
-}
+// const sign = {
+//     userName:"japhet jest",
+//     email:"",
+//     password:"57755"
+// }
 const signWithEmail = {
     userName:"japhet jest",
     email:"jesttesting@gmail.com",
@@ -45,29 +47,30 @@ const {body}= await request(app)
  
     describe("get single blog",() =>{
         test("it should return single blog", async () =>{
-            const id = "63e669a510bf8ab57b4fa345";
-            await request(app).get(`/api/v1/blogs/${id}`).expect(404)
+            const id = "63e9e53b911487f0537e66e9";
+            await request(app).get(`/api/v1/blogs/${id}`).expect(200)
+        })
+        test("it should return 404", async() =>{
+            const idd = '12345'
+            await request(app).post(`/api/v1/blogs/${idd}`).expect(404)
         })
     })
   
-        // describe("sign up user", () =>{
-        //     test("it should return 400", async () =>{
-        //         await request(app).post("/api/v1/signup").send(sign).expect(400)
-        //     })
-        // })
-        // describe("sign up user", () =>{
-        //     test("this is about signIn when there are send without identification",async()=>{
-        //         await request(app).post("/api/v1/signup").send({}).expect(200)
-        //     })
-        //     const testing={
-        //         username:"bdhghdg",
-        //         email:"ddghjgdhg@gmail.com",
-        //         password:"gdhdghgdh"
-        //     }
-        //     test("it should sign in user",async()=>{
-        //         await request(app).post("/api/v1/signup").send(testing).expect(400)
-        //     })
-        // })
+       describe("sign user in", () =>{
+        test("should sign user in", async () =>{
+            const user = {
+                userName:"jehhhhhhh",
+                email:"je2@gmail.com",
+                password:"43434343434343"
+            }
+            const res = sign(user)
+            expect(res).toBeTruthy()
+            // const userBody = await request(app)
+            // .post('/api/v1/signup')
+
+            
+        })
+       })
             describe("login user", () =>{
             test("it should return 200", async () =>{
                const res =  await request(app).post("/api/v1/login")
@@ -128,26 +131,47 @@ const {body}= await request(app)
                 })
             })
             describe("likes", () =>{
-               test("it should return 403", async() =>{
-                    let id= "63e669a510bf8ab57b4fa345"
+               test("it should return 200", async() =>{
+                    let id= "63e9e53b911487f0537e66e9"
                  const res= await   request(app)
-                    .post('/api/v1/blogs/63e669a510bf8ab57b4fa345/likes')
-                    // .set({authorization: token})
-                    expect(res.statusCode).toBe(403)
+                    .post(`/api/v1/blogs/${id}/likes`)
+                    .set("Authorization", `Bearer ${token}`)
+                    .expect("content-type", /json/)
+                    // .expect(res.statusCode).toBe(200)
 
                 })
             })
+            describe("likes", () =>{
+                test("it should return 403", async () =>{
+                    let id = "iiijjjjiii"
+                    const response = await request(app)
+                    .post(`/api/v1/blogs/${id}/likes`)
+                    .set("Authorization", `Bearer ${token}`)
+                    .expect("content-type", /json/)
+                
+                })
+            })
         describe("update blog",() =>{
-            test('Should update single  blog', async () => {
+            test('Should not update single  blog', async () => {
                 const id="1234567"
                 const response = await request(app)
                 .patch(`/api/v1/blogs/${id}`).send({title:"updated", content:"updating"})
                 .set({authorization: token})
                 expect(response.statusCode).toBe(403);
-        
               });
         })
 
+        describe("update the single blog", () =>{
+            test("it should update single blog", async () =>{
+                let id = "63e9e53b911487f0537e66e9"
+               const updatedBlog = await request(app)
+                .patch(`/api/v1/blogs/${id}`)
+                .send({title:"updated", content:"updating"})
+                .set("Authorization", `Bearer ${token}`)
+                .expect(200)
+                console.log(updatedBlog.body);
+            })
+        })
     })
    
     

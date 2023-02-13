@@ -9,7 +9,7 @@ dotenv.config()
     // const {userName, password} = req.body
     const user= await schemaUser.findOne({email:req.body.email})
     if (!user) {
-        return res.json({errr:"user doesn't exist"}).status(400)
+        return res.status(400).json({err:"user doesn't exist"})
     }else{
         const Password = user.password
         bcrypt.compare(req.body.password , Password).then(async (match) =>{
@@ -41,9 +41,8 @@ dotenv.config()
       return  res.status(201).send({Message:"User registered Successfully"})
     } catch (error) {
         // c
-        console.log(error);
-        res.send(error)
-    }
+    //     res.send(error.Message)
+     }
 
 }
 export {login,sign}
