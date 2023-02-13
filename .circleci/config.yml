@@ -2,7 +2,7 @@
 jobs:
   build:
     docker:
-      - image: node:16.17.0
+      - image: node:18.13.0
   
     steps:
       - checkout:
