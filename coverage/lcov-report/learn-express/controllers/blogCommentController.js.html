@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.38% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/13</span>
+                <span class='fraction'>9/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.38% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/13</span>
+                <span class='fraction'>9/13</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -106,27 +106,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -144,28 +144,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import blogModel from "../models/post.js"
 import { Comment } from "../models/comment.js"
 import schemaUser from "../models/user.js"
-const createComment = <span class="fstat-no" title="function not covered" >as</span>ync (req,res) =&gt;{
-    const blogId = <span class="cstat-no" title="statement not covered" >req.params.id</span>
-<span class="cstat-no" title="statement not covered" >    blogModel.findOne({_id:blogId}).then(<span class="fstat-no" title="function not covered" >as</span>ync (blog) =&gt;{</span>
-<span class="cstat-no" title="statement not covered" >        if (!blog) {</span>
+const createComment = async (req,res) =&gt;{
+    const blogId = req.params.id
+    blogModel.findOne({_id:blogId}).then(async (blog) =&gt;{
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!blog) {
 <span class="cstat-no" title="statement not covered" >            return res.status(403).send({</span>
                 message:"no blog found",
             data:{}})
         }else{
-            const comment = <span class="cstat-no" title="statement not covered" >new Comment({</span>
+            const comment = new Comment({
                 comment: req.body.comment,
                 blogId:blogId,
                 userId:req.body._id
             })
-<span class="cstat-no" title="statement not covered" >         await blogModel.updateOne(</span>
+         await blogModel.updateOne(
                 {_id:blogId},
                 {
                     $push:{blogComment: comment._id}
                 }
                 
                 )
-<span class="cstat-no" title="statement not covered" >            await comment.save()</span>
-<span class="cstat-no" title="statement not covered" >            return res.status(200).send({</span>
+            await comment.save()
+            return res.status(200).send({
                 message: "comment created succefully",
                 data:comment
             })
@@ -187,7 +187,7 @@ export {createComment,getComment}</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-02-13T13:54:55.398Z
+                at 2023-02-13T16:29:37.585Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

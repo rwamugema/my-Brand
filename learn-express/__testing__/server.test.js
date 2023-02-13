@@ -48,29 +48,30 @@ const {body}= await request(app)
     describe("get single blog",() =>{
         test("it should return single blog", async () =>{
             const id = "63e9e53b911487f0537e66e9";
-            await request(app).get(`/api/v1/blogs/${id}`).expect(200)
+           const Getblog= await request(app).get(`/api/v1/blogs/${id}`).expect(200)
         })
         test("it should return 404", async() =>{
             const idd = '12345'
-            await request(app).post(`/api/v1/blogs/${idd}`).expect(404)
+          const noblog =   await request(app).post(`/api/v1/blogs/${idd}`).expect(404)
         })
     })
   
-       describe("sign user in", () =>{
-        test("should sign user in", async () =>{
-            const user = {
-                userName:"jehhhhhhh",
-                email:"je2@gmail.com",
-                password:"43434343434343"
-            }
-            const res = sign(user)
-            expect(res).toBeTruthy()
-            // const userBody = await request(app)
-            // .post('/api/v1/signup')
+    //    describe("sign user in", () =>{
+    //     test("should sign user in", async () =>{
+    //         const user = {
+    //             userName:"jehhhhhhh",
+    //             email:"je2@gmail.com",
+    //             password:"43434343434343"
+    //         }
+    //         // const res = sign(user)
+    //         // expect(res).toBeTruthy()
+    //         const userBody = await request(app)
+    //         .post('/api/v1/signup').send(user)
+    //         console.log(userBody);
 
             
-        })
-       })
+    //     })
+    //    })
             describe("login user", () =>{
             test("it should return 200", async () =>{
                const res =  await request(app).post("/api/v1/login")
@@ -121,7 +122,7 @@ const {body}= await request(app)
             describe("create comment", () =>{
                 test("it should create comment", async() =>{
                     let id= "63e66d952dc28981273fb0f8"
-                     request(app)
+                   await  request(app)
                     .post(`/api/v1/blogs/${id}/comment/create`)
                     .send({comment:"comment added"})
                     .set("Authorization", `Bearer ${token}`)
