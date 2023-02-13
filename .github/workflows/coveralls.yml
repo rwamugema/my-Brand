@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    repo_token:4Gyz2UxXVZy87gPU1thYWmwlEUo0TsawY
     strategy:
       matrix:
         node-version: [16.x]
