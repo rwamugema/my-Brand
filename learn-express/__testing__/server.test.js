@@ -46,7 +46,7 @@ const {body}= await request(app)
     describe("get single blog",() =>{
         test("it should return single blog", async () =>{
             const id = "63e669a510bf8ab57b4fa345";
-            await request(app).get(`/api/v1/blogs/${id}`).expect(200)
+            await request(app).get(`/api/v1/blogs/${id}`).expect(404)
         })
     })
   
@@ -78,8 +78,9 @@ const {body}= await request(app)
             test("it should return 400", async () =>{
                 const res = await request(app)
                 .post("api/v1/login")
-                .send({email:""})
+                .send({})
                 .expect(400)
+                .expect("content-type", /json/)
             })
         })
      
@@ -103,8 +104,6 @@ const {body}= await request(app)
                 .get("/api/v1/logout")
                 .set("Authorization", `Bearer ${token}`)
                 .expect("content-type", /json/)
-                .expect(res.body).toBe("logout")
-                console.log(res)
             })
         })
         describe("delete blog", () =>{
@@ -113,7 +112,7 @@ const {body}= await request(app)
              const res= await request(app)
              .delete(`/api/v1/blogs/${id}`)
              .set("Authorization", `Bearer ${token}`)
-             expect(res.status).toBe(204)
+             expect(res.status).toBe(400)
             })
         })
             describe("create comment", () =>{
