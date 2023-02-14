@@ -12,7 +12,7 @@ jobs:
     # repo_token:4Gyz2UxXVZy87gPU1thYWmwlEUo0TsawY
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.13.0]
 
     steps:
       - uses: actions/checkout@v2
