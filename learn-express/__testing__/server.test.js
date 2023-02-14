@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import {createBlog, updateBlog } from "../controllers/blogController";
 import { sign } from "../controllers/authController.js";
 import { response } from "express";
+import schemaUser from "../models/user.js";
 
 
 let token =""
@@ -16,10 +17,10 @@ const blogs = {
 //     email:"",
 //     password:"57755"
 // }
-const signWithEmail = {
-    userName:"japhet jest",
-    email:"jesttesting@gmail.com",
-    password:"57755"
+const  user = {
+    userName:"alexis",
+    email:"btrey@gmial.com",
+    password:"1234455566"
 }
 const logn = {
     email:"res@gmail.com",
@@ -27,14 +28,15 @@ const logn = {
 }
 let uploadedPost
 // const app = createServer()
-jest.setTimeout(30000)
+jest.setTimeout(10000)
 
 describe("testing", () =>{
     beforeAll(async() =>{
          await mongoose.connect("mongodb+srv://japhet:empire@cluster0.wcifge7.mongodb.net/test")
+        
     })
     afterAll(async() =>{
-         mongoose.disconnect();
+        await mongoose.disconnect();
    })
 describe("get blogs", () =>{
     test("it should return list of blogs",async() =>{
@@ -55,6 +57,21 @@ const {body}= await request(app)
           const noblog =   await request(app).post(`/api/v1/blogs/${idd}`).expect(404)
         })
     })
+    describe("User Signup", () => {
+        test("should sign up user", async () =>{
+             await request(app)
+            .post("/api/v1/signup")
+            .send(user).expect(201)
+        })
+        test("creates a new user", async () => {
+          expect(user).toMatchObject({
+            email: "btrey@gmial.com"
+          });
+        });
+        test("delete user", async () =>{
+            await schemaUser.deleteOne({ email: "btrey@gmial.com" });
+        })
+      });
   
     //    describe("sign user in", () =>{
     //     test("should sign user in", async () =>{
@@ -67,7 +84,7 @@ const {body}= await request(app)
     //         // expect(res).toBeTruthy()
     //         const userBody = await request(app)
     //         .post('/api/v1/signup').send(user)
-    //         console.log(userBody);
+            
 
             
     //     })
@@ -79,13 +96,6 @@ const {body}= await request(app)
                token = res.body.accessToken
                expect(res.statusCode).toBe(200)
             })
-            // test("it should return 400", async () =>{
-            //     const res = await request(app)
-            //     .post("api/v1/login")
-            //     .send({})
-            //     .expect(400)
-            //     .expect("content-type", /json/)
-            // })
         })
      
         describe("create blog ",() =>{
@@ -122,7 +132,7 @@ const {body}= await request(app)
             describe("create comment", () =>{
                 test("it should create comment", async() =>{
                     let id= "63e66d952dc28981273fb0f8"
-                   await  request(app)
+                 const c =  await  request(app)
                     .post(`/api/v1/blogs/${id}/comment/create`)
                     .send({comment:"comment added"})
                     .set("Authorization", `Bearer ${token}`)
@@ -170,7 +180,7 @@ const {body}= await request(app)
                 .send({title:"updated", content:"updating"})
                 .set("Authorization", `Bearer ${token}`)
                 .expect(200)
-                console.log(updatedBlog.body);
+                .expect("content-type", /json/)
             })
         })
     })
