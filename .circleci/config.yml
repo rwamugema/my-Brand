@@ -22,7 +22,7 @@ jobs:
       - image: node:18.13.0
     environment:
       COVERALLS_REPO_TOKEN: 4Gyz2UxXVZy87gPU1thYWmwlEUo0TsawY
-    working_directory: ~/mybrand/learn-express
+    working_directory: ~/mybrand
     steps:
       - checkout:
           path: ~/mybrand
