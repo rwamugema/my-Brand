@@ -14,10 +14,10 @@ dotenv.config()
         const Password = user.password
         bcrypt.compare(req.body.password , Password).then(async (match) =>{
             if (!match) {
-                return res.json("password is invalid")
+                return res.status(403).json("password is invalid")
             }else{
                const token = createToken(user)
-               return res.send(token).status(200)
+               return res.status(200).send(token)
             }
         })
        

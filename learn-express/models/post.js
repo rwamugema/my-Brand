@@ -5,7 +5,6 @@ const schema = mongoose.Schema({
     'content':String,
     'id':String,
     'image':String,
-    cloudinary_id:String,
     blogComment:[{type:mongoose.Schema.Types.ObjectId, ref:'comments'}],
     blogLike:[{type:mongoose.Schema.Types.ObjectId, ref:'blogLikes'}]
 })
