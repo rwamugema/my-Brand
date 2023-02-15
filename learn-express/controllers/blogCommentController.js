@@ -33,8 +33,14 @@ const createComment = async (req,res) =>{
         })
     })
 }
-const getComment = async (req,res) =>{
-    const comment = await Comment.find()
-    res.send(comment)
-}
-export {createComment,getComment}
+const getComments = async (req, res) => {
+    try {
+        const blogId = req.params.id;
+        const Comments = await Comment.find({ blogId });
+        const messages = Comments.map(Comment => Comment.message);
+        res.status(200).json({ messages });
+    } catch (err) {
+        res.status(404).json(err);
+    }
+};
+export {createComment,getComments}

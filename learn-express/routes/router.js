@@ -18,7 +18,7 @@ import { login } from '../controllers/authController.js'
 import { validateToken } from '../middleware/auth.js'
 import { Comment } from '../models/comment.js'
 import { createComment, 
-   getComment 
+   getComments
 } from '../controllers/blogCommentController.js'
 import cloudinary from '../services/cloudinary.js'
 import upload from '../services/multer.js'
@@ -421,7 +421,7 @@ router.post('/api/v1/blogs/:id/likes',validateToken, addLike)
  *               items:
  *                 $ref: '#/components/schemas/Comment'
  */
-router.get('/api/v1/blogs/comment', getComment )
+router.get('/api/v1/blogs/:id/comment', getComments )
 
 //contact from user
 /**
