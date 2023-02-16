@@ -288,8 +288,8 @@ router.post('/api/v1/signup', validator(signupSchema), sign)
  *     Comment:
  *       type: object
  *       required:
- *         - blog
- *         - name
+ *         - blogId
+ *         - userId
  *         - comment
  *       properties:
  *         blogId:
