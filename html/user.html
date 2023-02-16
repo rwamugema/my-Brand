@@ -38,7 +38,7 @@
       <div class="footer">
             <div id="footer">
             <p><a href="blogoverview.html">overview</a></p>
-            <p><a href="user.html">queries</a></p>
+            <p>queries</p>
             <p><a href="post.html">post</a></p>
             <p><a href="comment.html">comment</a></p>
             </a>
@@ -75,31 +75,30 @@
           document.getElementById('length').innerHTML = parentLength;
         const name =document.getElementById('local')
         const content =document.getElementById('content')
-        // var articles =JSON.parse( localStorage.getItem("message"))
-        const queries = fetch()
-        const date =new Date();
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-       articles.forEach(element => {
-
-      let commentTable =`
-          <td>${element.userName}</td>
-          <td>${element.userMessage}</td>
-          <td>${day}/${month}/${year}</td>
+        //get contacts from database
+          fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/contact')
+         .then(data => data.json())
+         .then(message =>message.forEach(element => {
+          let commentTable =`
+        <td>${element.userName}</td>
+        <td>${element.email}</td>
+        <td>${element.message}</td>
           <td><button id="button" onclick="deleteMessage(event)">delete</button></td>`
           let tr =document.createElement("tr")
          tr.innerHTML=commentTable
          document.querySelector("table").appendChild(tr)
-});
-const logout=document.getElementById("logout")
-      logout.addEventListener("click", ()=>{
-        const log =confirm("are you sure you want to log out")
-        if(log){
-          location.href="login.html"
-        }
+         }))
 
-      })
+// });
+// const logout=document.getElementById("logout")
+//       logout.addEventListener("click", ()=>{
+//         const log =confirm("are you sure you want to log out")
+//         if(log){
+//           location.href="login.html"
+//         }
+
+//       })
+        // }
       function deleteMessage(event) {
   if (confirm("Do You want to delete this message")) {
     const button = event.target;
@@ -117,8 +116,8 @@ const logout=document.getElementById("logout")
     localStorage.setItem("article", JSON.stringify(article));
   } else {
     return false;
-  }
-}
-        </script>
+}}
+      
+      </script>
 </body>
 </html>
