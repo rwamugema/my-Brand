@@ -61,17 +61,16 @@
       function validateForm() {
         var users = [];
         const user = {
-          id: Date.now(),
-          name: document.getElementsByName("name")[0].value,
+          email: document.getElementsByName("name")[0].value,
           password: document.getElementsByName("password")[0].value,
         };
         let pattern = "/^[^ ]+@[^ ] +\.[a-z]{2,3}$/";
-        if (user.name === "") {
+        if (user.email === "") {
           message.style.display = "none";
           message.innerHTML = "";
           message.innerHTML = "username can not be empty";
           message.style.display = "block";
-        } else if (user.name.length < 4) {
+        } else if (user.email.length < 4) {
           message.style.display = "block";
           message.innerHTML = "your username is short";
         } else if (!user.password) {
@@ -85,14 +84,29 @@
           message.innerHTML = "password is weak try above 8 characters";
           message.style.display = "block";
         } else {
-          if (localStorage.getItem("user") === null) {
-            users.push(user);
-            localStorage.setItem("user", JSON.stringify(users));
-          } else {
-            let stored = JSON.parse(localStorage.getItem("user"));
-            stored.push(user);
-            localStorage.setItem("user", JSON.stringify(stored));
-          }
+          fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/contact', {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+    });
+          // if (localStorage.getItem("user") === null) {
+          //   users.push(user);
+          //   localStorage.setItem("user", JSON.stringify(users));
+          // } else {
+          //   let stored = JSON.parse(localStorage.getItem("user"));
+          //   stored.push(user);
+          //   localStorage.setItem("user", JSON.stringify(stored));
+          // }
         }
       }
     </script>
