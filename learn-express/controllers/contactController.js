@@ -9,7 +9,7 @@ export const createContact = async(req,res) =>{
         const query = new contact({
             userName:req.body.userName,
             email:req.body.email,
-            message:req.body.meassage,
+            message:req.body.message,
         }) 
         await query.save()
        return res.status(201).json(query)
