@@ -75,7 +75,8 @@
           document.getElementById('length').innerHTML = parentLength;
         const name =document.getElementById('local')
         const content =document.getElementById('content')
-        var articles =JSON.parse( localStorage.getItem("message"))
+        // var articles =JSON.parse( localStorage.getItem("message"))
+        const queries = fetch()
         const date =new Date();
         let day = date.getDate();
         let month = date.getMonth() + 1;
