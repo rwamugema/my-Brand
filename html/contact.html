@@ -88,8 +88,8 @@
         const message = {
           id: Date.now(),
           userName: document.getElementsByName("username")[0].value,
-          userEmail:document.getElementsByName("email")[0].value,
-          userMessage: document.getElementsByName("message")[0].value,
+          email:document.getElementsByName("email")[0].value,
+          message: document.getElementsByName("message")[0].value,
         };
         // check user inputs
         let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -100,34 +100,37 @@
         } else if (message.userName.length < 3) {
           error.style.display = "block";
           error.innerHTML = "Your name may be short";
-        }else if (!message.userEmail ) {
+        }else if (!message.email ) {
           error.style.display ='block'
           error.innerHTML ='email is required'
-        }else if (!((message.userEmail).match(pattern))) {
+        }else if (!((message.email).match(pattern))) {
           error.style.display='block'
           error.innerHTML='email is invalid'
         }
-        else if (!message.userMessage) {
+        else if (!message.message) {
           error.style.display = "block";
           error.innerHTML = "Your message can not be empty";
-        } else if (message.userMessage.length < 5) {
+        } else if (message.message.length < 5) {
           error.style.display = "block";
           error.innerHTML = "Your message is a bit short";
         } else {
           // saving the infos to the local storage
-          if (localStorage.getItem("message") === null) {
-            messages.push(message);
-            localStorage.setItem("message", JSON.stringify(messages));
-            location.reload();
-          } else {
-            let stored = JSON.parse(localStorage.getItem("message"));
-            stored.push(message);
-            localStorage.setItem("message", JSON.stringify(stored));
-            location.reload();
+          const options = {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(message)
           }
+          fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/contact',{
+        mode: 'same-origin'
+      }, options)
+          .then(data =>
+          { 
+           console.log(data); 
+          }).then(msg => {console.log(msg)})
         }
       }
-
     </script>
   </body>
 </html>
