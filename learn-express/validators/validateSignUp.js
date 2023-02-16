@@ -8,9 +8,8 @@ export const signupSchema = joi.object({
     password:joi.string()
 })
 export const loginSchema = joi.object({
-    userName:joi.string(),
     email:joi.string().email().required(),
-    password:joi.string()
+    password:joi.string().min(8).max(15).required()
 })
 export const schemaComment = joi.object({
     comment:joi.string()
