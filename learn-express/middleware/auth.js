@@ -6,7 +6,7 @@ const validateToken = async (req,res,next) =>{
     const token =authHeader && authHeader.split(" ")[1]
     let result
   if (!authHeader) {
-   return res.status(403).send("access denied")
+   return res.status(403).json({error:"access denied"})
   }
   const expire = {
     expireIn: "24h"
@@ -25,7 +25,7 @@ const validateToken = async (req,res,next) =>{
      req.user = result.user
      next();
   } catch (error) {
-    return res.status(403).send("authorization failed")
+    return res.status(403).send({error:"authorization failed"})
   }
 }
 export {validateToken}
