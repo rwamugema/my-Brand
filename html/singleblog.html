@@ -147,10 +147,7 @@
 
   section.append(displayPost);
          const comments= await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment`)
-        console.log(comments);
-         const blogComment = await comments.json()
-         console.log(blogComment);
-        console.log(nameId);
+       
         //  const comment= blogComment.filter((e)=>e.blogId == nameId)
         //   comment.forEach(c => {
         //   let commentss = document.querySelector("#display-comment")
