@@ -52,7 +52,7 @@ const getComments = async (req, res) => {
           .status(204)
           .json({ message: "Can't find comment with given Blog id" });
   
-      return res.status(200).json({ comment: comment });
+      return res.status(200).json(comment);
     } catch (error) {
       res.status(500).json({ error:error.message});
     }
