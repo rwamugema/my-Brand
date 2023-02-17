@@ -12,6 +12,7 @@ const createBlog = async(req,res) =>{
         const newBlog = await blogModel.create({
             title : req.body.title,
             content:req.body.content,
+            category:req.body.category,
             image : result.secure_url
         })
         const blogCreated =await newBlog.save()
