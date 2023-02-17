@@ -8,17 +8,16 @@ import cloudinary from "../services/cloudinary.js";
 //create blog method
 const createBlog = async(req,res) =>{
     try {
-        // const result = await cloudinary.uploader.upload(req.file.path)
-        // res.json(result)
-        const blog = new blogModel({
-            title:req.body.title,
+        const result = await cloudinary.uploader.upload(req.file.path);
+        const newBlog = await blogModel.create({
+            title : req.body.title,
             content:req.body.content,
-            // image:result.url,
-        }) 
-        await blog.save()
-       return res.status(201).json(blog)
-    } catch (err) {
-        console.log(err);
+            image : result.secure_url
+        })
+        const blogCreated =await newBlog.save()
+        res.status(200).json(blogCreated)
+    } catch (error) {
+        res.status(404).json(error)
     }
 }
 
