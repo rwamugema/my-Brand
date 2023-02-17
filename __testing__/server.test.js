@@ -39,7 +39,7 @@ const {body}= await request(app)
  
     describe("get single blog",() =>{
         test("it should return single blog", async () =>{
-            const id = "63e9e53b911487f0537e66e9";
+            const id = "63ef51a66b7c4dab838ccbbc";
            const Getblog= await request(app).get(`/api/v1/blogs/${id}`).expect(200)
         })
         test("it should return 404", async() =>{

@@ -33,12 +33,13 @@ export const createServer = () =>{
     }
     const swaggerSpec = swaggerJsdoc(options)
     const app = express()
-    app.use(cors(({
-      origin:"*",methods:["GET","POST","DELETE","UPDATE","PUT","PATCH"]
-    })))
+    app.use(cors())
     app.use(express.json())
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
     app.use(router)
     return app
 }
 
+// ({
+//   origin:"*",methods:["GET","POST","DELETE","UPDATE","PUT","PATCH"]
+// })
