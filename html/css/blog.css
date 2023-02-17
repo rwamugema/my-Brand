@@ -73,7 +73,6 @@ body {
     text-decoration: none;
   } */
   #section {
-    margin-left: 10rem;
     min-width:600px;
     height: fit-content;
     display: flex;
@@ -84,6 +83,7 @@ body {
     height: 100%;
   }
 .blogcontainer {
+  margin-bottom: 1rem;
     position: relative;
     width: 250px;
     height: 250px;
@@ -206,46 +206,15 @@ body {
   li {
     list-style: none;
   }
-  section {
+  #section {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 300px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     padding-top: 1rem;
   }
-  section .science {
-    width: 250px;
-    height: 250px;
-    position: relative;
-    border: 1px solid #ef9309;
-    border-radius: 5px;
-    /* background-color: blue; */
-  }
-  section .football {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    /* margin: 15px auto; */
-    border: 1px solid #ef9309;
-    border-radius: 5px;
-    /* background-color: blue; */
-  }
-  section .nature {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    border: 1px solid #ef9309;
-    border-radius: 5px;
-    /* background-color: blue; */
-  }
-  section .movies {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    /* margin:15px auto; */
-    border: 1px solid #ef9309;
-    border-radius: 5px;
-    /* background-color: blue; */
-  }
+  
   img {
     width: 100%;
     height: 100%;
