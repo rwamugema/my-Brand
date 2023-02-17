@@ -147,17 +147,18 @@
 
   section.append(displayPost);
          const comments= await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment`)
-       
+         const c = await comments.json()
+         console.log(c.comment.comment);
+          let commentss = document.querySelector("#display-comment")
+          let displayComment = document.createElement('div')
+          displayComment.innerHTML=` 
+           <span>${c.comment.comment} .${day}/${month}</span>
+          </div>
+           `
+        commentss.append(displayComment)
+          
         //  const comment= blogComment.filter((e)=>e.blogId == nameId)
-        //   comment.forEach(c => {
-        //   let commentss = document.querySelector("#display-comment")
-        //   let displayComment = document.createElement('div')
-        //   displayComment.innerHTML=` 
-        //    <span>${c.userName}    .${day}/${month}</span>
-        //    <p>${c.userComment}</p>
-        //   </div>
-        //    `
-        // commentss.append(displayComment)
+       
 // });
 
 //add comment form
@@ -176,7 +177,7 @@ let commentPost = document.querySelector("#add-comment")
           </div>
             `
             commentPost.append(addComment)
-            }
+        }
     </script>
   </body>
 </html>
