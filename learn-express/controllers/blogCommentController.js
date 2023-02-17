@@ -19,7 +19,6 @@ const createComment = async (req,res) =>{
                 {
                     $push:{blogComment: comment._id}
                 }
-                
                 )
             await comment.save()
             return res.status(200).send({
@@ -33,14 +32,29 @@ const createComment = async (req,res) =>{
         })
     })
 }
+// const getComments = async (req, res) => {
+//     try {
+//         const blogId = req.params.id;
+//         const Comments = await Comment.find({ blogId });
+//         const messages = Comments.map(Comment => Comment.message);
+//         res.status(200).json({ messages });
+//     } catch (err) {
+//         res.status(404).json(err);
+//     }
+// };
 const getComments = async (req, res) => {
     try {
-        const blogId = req.params.id;
-        const Comments = await Comment.find({ blogId });
-        const messages = Comments.map(Comment => Comment.message);
-        res.status(200).json({ messages });
-    } catch (err) {
-        res.status(404).json(err);
+        const blogId = req.params.id
+      const comment = await Comment.findOne({blogId})
+    //   .select("name content -_id");
+      if (!comment)
+        return res
+          .status(204)
+          .json({ message: "Can't find comment with given Blog id" });
+  
+      return res.status(200).json({ comment: comment });
+    } catch (error) {
+      res.status(500).json({ error:error.message});
     }
-};
+  };
 export {createComment,getComments}
