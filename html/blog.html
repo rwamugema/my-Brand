@@ -32,38 +32,6 @@
     </main>
     <section>
       <div id="section">
-        <div class="blogcontainer">
-          <span></span>
-            <img src="" alt="">
-              <div class="container">
-<div id="head"></div>
-<div id="content">
-  <p>content</p>
-</div>
-              </div>
-        </div>
-        <div class="blogcontainer">
-          <span></span>
-            <img src="" alt="">
-              <div class="container">
-              <div id="head"></div>
-<div id="content">
-  <p>content</p>
-</div>
-              </div>
-          
-        </div>
-        <div class="blogcontainer">
-          <span></span>
-            <img src="" alt="">
-              <div class="container">
-  <div id="head"></div>
-<div id="content">
-  <p>content</p>
-</div>
-              </div>
-          
-        </div>
       </div>
     </section>
     <footer>
@@ -96,7 +64,7 @@
      blog.forEach(post => {
         let posts =`
         <div class="blogcontainer">
-          <span></span>
+          <span>${post.category}</span>
           <img src="${post.image}">
         <div class="container">
           <div id="head">

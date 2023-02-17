@@ -52,6 +52,7 @@
           <tr>
             <th>post</th>
             <th>content</th>
+            <th>category</th>
             <th>date</th>
           </tr>
         </table>
@@ -76,28 +77,26 @@
         let parentNode = document.getElementsByTagName('table')
         let parentLength = parentNode.length;
         document.getElementById('length').innerHTML = parentLength;
-        var articles =JSON.parse( localStorage.getItem("article"))
         const date =new Date();
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
-      articles.forEach(element => {
-      let commentTable =`
-          <td>${element.postTitle}</td>
-          <td>${element.textarea}</td>
-          <td>${day}/${month}/${year}</td>`
-          let tr =document.createElement("tr")
-         tr.innerHTML=commentTable
-         document.querySelector("table").appendChild(tr)
+      //function to display blogs on the dashboard
+      const displayBlog = async () =>{
+          const response = await fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs')
+          const data =await response.json()
+          data.forEach(element => {
+   let blog =`
+    <td>${element.title}</td>
+    <td>${element.content}</td>
+    <td>${element.category}</td>
+    <td>${day}/${month}/${year}</td>`
+    let tr =document.createElement("tr")
+   tr.innerHTML=blog
+   document.querySelector("table").appendChild(tr)
 });
-      const logout=document.getElementById("logout")
-      logout.addEventListener("click", ()=>{
-        const log =confirm("are you sure you want to log out")
-        if(log){
-          location.href="login.html"
         }
-
-      })
+        displayBlog()
         </script>
 </body>
 </html>

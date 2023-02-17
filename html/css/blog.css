@@ -76,7 +76,9 @@ body {
     min-width:600px;
     height: fit-content;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
   }
   img {
     width: 100%;
