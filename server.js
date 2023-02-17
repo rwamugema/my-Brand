@@ -15,7 +15,7 @@ export const createServer = () =>{
             },
     
             servers:[{
-                url:["http://localhost:5000","https://naughty-jay-tank-top.cyclic.app"]
+                url:"https://naughty-jay-tank-top.cyclic.app"
             }],
             components: {
                 securitySchemes: {
