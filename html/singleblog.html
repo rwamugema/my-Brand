@@ -38,7 +38,6 @@
         <div id="display-comment">
           <h3>comments</h3>
         </div>
-        <h5>add comment</h5>
         <div id="add-comment">
         </div>
       </div>
@@ -148,14 +147,21 @@
   section.append(displayPost);
          const comments= await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment`)
          const c = await comments.json()
-         console.log(c.comment.comment);
-          let commentss = document.querySelector("#display-comment")
+         let commentss = document.querySelector("#display-comment")
           let displayComment = document.createElement('div')
+        //  const blogComment = Object.keys(c)
+        for (const comment in c) {
           displayComment.innerHTML=` 
-           <span>${c.comment.comment} .${day}/${month}</span>
+          <p>${c.comment}</p>
           </div>
            `
+        }
         commentss.append(displayComment)
+        //  blogComment.forEach(c => {
+          
+        //  });
+        
+        
           
         //  const comment= blogComment.filter((e)=>e.blogId == nameId)
        
