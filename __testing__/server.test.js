@@ -62,23 +62,7 @@ const {body}= await request(app)
             await schemaUser.deleteOne({ email: "btrey@gmial.com" });
         })
       });
-  
-    //    describe("sign user in", () =>{
-    //     test("should sign user in", async () =>{
-    //         const user = {
-    //             userName:"jehhhhhhh",
-    //             email:"je2@gmail.com",
-    //             password:"43434343434343"
-    //         }
-    //         // const res = sign(user)
-    //         // expect(res).toBeTruthy()
-    //         const userBody = await request(app)
-    //         .post('/api/v1/signup').send(user)
-            
 
-            
-    //     })
-    //    })
             describe("login user", () =>{
             test("it should return 200", async () =>{
                const res =  await request(app).post("/api/v1/login")
@@ -116,6 +100,7 @@ const {body}= await request(app)
              const res= await request(app)
              .delete(`/api/v1/blogs/${id}`)
              .set("Authorization", `Bearer ${token}`)
+             console.log(token);
              expect(res.status).toBe(400)
             })
         })
