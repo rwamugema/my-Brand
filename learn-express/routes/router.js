@@ -27,6 +27,32 @@ import { createContact, deleteQuery, getQueries } from '../controllers/contactCo
 const router = express.Router()
 /**
  * @swagger
+ *  components:
+ *   schemas:
+ *     Blogs:
+ *       type: object
+ *       required:
+ *         -id
+ *         - title
+ *         - category
+ *         - content
+ *         - image
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: The unique identifier of the  blog.
+ *         title:
+ *           type: string
+ *           description: the title of the blog.
+ *         content:
+ *           type: string
+ *           description: The content of the blog.
+ *         category:
+ *           type: string
+ *           description: blog category
+ *         image:
+ *          type: file
+ *          description: blog image
  * tags:
  *   name: Blogs
  *   description: Blogs  api
@@ -34,16 +60,24 @@ const router = express.Router()
  *   get:
  *     summary: Get all blogs
  *     tags: [Blogs]
- *     responses:
+ *   requestBody:
+ *       description: blogs to be retrived
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Blogs'
+ *   responses:
  *       200:
  *         description: Blog Retrieved
  *         content:
  *           application/json:
  *             schema:
- *               type: object
+ *               $ref: '#/components/schemas/Blogs'
  *               properties:
  *                 code:
  *                   type: integer
+ *    
  */
 router.get('/api/v1/blogs', getBlog )
 
@@ -248,6 +282,28 @@ router.post('/api/v1/login', validator(loginSchema),login,(req,res)=>{
 // sign up router
 /**
  * @swagger
+ *  components:
+ *   schemas:
+ *     user:
+ *       type: object
+ *       required:
+ *         -id
+ *         - userName
+ *         - email
+ *         - password
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: The unique identifier of the user.
+ *         userName:
+ *           type: string
+ *           description: The name associated with the user.
+ *         email:
+ *           type: string
+ *           description: the unique email of the user.
+ *         password:
+ *           type: string
+ *           description: user password
  * "/api/v1/signup":
  *  post:
  *     tags:
@@ -257,8 +313,8 @@ router.post('/api/v1/login', validator(loginSchema),login,(req,res)=>{
  *      required: true
  *      content:
  *        application/json:
- *           schema:
- *            type: object
+ *            schema:
+ *             $ref: '#/components/schemas/Blogs'
  *            required:
  *              - userName
  *              - email
@@ -334,6 +390,24 @@ router.post('/api/v1/signup', validator(signupSchema), sign)
 router.post('/api/v1/blogs/:id/comment/create', validator(schemaComment), createComment)
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     like:
+ *       type: object
+ *       required:
+ *         -id
+ *         - blogId
+ *         - userId
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: The unique identifier of the like.
+ *         blogId:
+ *           type: string
+ *           description: The id associated with the blog.
+ *         userId:
+ *           type: string
+ *           description: the unique id of the user.
  * /api/v1/blogs/{id}/likes:
  *   post:
  *     tags:
@@ -426,6 +500,28 @@ router.get('/api/v1/blogs/:id/comment', getComments )
 //contact from user
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     contact:
+ *       type: object
+ *       required:
+ *         -id
+ *         - userName
+ *         - email
+ *         - message
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: The unique identifier of the message.
+ *         userName:
+ *           type: string
+ *           description: The name associated with the user.
+ *         email:
+ *           type: string
+ *           description: the unique email of the user.
+ *         message:
+ *           type: string
+ *           description: user message
  * /api/v1/contact:
  *   get:
  *     tags:
