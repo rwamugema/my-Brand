@@ -160,31 +160,32 @@
     //      error.innerHTML ='category name is short'
     //    }
        const image=document.getElementById('image').files[0]
-     let title= document.getElementsByName('name')[0].value
+    const title= document.getElementsByName('name')[0].value
       let content = document.getElementsByName('textarea')[0].value
       let category =document.getElementsByName('category')[0].value
-    async function validatePost() {
+  function validatePost() {
       const formData = new FormData()
+      console.log(title);
              formData.append("title", title)
              formData.append("category",category)
              formData.append("content",content )
              formData.append( "image",image)
-             const response = await fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs',{
-              method:'POST',
-              mode:'cors',
-              headers:{
-                'content-type':'application/json'
-              },
-              body: JSON.stringify(formData)
+            //  const response = await fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs',{
+            //   method:'POST',
+            //   mode:'no-cors',
+            //   headers:{
+            //     'content-type':'application/json'
+            //   },
+            //   body: JSON.stringify(formData)
+            //  })
+             
+          axios.post("https://naughty-jay-tank-top.cyclic.app/api/v1/blogs", formData,
+             {"Content-Type": "multipart/form-data",
              })
-             console.log(response);
-          //  await  axios.post("https://naughty-jay-tank-top.cyclic.app/api/v1/blogs", formData,
-          //    {"Content-Type": "multipart/form-data",
-          //   mode:'cors' })
-          //    .then((res)=> console.log("response", res))
-          //    .catch((error)=>{
-          //      console.log("error", error)
-          //    })
+             .then((res)=> console.log("response", res))
+             .catch((error)=>{
+               console.log("error", error)
+             })
     }
    
 //stored the post on the local storage
