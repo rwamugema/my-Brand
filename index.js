@@ -6,7 +6,5 @@ mongoose.set("strictQuery",false)
 .connect("mongodb+srv://japhet:empire@cluster0.wcifge7.mongodb.net/test", {
     useNewUrlParser:true,
 })
-    // app.listen(5000)
-    // swaggerDocs(app, 5000)
-        // console.log('server has started');
+    app.listen(5000)
         export default app
