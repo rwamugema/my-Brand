@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,7 +89,7 @@
     <td>${element.category}</td>
     <td>${day}/${month}/${year}</td>
     <td><button id="editbtn"><a href="editblog.html?_id=${element._id}">edit</a></button></td>
-    <td><button id="button" onclick="deleteMessage(event)">delete</button></td>`
+    <td><button id="button" onclick="deleteMessage('${element._id}')">delete</button></td>`
     let tr =document.createElement("tr")
    tr.innerHTML=blog
    document.querySelector("table").appendChild(tr)
@@ -102,56 +103,27 @@ const logout=document.getElementById("logout")
           location.href="login.html"
         }
       })
-      function deleteMessage(event) {
+   async   function deleteMessage(id) {
+    const response = await fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs',
+          )
+          const data =await response.json()
 
+    const token = localStorage.getItem('token') 
+    const t = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzZjMzOTk0ZjhjODc3YmM1MWYzZjg4YSIsInVzZXJOYW1lIjoiUndhbXVnZW1hIGphcGhldCIsImVtYWlsIjoiamV0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ1Uk9QZ2tydjBBejRyNS5IVUxrU3hPTi9EZGNSd0hud0tjZDJiTlBneDR4eGhUQjNNc3cxcSIsIl9fdiI6MH0sImlhdCI6MTY3Njg5MzMwMn0.ErgrajWV4SyNenGtUVuEY_qsv0e3bCt7FXFVl9FLazI'
   if (confirm("Do You want to delete this message")) {
-    const button = event.target;
-    const tr = button.closest("tr");
-    const dataId = tr.getAttribute("data-id");
-    // console.log(dataId);
-    let article;
-    if (localStorage.getItem("article") === null) {
-      article = [];
-    } else {
-      article = JSON.parse(localStorage.getItem("article"));
-    }
-    article = article.filter((message) => message.id !== parseInt(dataId));
-    tr.remove();
-    localStorage.setItem("article", JSON.stringify(article));
-  } else {
-    return false;
+      const contactId = data.findIndex((obj) => obj._id === id)
+      console.log(token);
+     await axios.delete(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${id}`,{
+      headers:{
+                Authorization: `bearer ${token}`,
+                'content-type':'application/json'
+            }
+   })
+     .then(res => data.splice(contactId,1)) 
+     .catch(error=> console.log(error))  
   }
+  location.reload()
 }
-
-
-// function editMessage(event) {
-//   // if (confirm("Do You want to delete this message")) {
-//     const button = event.target;
-//     const tr = button.closest("tr");
-//     const dataId = tr.getAttribute("data-id");
-//    tr.contentEditable=true
-//    const input =document.createElement('input')
-//    const content =document.createElement('input')
-//    const td=tr.firstElementChild
-//    input.value =td.textContent
-//    tr.appendChild(input)
-//    tr.removeChild(td)
-//    button.textContent='save'
-//    if (button.textContent ==='save') {
-//     const td=
-//    }
-
-//     // let article;
-//   //   if (localStorage.getItem("article") === null) {
-//   //     article = [];
-//   //   } else {
-//   //     article = JSON.parse(localStorage.getItem("article"));
-//   //   }
-//   //   article = article.filter((message) => message.id !== parseInt(dataId));
-//   // } else {
-//   //   return false;
-
-// console.log("jet");
 displayBlog();
  </script>
 </body>

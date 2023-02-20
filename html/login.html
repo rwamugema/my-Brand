@@ -97,11 +97,13 @@
   if (!response.ok) {
     message.style.display = "block"
     message.innerHTML = "invalid email or password"
-  }
-  const data = await response.json()
+  }else{
+    const data = await response.json()
   const token = data.accessToken
   localStorage.setItem('token',token)
   window.location.href = 'blogoverview.html'
+  }
+  
     } catch (error) {
       message.style.display = 'block'
       message.innerHTML = 'invalid email or password'
