@@ -65,9 +65,7 @@
             userName : document.getElementsByName("name")[0].value,
              email : document.getElementsByName("email")[0].value,
              password : document.getElementsByName("password")[0].value,
-            //  confirmPassword :  document.getElementsByName("confirmPassword")[0].value,
         };
-// va;idate user infos
     if (user.userName ==='' || user.email === "" ||
           user.password === "" ||
           user.confirmPassword === "") {
@@ -80,11 +78,6 @@
           message.innerHTML = "password is weak";
           message.style.display = "block";
     }
-    // else if (user.confirmPassword !== user.password) {
-    //       message.innerHTML = "passwords does not much";
-    //       message.style.display = "block";
-    // }
-// saving to the local storage
 // check if local storage is empty then set new data
 else{
   fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/signup', {
@@ -103,24 +96,6 @@ else{
       console.error("There was a problem with the fetch operation:", error);
     });
   }
-    // else if (localStorage.getItem("users") ===null)
-    // {
-    //   users.push(user)
-    //   localStorage.setItem("users",JSON.stringify(users))
-    // }
-    // // if not get data that are inside localstorage and add new data
-    // else{
-    //   users.push(user)
-    //   let stored =JSON.parse(localStorage.getItem("users"))
-    //   stored.push(user)
-    //   localStorage.setItem("users",JSON.stringify(stored))
-    // }
-
-//   localStorage.setItem("user",JSON.stringify(users))
-// }else{
-//  let item=localStorage.getItem("users")
-//   localStorage.setItem("user",JSON.stringify(item))
-// }
     }
     </script>
   </body>

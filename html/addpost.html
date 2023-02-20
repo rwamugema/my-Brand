@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
   <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -116,19 +117,17 @@
     reader.onload = () => resolve(reader.result);
     reader.onerror = error => reject(error);
 });
-     async function validatePost(){
-      const imgv=document.getElementById('image').files[0]
-      let convert=await toBase64(imgv)
-      let PostTitle= document.getElementsByName('name')[0].value
-      let TextArea = document.getElementsByName('textarea')[0].value
-      let Category =document.getElementsByName('category')[0].value
-      let article ={
-           postTitle:PostTitle,
-           textarea:TextArea,
-           category:Category,
-           image:convert,
-           comment:[]
-    };
+    //  async function validatePost(){
+   
+    //   let convert=await toBase64(imgv)
+    
+    //   let article ={
+    //        postTitle:PostTitle,
+    //        textarea:TextArea,
+    //        category:Category,
+    //        image:convert,
+    //        comment:[]
+    // };
    
        //read image from the inputs
       //  const imgv=document.getElementById('image')
@@ -160,22 +159,50 @@
     //    error.style.display ='block'
     //      error.innerHTML ='category name is short'
     //    }
+       const image=document.getElementById('image').files[0]
+     let title= document.getElementsByName('name')[0].value
+      let content = document.getElementsByName('textarea')[0].value
+      let category =document.getElementsByName('category')[0].value
+    async function validatePost() {
+      const formData = new FormData()
+             formData.append("title", title)
+             formData.append("category",category)
+             formData.append("content",content )
+             formData.append( "image",image)
+             const response = await fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs',{
+              method:'POST',
+              mode:'cors',
+              headers:{
+                'content-type':'application/json'
+              },
+              body: JSON.stringify(formData)
+             })
+             console.log(response);
+          //  await  axios.post("https://naughty-jay-tank-top.cyclic.app/api/v1/blogs", formData,
+          //    {"Content-Type": "multipart/form-data",
+          //   mode:'cors' })
+          //    .then((res)=> console.log("response", res))
+          //    .catch((error)=>{
+          //      console.log("error", error)
+          //    })
+    }
+   
 //stored the post on the local storage
-fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs', {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(article),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("There was a problem with the fetch operation:", error);
-    });
+// fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs', {
+//     method: "POST",
+//     mode: "cors",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(article),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       console.log(data);
+//     })
+//     .catch((error) => {
+//       console.error("There was a problem with the fetch operation:", error);
+//     });
         
     //       let articles=JSON.parse(localStorage.getItem("article")) || []
     //       articles.push({
@@ -200,7 +227,7 @@ fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs', {
           
         //   }
         // }
-      }
+      // }
     
   
  </script>
