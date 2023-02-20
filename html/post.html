@@ -78,7 +78,8 @@
         let year = date.getFullYear();
         //function to display blogs on the dashboard
         const displayBlog = async () =>{
-          const response = await fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs')
+          const response = await fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs',
+          )
           const data =await response.json()
           data.forEach(element => {
    let blog =`
