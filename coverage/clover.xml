@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676643489839" clover="3.2.0">
-  <project timestamp="1676643489839" name="All files">
-    <metrics statements="171" coveredstatements="89" conditionals="35" coveredconditionals="8" methods="26" coveredmethods="9" elements="232" coveredelements="106" complexity="0" loc="171" ncloc="171" packages="7" files="19" classes="19"/>
+<coverage generated="1676879991738" clover="3.2.0">
+  <project timestamp="1676879991738" name="All files">
+    <metrics statements="169" coveredstatements="87" conditionals="35" coveredconditionals="8" methods="26" coveredmethods="9" elements="230" coveredelements="104" complexity="0" loc="169" ncloc="169" packages="7" files="19" classes="19"/>
     <package name="my-Brand">
-      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.js" path="/Users/andelarwanda/my-Brand/index.js">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
       </file>
       <file name="server.js" path="/Users/andelarwanda/my-Brand/server.js">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
       </file>
     </package>
     <package name="my-Brand.learn-express.controllers">
@@ -96,8 +94,8 @@
         <line num="51" count="1" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
         <line num="53" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
         <line num="67" count="0" type="stmt"/>

@@ -2,7 +2,6 @@ import express from 'express'
 import router from './learn-express/routes/router.js'
 import swaggerJsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
-import cors  from 'cors'
    
 export const createServer = () =>{
     const options = {
@@ -33,7 +32,6 @@ export const createServer = () =>{
     }
     const swaggerSpec = swaggerJsdoc(options)
     const app = express()
-    app.use(cors())
     app.use(express.json())
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
     app.use(router)
