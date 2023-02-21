@@ -34,7 +34,7 @@ body{
 .container{
 margin: 2rem auto;
 width: 350px;
-height: 500px;
+height: 600px;
 background-color: #333;
 border-radius: 5px;
 display: flex;
@@ -67,6 +67,17 @@ padding: 0 10px;
     border-radius:5px;
     outline: none;
     color: white;
+}
+.container #imageUpdate{
+    background-color: white;
+    width: 120px;
+    height: 150px;
+    border-radius: 10px;
+   
+}
+.container #imageUpdate img{
+    width: 100%;
+    height: 100%;
 }
 .container #btn{
     background-color: green;

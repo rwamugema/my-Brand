@@ -345,7 +345,7 @@ table tr th {
   .over-view {
     width: 70%;
     border: 1px solid #fff;
-    border-radius: 20px;
+    border-radius: 10px;
     height: max-content;
     padding: 0.8rem;
   }

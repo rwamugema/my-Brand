@@ -29,15 +29,30 @@
         <label for="postcontent">post content:</label>
         <textarea name="postContent" id="content" cols="30" rows="10"></textarea>
         <label for="image" >post image:</label>
+        <div id="imageUpdate"></div>
         <input type="file" id="image">
         <button id="btn" onclick="updatePost()">update</button>
 </div>
 <script>
-    
+     const  urlParams = new URL(window.location).searchParams;
+        const  nameId =urlParams.get("_id")
+        async function getBlogs(){
+           let res = await  fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}`)
+           const blogRetrieved = await res.json()
+           let title = document.getElementById('title')
+           let category = document.getElementById('category')
+           let content = document.getElementById('content')
+           title.value = blogRetrieved.title
+           category.value = blogRetrieved.category
+           content.value = blogRetrieved.content
+        //    let img = document.createElement('img')
+        //    img.src = blogRetrieved.image
+        //    let image = document.getElementById('imageUpdate')
+        //    image.appendChild(img)
+        }
+       
     async function updatePost(){  
         let token = localStorage.getItem('token')
-        const  urlParams = new URL(window.location).searchParams;
-        const  nameId =urlParams.get("_id")
         const blog = {
               title: document.getElementById("title").value,
               category: document.getElementById('category').value,
@@ -55,12 +70,13 @@
         try {
             const response = await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}`,options)
             const data = await response.json()
+            console.log(data);
         } catch(error){
             errorMessage.innerHTML = error.message
         }
     }
    
-    
+    getBlogs()
    
 </script>
 </body>

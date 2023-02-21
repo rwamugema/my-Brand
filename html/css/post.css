@@ -26,8 +26,12 @@ table td #btn button:first-child{
 #button{
   color: white;
   background-color: #bb2525;
+  font-size: 16px;
   padding: 5px;
   text-transform: capitalize;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
 }
 #editbtn{
   background-color: #fff;
@@ -35,9 +39,14 @@ table td #btn button:first-child{
   font-size: 16px;
   color: black;
   text-transform: capitalize;
+  margin-left: 10px;
   padding: 5px;
   border: none;
   outline: none;
+}
+#editbtn a{
+  text-decoration: none;
+  color: black;
 }
 #overview button {
   margin-left: auto;
