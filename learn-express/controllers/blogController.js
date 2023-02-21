@@ -13,6 +13,7 @@ const createBlog = async(req,res) =>{
             title : req.body.title,
             content:req.body.content,
             category:req.body.category,
+            summary:req.body.summary,
             image : result.secure_url
         })
         const blogCreated =await newBlog.save()
@@ -38,6 +39,9 @@ const updateBlog = async(req,res) =>{
         }
         if (req.body.content) {
             post.content = req.body.content
+        } 
+        if (req.body.summary) {
+            post.content = req.body.summary
         } 
 if (req.file) {
       result = await cloudinary.uploader
