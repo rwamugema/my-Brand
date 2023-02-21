@@ -22,10 +22,7 @@ const createComment = async (req,res) =>{
         //         }
         //         )
             await comment.save()
-            return res.status(200).send(
-                "comment created succefully",
-                
-            )
+            return res.status(200).send("comment created succefully")
         }
     }).catch((error) =>{
         res.status(402).send({
