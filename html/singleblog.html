@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" -->
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     
     <link rel="stylesheet" href="css/singleblog.css" />
      <link rel="website icon" href="image/logo.png" />
@@ -36,7 +36,7 @@
       </div>
       <div class="comment">
         <div id="display-comment">
-          <h3>comments</h3>
+          <h3 id="length"></h3>
         </div>
         <div id="add-comment">
           <input type="text" name="name" id="input" placeholder="your name" />
@@ -79,10 +79,19 @@
           x.style.display = "block";
         }
       }
-      const  userName= document.querySelector("#input")
-       const  comment= document.querySelector("comments")
-      //function to append the name and comment of a user
-    async  function validateComment() {
+      function likeFunction(x) {
+       let isred = x.style.color
+       if (!isred) {
+        x.style.color = 'red'
+       }
+    else{
+         x.style.color = 'white'
+       
+       }
+}
+      // validate user inputs on the front side
+    
+     async  function validateComment() {
     const token = localStorage.getItem('token')
     const urlParams = new URL(window.location).searchParams;
     const nameId = urlParams.get("id");
@@ -105,14 +114,13 @@
           error.style.display = "block";
           error.style.display = "comment is short try 5 words ";
         } else {
-          comments.push(comment)
           const options = {
             method: 'POST',
             headers:{
               Authorization: `bearer ${token}`,
               'content-type':'application/json'
             },
-            body:JSON.stringify(comments)
+            body:JSON.stringify(comment)
           }
           const response = await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment/create`,options)
           const data = await response.json()
@@ -120,13 +128,10 @@
         } 
 
       }
-// get single blog from the localstorage
-//Get ID of single blog after click on read More button
-        
-//function call
          displayFullBlog();
-// Display full blog after getting it in local storage
+// display blog with associated comments
 async  function displayFullBlog() {
+
  const date =new Date();
  let day = date.getDate();
  let month = date.getMonth() + 1;
@@ -138,6 +143,10 @@ async  function displayFullBlog() {
  let post = data.filter((e)=> e._id == nameId)
  let section = document.querySelector(".ftb");
  let displayPost= document.createElement('div')
+ console.log(data);
+
+ //display single blog
+
   post.forEach(element => {
     displayPost.innerHTML = `
   <div class="ftb">
@@ -148,29 +157,37 @@ async  function displayFullBlog() {
     <div class="cont-ner">
   <img src="${element.image}" alt="" class="article-image" />
   <div id="contents">
+    <i onclick="likeFunction(this)" class="fa fa-thumbs-up"></i>
     <p>${element.content}</p>
     </div>
     </div>
   </div>
   `
   });
-
   section.append(displayPost);
+}
+ //display comments
+
+        async function displayComment(){
+          const urlParams = new URL(window.location).searchParams;
+         const nameId = urlParams.get("id");
+          let count = document.getElementById('length')
          const comments= await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment`)
          const c = await comments.json()
-         console.log(c);
+         count.innerHTML=`${c.length} comments`
          let commentss = document.querySelector("#display-comment")
           let displayComment = document.createElement('div')
-        //  const blogComment = Object.keys(c)
-        for (const comment in c) {
-          displayComment.innerHTML=` 
-          <span>${c.userName}</span>
-          <p>${c.comment}</p>
+          c.forEach(element => {
+               displayComment=` 
+          <span>${element.userName}</span>
+          <p>${element.comment}</p>
           </div>
            `
+           commentss.innerHTML +=displayComment
+          });
         }
-        commentss.append(displayComment)
-        }
+        //call display comment method
+        displayComment()
     </script>
   </body>
 </html>

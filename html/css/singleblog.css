@@ -36,9 +36,6 @@ i{
   margin-bottom: .5rem;
   transition: 0.05s ease-in-out;
 }
-#contents i:hover{
-  color: red;
-}
 .comment{
   margin:0 auto;
   background-color: #333;
@@ -58,9 +55,10 @@ i{
   width: 100%;
   padding: 1rem;
 }
-h3{
+.comment #display-comment h3{
   border-bottom: 1px solid white;
   margin-bottom: 1rem;
+  font-weight: 100;
   padding-bottom: .3rem;
   text-transform: capitalize;
 }
@@ -186,16 +184,16 @@ input:focus{
  h2{
     font-size: 16px;
     padding: 5px;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     color: white;
+    text-transform: capitalize;
 }
  #contents p{
     font-size: 16px;
     color: #fff;
-    background-color: #333;
     max-width: 100%;
     margin-bottom: .2rem;
-    padding:.5rem .3rem;
+    padding:.09rem .3rem;
    }
    input[type=text]{
     font-family: var(--font);

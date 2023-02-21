@@ -85,7 +85,7 @@
           data.forEach(element => {
    let blog =`
     <td>${element.title}</td>
-    <td>${element.content}</td>
+    <td>${element.summary}</td>
     <td>${element.category}</td>
     <td>${day}/${month}/${year}</td>
     <td><button id="editbtn"><a href="editblog.html?_id=${element._id}">edit</a></button></td>
@@ -109,10 +109,8 @@ const logout=document.getElementById("logout")
           const data =await response.json()
 
     const token = localStorage.getItem('token') 
-    const t = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzZjMzOTk0ZjhjODc3YmM1MWYzZjg4YSIsInVzZXJOYW1lIjoiUndhbXVnZW1hIGphcGhldCIsImVtYWlsIjoiamV0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ1Uk9QZ2tydjBBejRyNS5IVUxrU3hPTi9EZGNSd0hud0tjZDJiTlBneDR4eGhUQjNNc3cxcSIsIl9fdiI6MH0sImlhdCI6MTY3Njg5MzMwMn0.ErgrajWV4SyNenGtUVuEY_qsv0e3bCt7FXFVl9FLazI'
   if (confirm("Do You want to delete this message")) {
       const contactId = data.findIndex((obj) => obj._id === id)
-      console.log(token);
      await axios.delete(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${id}`,{
       headers:{
                 Authorization: `bearer ${token}`,

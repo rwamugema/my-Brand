@@ -71,6 +71,8 @@
             <input type="text" name="name" class="input" placeholder="">
             <h3>category</h3>
             <input type="text" name="category" id="category">
+            <h3>summary</h3>
+            <input type="text" id="summary">
           <!-- text editor -->
             <h3>post content</h3>
             <textarea name="textarea" id="summernote"  cols="30" rows="10"></textarea>
@@ -166,10 +168,12 @@
       const image=document.getElementById('image').files[0]
        const title= document.getElementsByName('name')[0].value
       let content = document.getElementsByName('textarea')[0].value
+      let summary = document.getElementById('summary').value
       const token = localStorage.getItem("token")
       const formData = new FormData()
              formData.append("title", title)
              formData.append("category",category)
+             formData.append('summary',summary)
              formData.append("content",content )
              formData.append( "image",image)
             const options = {

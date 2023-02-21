@@ -26,6 +26,7 @@
         <input type="text" id="title">
         <label for="category">category</label>
         <input type="text" id="category">
+        <input type="text" id="summary">
         <label for="postcontent">post content:</label>
         <textarea name="postContent" id="content" cols="30" rows="10"></textarea>
         <label for="image" >post image:</label>
@@ -42,8 +43,10 @@
            let title = document.getElementById('title')
            let category = document.getElementById('category')
            let content = document.getElementById('content')
+           let summary = document.getElementById('summary')
            title.value = blogRetrieved.title
            category.value = blogRetrieved.category
+           summary.value = blogRetrieved.summary
            content.value = blogRetrieved.content
         //    let img = document.createElement('img')
         //    img.src = blogRetrieved.image
@@ -57,6 +60,7 @@
               title: document.getElementById("title").value,
               category: document.getElementById('category').value,
               content: document.getElementById("content").value,
+              summary:document.getElementById('summary').value,
               image: document.getElementById('image').files[0]
         }   
         const options = {
