@@ -30,6 +30,7 @@ const getBlog = async(req,res)=>{
 
 //update blog
 const updateBlog = async(req,res) =>{
+    let result;
     try {
         const post = await blogModel.findOne({_id: req.params.id})
         if (req.body.title) {
