@@ -80,15 +80,16 @@
         }
       }
       const  userName= document.querySelector("#input")
-       const  userComment= document.querySelector("comments")
+       const  comment= document.querySelector("comments")
       //function to append the name and comment of a user
-      function validateComment() {
-        let articles =JSON.parse(localStorage.getItem("article"))
+    async  function validateComment() {
+    const token = localStorage.getItem('token')
+    const urlParams = new URL(window.location).searchParams;
+    const nameId = urlParams.get("id");
         var comments = [];
         let comment = {
           userName: document.getElementsByName("name")[0].value,
-          userComment: document.getElementsByName("comment")[0].value,
-          articleid:post.id
+          comment: document.getElementsByName("comment")[0].value,
         };
         // check user inputs
         if (!comment.userName) {
@@ -97,24 +98,26 @@
         } else if (comment.userName.length < 5) {
           error.style.display = "block";
           error.innerHTML = "check your name it might be wrong";
-        } else if (!comment.userComment) {
+        } else if (!comment.comment) {
           error.style.display = "block";
           error.innerHTML = "comment is required";
-        } else if (comment.userComment.length < 5) {
+        } else if (comment.comment.length < 5) {
           error.style.display = "block";
           error.style.display = "comment is short try 5 words ";
         } else {
-          if (localStorage.getItem("comment") === null) {
-            comments.push(comment);
-            localStorage.setItem("comment", JSON.stringify(comments));
-            location.reload()
-          } else {
-            let stored = JSON.parse(localStorage.getItem("comment"));
-            stored.push(comment);
-            localStorage.setItem("comment", JSON.stringify(stored));
-            location.reload()
+          comments.push(comment)
+          const options = {
+            method: 'POST',
+            headers:{
+              Authorization: `bearer ${token}`,
+              'content-type':'application/json'
+            },
+            body:JSON.stringify(comments)
           }
-        }
+          const response = await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment/create`,options)
+          const data = await response.json()
+          location.reload()
+        } 
 
       }
 // get single blog from the localstorage
@@ -155,11 +158,13 @@ async  function displayFullBlog() {
   section.append(displayPost);
          const comments= await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment`)
          const c = await comments.json()
+         console.log(c);
          let commentss = document.querySelector("#display-comment")
           let displayComment = document.createElement('div')
         //  const blogComment = Object.keys(c)
         for (const comment in c) {
           displayComment.innerHTML=` 
+          <span>${c.userName}</span>
           <p>${c.comment}</p>
           </div>
            `
