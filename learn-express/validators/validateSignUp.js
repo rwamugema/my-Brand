@@ -14,7 +14,8 @@ export const loginSchema = joi.object({
 export const schemaComment = joi.object({
     comment:joi.string()
     .min(5)
-    .required()
+    .required(),
+    userName:joi.string().required()
 })
 export const contactSchema = joi.object({
     userName:joi.string().required().min(3).max(15),

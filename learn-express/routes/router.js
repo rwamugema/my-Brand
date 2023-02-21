@@ -387,7 +387,7 @@ router.post('/api/v1/signup', validator(signupSchema), sign)
  *       404:
  *         description: comment not found 
  */ 
-router.post('/api/v1/blogs/:id/comment/create', validator(schemaComment), createComment)
+router.post('/api/v1/blogs/:id/comment/create',validateToken, validator(schemaComment), createComment)
 /**
  * @swagger
  * components:

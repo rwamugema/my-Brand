@@ -3,6 +3,8 @@ import { Comment } from "../models/comment.js"
 import schemaUser from "../models/user.js"
 const createComment = async (req,res) =>{
     const blogId = req.params.id
+    const userId = req.body._id
+    console.log(userId);
     blogModel.findOne({_id:blogId}).then(async (blog) =>{
         if (!blog) {
             return res.status(403).send({
@@ -12,7 +14,7 @@ const createComment = async (req,res) =>{
             const comment = new Comment({
                 comment: req.body.comment,
                 blogId:blogId,
-                userId:req.body._id
+                userName:req.body.userName
             })
          await blogModel.updateOne(
                 {_id:blogId},

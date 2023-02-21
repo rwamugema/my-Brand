@@ -38,6 +38,12 @@ const updateBlog = async(req,res) =>{
         if (req.body.content) {
             post.content = req.body.content
         } 
+        if (req.body.image) {
+            post.image = req.body.image
+        }
+        if (req.body.category) {
+            post.category = req.body.category
+        }
         await post.save()
        return res.send(post).status(200)
     } catch{
