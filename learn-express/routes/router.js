@@ -22,7 +22,7 @@ import { createComment,
 } from '../controllers/blogCommentController.js'
 import cloudinary from '../services/cloudinary.js'
 import upload from '../services/multer.js'
-import { addLike } from '../controllers/blogLikeController.js'
+import {addlike } from '../controllers/blogLikeController.js'
 import { createContact, deleteQuery, getQueries } from '../controllers/contactController.js'
 const router = express.Router()
 /**
@@ -434,7 +434,7 @@ router.post('/api/v1/blogs/:id/comment/create',validateToken, validator(schemaCo
  *       404:
  *         description: Not Found
  */
-router.post('/api/v1/blogs/:id/likes',validateToken, addLike)
+router.post('/api/v1/blogs/:id/likes',validateToken, addlike)
 /**
  * @swagger
  * components:

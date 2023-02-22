@@ -8,7 +8,9 @@ const schema = mongoose.Schema({
     'id':String,
     'image':String,
     blogComment:[{type:mongoose.Schema.Types.ObjectId, ref:'comments'}],
-    blogLike:[{type:mongoose.Schema.Types.ObjectId, ref:'blogLikes'}]
+    likedBy:[{type:mongoose.Schema.Types.ObjectId, ref:'user'}],
+    likes:{type: Number,
+    default:0}
 })
  const blogModel = mongoose.model('posts', schema)
 export default blogModel
