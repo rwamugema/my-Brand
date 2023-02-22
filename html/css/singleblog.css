@@ -43,17 +43,18 @@ i{
   min-height: 300px;
   display: grid;
   grid-template-columns: repeat(1);
-  /* padding: .5rem .8rem .2rem .8rem; */
   border: 1px solid #333;
   border-radius: 10px;
 }
 .comment #display-comment{
   display: flex;
   flex-direction: column;
-  margin-top: .2rem;
+  max-height: 270px;
+  overflow: scroll;
+  margin-top: 0;
   color: #fff;
   width: 100%;
-  padding: 1rem;
+  padding:0 1rem 1rem;
 }
 .comment #display-comment h3{
   border-bottom: 1px solid white;

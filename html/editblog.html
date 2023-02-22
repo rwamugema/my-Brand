@@ -35,7 +35,7 @@
         <button id="btn" onclick="updatePost()">update</button>
 </div>
 <script>
-     const  urlParams = new URL(window.location).searchParams;
+        const  urlParams = new URL(window.location).searchParams;
         const  nameId =urlParams.get("_id")
         async function getBlogs(){
            let res = await  fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}`)

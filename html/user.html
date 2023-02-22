@@ -27,7 +27,7 @@
           <p>rwamugema Japhet</p>
       </div>
       <div id="logout">
-          <a href="#">log out</a>
+          log out
       </div>
   </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -117,6 +117,11 @@
   } else {
     return false;
 }}
+let logout = document.getElementById('logout')
+        logout.addEventListener('click', () =>{
+          localStorage.removeItem('token')
+          window.location.replace('login.html')
+        })
       
       </script>
 </body>

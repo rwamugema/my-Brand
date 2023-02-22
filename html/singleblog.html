@@ -175,7 +175,7 @@ async  function displayFullBlog() {
          const comments= await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment`)
          const c = await comments.json()
          count.innerHTML=`${c.length} comments`
-         let commentss = document.querySelector("#display-comment")
+         let commentDisplayer = document.querySelector("#display-comment")
           let displayComment = document.createElement('div')
           c.forEach(element => {
                displayComment=` 
@@ -183,7 +183,7 @@ async  function displayFullBlog() {
           <p>${element.comment}</p>
           </div>
            `
-           commentss.innerHTML +=displayComment
+           commentDisplayer.innerHTML +=displayComment
           });
         }
         //call display comment method

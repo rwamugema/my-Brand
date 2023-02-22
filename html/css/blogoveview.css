@@ -24,6 +24,11 @@ body {
 table tr th {
   border-bottom: 1px solid #333;
 }
+table td {
+  border-bottom: 1px solid #6f4405;
+  max-height: 70px;
+  padding-left: 15px;
+}
 @media only screen and (min-width: 360px) {
   .nav-bar {
     position: sticky;
@@ -164,10 +169,6 @@ table tr th {
   #footer p a:hover{
     border-bottom: 2px solid white;
     transition: all ease-in-out;
-  }
-  table td {
-    border-bottom: 1px solid #6f4405;
-    padding-left: 0rem;
   }
   .over-view {
     padding: 0 0.3rem;
@@ -337,10 +338,6 @@ table tr th {
     align-items: center;
     justify-content: space-around;
     border: none;
-  }
-  table td {
-    border-bottom: 1px solid #6f4405;
-    padding: 20px;
   }
   .over-view {
     width: 70%;
