@@ -18,12 +18,12 @@ export const createContact = async(req,res) =>{
     }
 }
 export const deleteQuery = async(req,res) =>{
-    const query = await contact.findOne({_id:req.params.id})
-    if (query) {
-     await contact.deleteOne({_id: req.params.id})
-       return res.status(204).send({message: "query deleted succefully"})
+    const post = await contact.findOne({_id:req.params.id})
+    if (post) {
+        const result =  await contact.deleteOne({_id: req.params.id})
+        res.status(204).json(result)
     }
-       return res.status(400).send({error:'query does not exists'})
+        res.status(400).send({error:'post does not exists'})
 }
 export const getQueries = async(req,res)=>{
     const Queries = await contact.find({})
