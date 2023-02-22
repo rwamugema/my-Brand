@@ -50,6 +50,13 @@
             <button><a href="addpost.html">add new post</a> </button>
         </div>
         <table>
+          <tr>
+            <th>title</th>
+            <th>summary</th>
+            <th>category</th>
+            <th>likes</th>
+            <th>date</th>
+          </tr>
         </table>
         <div id="controls">
             <i class="fa fa-arrow-left"></i>
@@ -84,12 +91,17 @@
           const data =await response.json()
           data.forEach(element => {
    let blog =`
+   <tr>
     <td>${element.title}</td>
     <td>${element.summary}</td>
     <td>${element.category}</td>
+    <td>${element.likes}</td>
     <td>${day}/${month}/${year}</td>
     <td><button id="editbtn"><a href="editblog.html?_id=${element._id}">edit</a></button></td>
-    <td><button id="button" onclick="deleteMessage('${element._id}')">delete</button></td>`
+    <td><button id="button" onclick="deleteMessage('${element._id}')">delete</button></td>
+   </tr>
+    `
+   
     let tr =document.createElement("tr")
    tr.innerHTML=blog
    document.querySelector("table").appendChild(tr)

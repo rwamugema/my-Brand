@@ -36,7 +36,6 @@
       </div>
       <div class="comment">
         <div id="display-comment">
-          <h3 id="length"></h3>
         </div>
         <div id="add-comment">
           <input type="text" name="name" id="input" placeholder="your name" />
@@ -80,14 +79,7 @@
         }
       }
       function likeFunction(x) {
-       let isred = x.style.color
-       if (!isred) {
-        x.style.color = 'red'
-       }
-    else{
-         x.style.color = 'white'
-       
-       }
+      
 }
       // validate user inputs on the front side
     
@@ -140,6 +132,8 @@ async  function displayFullBlog() {
  const nameId = urlParams.get("id");
  const response = await fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs')
  const data = await response.json()
+ const comments= await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment`)
+         const c = await comments.json()
  let post = data.filter((e)=> e._id == nameId)
  let section = document.querySelector(".ftb");
  let displayPost= document.createElement('div')
@@ -157,7 +151,10 @@ async  function displayFullBlog() {
     <div class="cont-ner">
   <img src="${element.image}" alt="" class="article-image" />
   <div id="contents">
-    <i onclick="likeFunction(this)" class="fa fa-thumbs-up"></i>
+  <div id="likePost">
+    <span><i onclick="likeFunction(this)" class="fa fa-thumbs-up"></i>${element.likes}</span>
+    <p><i class='fa fa-comment' onclick="comment()"></i>${c.length}</p>
+    </div>
     <p>${element.content}</p>
     </div>
     </div>
@@ -171,10 +168,8 @@ async  function displayFullBlog() {
         async function displayComment(){
           const urlParams = new URL(window.location).searchParams;
          const nameId = urlParams.get("id");
-          let count = document.getElementById('length')
          const comments= await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/comment`)
          const c = await comments.json()
-         count.innerHTML=`${c.length} comments`
          let commentDisplayer = document.querySelector("#display-comment")
           let displayComment = document.createElement('div')
           c.forEach(element => {
@@ -185,6 +180,38 @@ async  function displayFullBlog() {
            `
            commentDisplayer.innerHTML +=displayComment
           });
+        }
+        async function likeFunction(x){
+          let isred = x.style.color
+       if (!isred) {
+        x.style.color = 'red'
+       }
+    else{
+         x.style.color = 'white'
+       
+       }
+          let token = localStorage.getItem('token')
+         const urlParams = new URL(window.location).searchParams;
+         const nameId = urlParams.get("id");
+         await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}/likes`,{
+          method:'POST',
+          headers:{
+            Authorization: `bearer ${token}`
+          }
+         })
+         location.reload()
+         
+        }
+
+        //toggle hide/show comment session
+        
+       function comment(){
+        let commentDiv = document.querySelector('.comment')
+         if (commentDiv.style.display === 'none') {
+          commentDiv.style.display = 'block'
+         }else{
+          commentDiv.style.display = 'none'
+         }
         }
         //call display comment method
         displayComment()
