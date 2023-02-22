@@ -96,7 +96,10 @@
   if (confirm("Do You want to delete this message")) {
     const contactId = data.findIndex((obj) => obj._id === id)
      await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/contact/${id}`,{
-     method:'DELETE'})
+     method:'DELETE',
+    headers:{
+      Authorization: `bearer ${token}`
+    }})
     await data.splice(contactId,1)
   }
   location.reload()
