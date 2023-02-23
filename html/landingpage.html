@@ -1,0 +1,73 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="website icon" href="image/logo.png">
+    <title>home</title>
+  </head>
+  <body>
+    <main class="nav-bar">
+      <div id="nav-img">
+        <a href="index.html"><img src="image/logo.png" alt="#"/></a>
+      </div>
+        <div class="topnav">
+          <div id="menu">
+          <li><a href="blog.html">blog</a></li>
+          <li id="logout"><a href="#">log out</a></li>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i></a>
+        </div>
+    </main>
+    <section>
+      <div class="section">
+        <div id="content">
+          <h2>Rwamugema Japhet</h2>
+          <p>UI,front-end developer.</p>
+          <p>Be cool and see how it turns out to be great.</p>
+        </div>
+        <div id="links">
+          <h3><a href="work.html">work</a></h3>
+          <h3><a href="about.html">about</a></h3>
+          <h3><a href="contact.html">contact</a></h3>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div id="icons">
+       <a href="https://github.com/rwamugema"><i class="fa fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rwamugema-japhet-84818b251/"><i class="fa fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/jet.japheth"><i class="fa fa-facebook"></i></a>
+      </div>
+      <hr />
+      <div id="copy">
+        <p>&copy /2022</p>
+        <p></p>
+      </div>
+    </footer>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("menu");
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+      let logout = document.getElementById('logout')
+        logout.addEventListener('click', () =>{
+          const log =confirm("Are you sure you want to log out")
+        if(log){
+          localStorage.removeItem('user')
+          window.location.replace('index.html')
+        }
+         
+        })
+      </script>
+  </body>
+</html>

@@ -156,7 +156,7 @@ async  function displayFullBlog() {
  //display comments
 
         async function displayComment(){
-          let name = JSON.parse(localStorage.getItem('user'))
+            let name = JSON.parse(localStorage.getItem('user'))
           let userName = name[0].userName
           const urlParams = new URL(window.location).searchParams;
          const nameId = urlParams.get("id");
