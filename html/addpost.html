@@ -163,7 +163,7 @@
     //    }
        
 
-     function validatePost() {
+   async  function validatePost() {
       let category =document.getElementById('category').value
       const image=document.getElementById('image').files[0]
        const title= document.getElementsByName('name')[0].value
@@ -177,23 +177,25 @@
              formData.append('summary',summary)
              formData.append("content",content )
              formData.append( "image",image)
-            const options = {
+try {
+  const options = {
               headers:{
                 Authorization: `bearer ${token}`,
+                "Content-Type": "multipart/form-data"
               },
             } 
              
-          axios.post("https://naughty-jay-tank-top.cyclic.app/api/v1/blogs", formData,
-          options,
-          {
-            "Content-Type": "multipart/form-data"
-          }
-             )
-             .then()
-             .catch((err)=>{
-               error.style.display = 'block'
-               error.innerHTML = err
-             })
+      const response =  await  fetch("https://naughty-jay-tank-top.cyclic.app/api/v1/blogs", formData,options)
+      console.log(response);
+        if (response.ok) {
+          error.style.display = 'block'
+          error.innerHTML = 'post created'
+        }
+} catch (error) {
+  error.style.display = 'block'
+  error.innerHTML = error.message
+}    
+            
     }
    
 
