@@ -48,14 +48,11 @@
            category.value = blogRetrieved.category
            summary.value = blogRetrieved.summary
            content.value = blogRetrieved.content
-        //    let img = document.createElement('img')
-        //    img.src = blogRetrieved.image
-        //    let image = document.getElementById('imageUpdate')
-        //    image.appendChild(img)
         }
        
     async function updatePost(){  
-        let token = localStorage.getItem('token')
+        const accessToken =JSON.parse(localStorage.getItem('user'))
+        const token = accessToken[0].token
         const blog = {
               title: document.getElementById("title").value,
               category: document.getElementById('category').value,
@@ -74,10 +71,14 @@
         try {
             const response = await fetch(`https://naughty-jay-tank-top.cyclic.app/api/v1/blogs/${nameId}`,options)
             const data = await response.json()
-            console.log(data);
+            if (response.ok) {
+                errorMessage.style.display = 'block'
+                errorMessage.innerHTML = 'post updated successfully'
+            }
         } catch(error){
             errorMessage.innerHTML = error.message
         }
+        // location.reload()
     }
    
     getBlogs()

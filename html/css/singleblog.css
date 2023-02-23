@@ -29,6 +29,8 @@ body{
 i{
     font-size: 24px;
     padding-right: 5px;
+    cursor: pointer;
+    
 }
 #contents i{
   color: #fff;
@@ -49,13 +51,16 @@ i{
   width:200px;
 }
 #likePost span{
-  background-color: #333;
   width: 60px;
   padding: 5px;
   border-radius: 5px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+#likePost p i:hover{
+ color:black;
+ transition: 200ms ease-in;
 }
 #likePost p{
   display: flex;

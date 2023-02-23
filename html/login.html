@@ -94,37 +94,21 @@
     },
     body: JSON.stringify(user),
   })
+  // console.log(resp);
   if (!response.ok) {
     message.style.display = "block"
     message.innerHTML = "invalid email or password"
   }else{
-    const data = await response.json()
-  const token = data.accessToken
-  localStorage.setItem('token',token)
+  const data = await response.json()
+  const token = data
+   localStorage.setItem('user',JSON.stringify(data))
   window.location.href = 'blogoverview.html'
   }
-  
     } catch (error) {
       message.style.display = 'block'
       message.innerHTML = 'invalid email or password'
     } 
-    // .then((response) => response.json())
-    // .then((data) => {
-    //   console.log(data);
-    // })
-    // .catch((error) => {
-    //   console.error("There was a problem with the fetch operation:", error);
-    // });
-          // if (localStorage.getItem("user") === null) {
-          //   users.push(user);
-          //   localStorage.setItem("user", JSON.stringify(users));
-          // } else {
-          //   let stored = JSON.parse(localStorage.getItem("user"));
-          //   stored.push(user);
-          //   localStorage.setItem("user", JSON.stringify(stored));
-          // }
         }
-      // }
     </script>
   </body>
 </html>

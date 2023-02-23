@@ -169,7 +169,8 @@
        const title= document.getElementsByName('name')[0].value
       let content = document.getElementsByName('textarea')[0].value
       let summary = document.getElementById('summary').value
-      const token = localStorage.getItem("token")
+      const accessToken =JSON.parse(localStorage.getItem('user'))
+      const token = accessToken[0].token
       const formData = new FormData()
              formData.append("title", title)
              formData.append("category",category)
@@ -188,9 +189,10 @@
             "Content-Type": "multipart/form-data"
           }
              )
-             .then((res)=> console.log("response", res))
-             .catch((error)=>{
-               console.log("error", error)
+             .then()
+             .catch((err)=>{
+               error.style.display = 'block'
+               error.innerHTML = err
              })
     }
    
