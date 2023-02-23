@@ -8,7 +8,7 @@ const schema = mongoose.Schema({
     'id':String,
     'image':String,
     blogComment:[{type:mongoose.Schema.Types.ObjectId, ref:'comments'}],
-    likedBy:[{type:mongoose.Schema.Types.ObjectId, ref:'user'}],
+    likedBy:[{type:mongoose.Schema.Types.String, ref:'user'}],
     likes:{type: Number,
     default:0}
 })

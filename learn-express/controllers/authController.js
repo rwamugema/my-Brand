@@ -17,7 +17,11 @@ dotenv.config()
                 return res.status(403).json("password is invalid")
             }else{
                const token = createToken(user)
-               return res.status(200).send(token)
+               return res.status(200).json([{
+                id:user._id,
+                userName:user.userName,
+                token:token
+               }])
             }
         })
        

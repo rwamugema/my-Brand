@@ -4,7 +4,7 @@ const createToken = (user) =>{
     try {
         const payload = {user}
      const token =  Jwt.sign(payload, "japhet")
-     return {accessToken: token}
+     return token
     } catch (error) {
         return {error:true}
     }
