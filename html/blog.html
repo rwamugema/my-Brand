@@ -5,6 +5,10 @@
     <!-- <meta http-equiv="refresh" content="5"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -49,6 +53,8 @@
         ></a>
       </div>
     </footer>
+
+    <script src="./js/blog.js" type="text/babel"></script>
     <script>
       function myFunction() {
         var x = document.getElementById("menu");
@@ -58,66 +64,65 @@
           x.style.display = "block";
         }
       }
- async function getBlogs (){
-     const response = await fetch('https://naughty-jay-tank-top.cyclic.app/api/v1/blogs')
-     const blog = await response.json()
-     blog.forEach(post => {
-        let posts =`
-        <div class="blogcontainer">
-          <span>${post.category}</span>
-          <img src="${post.image}">
-        <div class="container">
-          <div id="head">
-            <h1>${post.title}</h1>
-          </div>
-          <div id="content">
-            <p>${post.summary}</p>
-            </div>
-          <button id="button"> <a href="singleblog.html?id=${post._id}">read more</a></button>
-          </div>
-      </div>
-        `
-        // document.querySelector('section').innerHTML +=post
-        let p =document.createElement('div')
-        p.innerHTML = posts
-        let section = document.querySelector('#section')
-        section.append(p)
-     });
-    }
-     // .then(data => data.json())
-      // .then(blog => blog.forEach(posts => {
-      //   console.log(blog);
-      //   let post =`
-      //   <div class="blogcontainer">
-      //     <span>${posts.title}
-      //     <img src="${posts.image}">
-      //   <div class="container">
-      //     <div id="head">
-      //       <h1>${posts.content}</h1>
-      //     </div>
-      //     <div id="content">
-      //       </div>
-      //     <button id="button"> <a href="singleblog.html?id=${posts.id}">read more</a></button>
-      //     </div>
-      // </div>
-      //   `
-      //   // document.querySelector('section').innerHTML +=post
-      //   let p =document.createElement('div')
-      //   p.innerHTML = post
-      //   let section = document.querySelector('#section')
-      //   section.append(p)
-      // }))
-
-      // var articles = JSON.parse(localStorage.getItem("article"));
-      // articles.forEach((posts) => {
-     
-      // });
+//  async function getBlogs (){
     
-      function showMore(event) {
-        // let articleId = event.target.getAttribute("data-id");
-        window.location.href = 'singleblog.html';
-      }
-      getBlogs()
+//      blog.forEach(post => {
+//         let posts =`
+//         <div class="blogcontainer">
+//           <span>${post.category}</span>
+//           <img src="${post.image}">
+//         <div class="container">
+//           <div id="head">
+//             <h1>${post.title}</h1>
+//           </div>
+//           <div id="content">
+//             <p>${post.summary}</p>
+//             </div>
+//           <button id="button"> <a href="singleblog.html?id=${post._id}">read more</a></button>
+//           </div>
+//       </div>
+//         `
+//         // document.querySelector('section').innerHTML +=post
+//         let p =document.createElement('div')
+//         p.innerHTML = posts
+//         let section = document.querySelector('#section')
+//         section.append(p)
+//      });
+//     }
+//      // .then(data => data.json())
+//       // .then(blog => blog.forEach(posts => {
+//       //   console.log(blog);
+//       //   let post =`
+//       //   <div class="blogcontainer">
+//       //     <span>${posts.title}
+//       //     <img src="${posts.image}">
+//       //   <div class="container">
+//       //     <div id="head">
+//       //       <h1>${posts.content}</h1>
+//       //     </div>
+//       //     <div id="content">
+//       //       </div>
+//       //     <button id="button"> <a href="singleblog.html?id=${posts.id}">read more</a></button>
+//       //     </div>
+//       // </div>
+//       //   `
+//       //   // document.querySelector('section').innerHTML +=post
+//       //   let p =document.createElement('div')
+//       //   p.innerHTML = post
+//       //   let section = document.querySelector('#section')
+//       //   section.append(p)
+//       // }))
+
+//       // var articles = JSON.parse(localStorage.getItem("article"));
+//       // articles.forEach((posts) => {
+     
+//       // });
+    
+//       function showMore(event) {
+//         // let articleId = event.target.getAttribute("data-id");
+//         window.location.href = 'singleblog.html';
+//       }
+//       getBlogs()
 </script>
 </body>
 </html>

@@ -10,6 +10,38 @@ body {
   background-color: var(--clr);
   color: rgb(30, 18, 18);
 }
+@keyframes animate {
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+#loader {
+  margin-top: 1rem;
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height:70px;
+  background-color: #000;
+  border: 5px solid white;
+  /* border-top:5px solid #333; */
+  border-radius: 50%;
+  animation: animate 1s linear infinite;
+}
+#loader::after{
+content: '';
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+width: 78px;
+height: 78px;
+border-radius: 50%;
+border: 3px solid transparent;
+border-bottom-color: #FF3D00;
+}
 .blogcontainer {
   margin-bottom: 1rem;
   margin-right: 1rem;
